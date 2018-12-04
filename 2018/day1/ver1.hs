@@ -25,3 +25,10 @@ loop :: S.IntSet -> Int -> [Int] -> Int
 loop s c (n:ns)
   | S.member c s = c
   | otherwise = loop (S.insert c s) (c+n) ns
+
+{-
+*Main> main
+595
+part two
+80598
+-}
