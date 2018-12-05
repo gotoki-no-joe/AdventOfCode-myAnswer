@@ -1,6 +1,8 @@
 # README #
 
 This is my answer of [Advent of Code](https://adventofcode.com/)
+and
+Translation to Japanese.
 
 <!--
 ### What is this repository for? ###
