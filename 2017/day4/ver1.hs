@@ -12,5 +12,9 @@ valid [] = True
 valid (x:xs) = notElem x xs && valid xs
 
 {-
+*Main> main
+466
+251
+
 今までで一番簡単だったね。
 -}
