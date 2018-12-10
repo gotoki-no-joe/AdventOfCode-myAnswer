@@ -1,0 +1,86 @@
+<html>
+<head>
+<script>
+w = new Worker("work.js");
+
+w.onmessage = function (event) {
+  console.log("max score = " + event.data.maxscore);
+}
+
+function run(n,b) {
+  w.postMessage({ n : n, bmax : b});
+}
+
+/* bare simple version */
+
+function DList(v) {
+  this.val = v;
+  this.pred = null;
+  this.succ = null;
+}
+
+function compute(n,bmax) {
+  var stage = new DList(0);
+  stage.pred = stage;
+  stage.succ = stage;
+
+  var scores = new Array(n);
+  for (var i = 0; i < n; i++) { scores[i] = 0; }
+
+  for (var i = 1; i <= bmax; i++) {
+    if (i % 23 == 0) {
+	/* backword */
+	stage = stage.pred.pred.pred.pred.pred.pred;
+	var b2 = stage.pred;
+	var b1 = b2.pred;
+	scores[i % n] += i + b2.val;
+	b1.succ = stage; stage.pred = b1;
+    } else {
+	/* forward */
+	var b1 = stage.succ;
+	var b2 = b1.succ;
+	stage = new DList(i);
+	b1.succ = stage; stage.pred = b1;
+	b2.pred = stage; stage.succ = b2;
+    }
+  }
+
+//  showstage(stage);
+//  console.log(scores);
+
+  console.log(Math.max.apply(undefined,scores));
+}
+
+function showstage(stage) {
+  var p = stage;
+  var msg = "" + p.val;
+  p = p.succ;
+  while (p != stage) {
+    msg += " " + p.val;
+    p = p.succ;
+  }
+  console.log(msg);
+}
+
+</script>
+</head>
+<body>
+<h1>calculate by WebWorkers!</h1>
+
+computeでフロントプロセスで実行、runでワーカーで実行。
+人数とビー玉の最大値が引数。
+
+<table>
+<tr><th>コマンド<th>結果
+<tr><td>compute(9,25)<td>32
+<tr><td>run(10,1618)<td>max score = 8317
+<tr><td>run(13,7999)<td>max score = 146373
+<tr><td>run(17,1104)<td>max score = 2764
+<tr><td>run(21,6111)<td>max score = 54718
+<tr><td>run(30,5807)<td>max score = 37305
+<tr><td>run(486,70833)<td>max score = 373597
+<tr><td>run(486,7083300)<td>max score = 2954067253
+<tr><td>compute(486,7083300)<td>2954067253
+</table>
+</body>
+</html>
