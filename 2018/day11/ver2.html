@@ -1,0 +1,148 @@
+<html>
+<head>
+<title>Compute Advent of Code 2018 day 11</title>
+<script>
+// 二次元配列を作る
+function newArray2d(w,h) {
+  return new Array(w).fill(0).map(() => new Array(h).fill(0));
+}
+
+// セルグリッドを作る
+function genGrid(gridid) {
+  var a = newArray2d(301,301);
+  for (var x = 1; x <= 300; x++) {
+    var rackid = x + 10;
+    for (var y = 1; y <= 300; y++) {
+      a[x][y] = Math.floor((rackid * y + gridid) * rackid % 1000 / 100) - 5;
+//      a[x][y] = Math.floor((rackid * y + gridid) * rackid / 100) % 10 - 5;
+    }
+  }
+  return a;
+}
+
+var g8 = genGrid(8);
+var g57 = genGrid(57);
+var g39 = genGrid(39);
+var g71 = genGrid(71);
+var gxx = genGrid(9005);
+
+function test1() {
+  console.log("4 -5 0 4 should be out.");
+  console.log(g8[3][5], g57[122][79], g39[217][196], g71[101][153]);
+}
+
+// 3x3で最大値を探す
+function findmax(a) {
+  var xans, yans, vans = -1;
+  for (var x = 1; x <= 300-2; x++) {
+    for (var y = 1; y <= 300-2; y++) {
+      var val = a[x][y  ] + a[x+1][y  ] + a[x+2][y  ] +
+                a[x][y+1] + a[x+1][y+1] + a[x+2][y+1] +
+                a[x][y+2] + a[x+1][y+2] + a[x+2][y+2];
+      if (vans < val) {
+         vans = val; xans = x; yans = y;
+      }
+    }
+  }
+  console.log(xans, yans, vans);
+}
+
+var g18 = genGrid(18);
+var g42 = genGrid(42);
+
+function test2() {
+  console.log("should be 33,45,29");
+  findmax(g18);
+  console.log("should be 21,61,30");
+  findmax(g42);
+}
+
+function ans1() { findmax(gxx); }
+
+// nxn で最大値を探す
+function findnmax(a) {
+  var xans, yans, kans, vans = -1;
+// 1x1はaそのもの。
+  var s = newArray2d(301,301);
+  for (var x = 1; x <= 300; x++) {
+    for (var y = 1; y <= 300; y++) {
+      var v = s[x][y] = a[x][y];
+      if (vans < v) {
+        vans = v; kans = 1; xans = x; yans = y;
+      }
+    }
+  }
+// k-1 x k-1 を使って k x k を 300まで作りながら、最大値を更新していく
+  for (var k = 2; k <= 300; k++) {
+    for (x = 1; x <= 301 - k; x ++) {
+      for (y = 1; y <= 301 - k; y++) {
+        var v = s[x][y] = s[x][y] + ax(a, x+k-1, y, y+k-1) + ay(a, y+k-1, x, x+k-1) + a[x+k-1][y+k-1];
+        if (vans < v) {
+          vans = v; kans = k; xans = x; yans = y;
+        }
+      }
+    }
+  }
+  console.log(xans,yans,kans,vans);
+}
+
+function ax(a,x1,y1,yk) {
+  var r = 0;
+  for (var y = y1; y < yk; y++) {
+    r = r + a[x1][y];
+  }
+  return r;
+}
+
+function ay(a,y1,x1,xk) {
+  var r = 0;
+  for (var x = x1; x < xk; x++) {
+    r = r + a[x][y1];
+  }
+  return r;
+}
+
+function test3() {
+  console.log("should be 90,269,16,113");
+  findnmax(g18);
+  console.log("should be 232,251,12,119");
+  findnmax(g42);
+}
+
+function ans2() { findnmax(gxx); }
+</script>
+</head>
+<body>
+<h1>Compute Advent of Code 2018 day 11</h1>
+
+<pre>
+> test1()
+4 -5 0 4 should be out. ver2.html:30:3
+4 -5 0 4 ver2.html:31:3
+undefined
+
+> test2()
+should be 33,45,29 ver2.html:54:3
+33 45 29 ver2.html:47:3
+should be 21,61,30 ver2.html:56:3
+21 61 30 ver2.html:47:3
+undefined
+
+> ans1()
+20 32 31 ver2.html:47:3
+undefined
+
+> test3()
+should be 90,269,16,113 ver2.html:106:3
+90 269 16 113 ver2.html:86:3
+should be 232,251,12,119 ver2.html:108:3
+232 251 12 119 ver2.html:86:3
+undefined
+
+> ans2()
+235 287 13 148 ver2.html:86:3
+undefined
+</pre>
+
+</body>
+</html>
