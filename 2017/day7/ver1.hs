@@ -100,3 +100,12 @@ singleton _ = False
 {-
 仲間はずれの体重をもつ子を特定するの、すげぇ面倒くさいな。
 -}
+
+{-
+*Main> main
+[("azqje",1083)]
+"nzeqmqi"
+"inwmb"
+"azqje"
+("rfkvap",646)
+-}
