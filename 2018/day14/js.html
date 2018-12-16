@@ -1,0 +1,72 @@
+<html>
+<head>
+<script>
+var ar = new Array();
+ar.push(3);
+ar.push(7);
+var e1 = 0;
+var e2 = 1;
+var n = 2;
+
+function extend(limit) {
+  while (n < limit) {
+    var s1 = ar[e1];
+    var s2 = ar[e2];
+    var s = s1 + s2;
+    if (s > 9) { ar.push(1); ar.push(s-10); n += 2; } else { ar.push(s); n++; }
+    e1 = (e1 + 1 + s1) % n;
+    e2 = (e2 + 1 + s2) % n;
+  }
+}
+
+function compute1(num) {
+  extend(num+10);
+  var r = "";
+  for (i = num; i < num+10; i++) { r += ar[i]; }
+  return r;
+}
+
+function compute2(ns) {
+  extend(10000);
+  var i = -1;
+
+  LOOP: do {
+    i++;
+    // i+length-1がnを超えたら、まずextendする
+    if (i + ns.length >= n) { extend(n+10000); }
+    // iから+length-1までnsとarが等しかったら発見
+    for (var j = 0; j < ns.length; j++) {
+      if (ar[i+j] != ns[j]) { continue LOOP; }
+    }
+    return i;
+  } while (1);
+}
+</script>
+</head>
+<body>
+<h1>2018 day14</h1>
+
+
+<table>
+<tr><th>コマンド<th>結果
+<tr><td>compute1(9)<td>5158916779
+<tr><td>compute1(5)<td>0124515891
+<tr><td>compute1(18)<td>9251071085
+<tr><td>compute1(2018)<td>5941429882
+<tr><td>compute1(793031)<td>4910101614
+</table>
+
+<table>
+<tr><th>コマンド<th>結果
+<tr><td>compute2([5,1,5,8,9])<td>9
+<tr><td>compute2([0,1,2,4,5])<td>5
+<tr><td>compute2([9,2,5,1,0])<td>18
+<tr><td>compute2([5,9,4,1,4])<td>2018
+<tr><td>compute2([4,9,1,0,1,0,1,6,1,4])<td>793031
+<tr><td>compute2([7,9,3,0,3,1])<td>20253137
+
+
+</table>
+
+</body>
+</html>
