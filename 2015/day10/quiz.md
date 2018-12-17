@@ -1,6 +1,8 @@
 # 10日目：妖精は見る、妖精は話す #
 
-今日、妖精たちは「look-and-say」(wikipedia)というゲームをしています。
+今日、妖精たちは
+[look-and-say](https://en.wikipedia.org/wiki/Look-and-say_sequence)
+というゲームをしています。
 彼らは順番に前の列を朗読し、
 その読みを次の列として使用して列を作ります。
 たとえば、`211`は「1つの2、2つの1」と読み、
@@ -27,8 +29,8 @@ look-and-sayの列は反復して生成されます。
 # パート2 #
 
 すばらしい！わかった？
-あなたは(John Conwayのこの列に関する講演)[https://www.youtube.com/watch?v=ea7lJkEhytA]
-も楽しめるだろう。
+あなたは[John Conwayのこの列に関する講演](https://www.youtube.com/watch?v=ea7lJkEhytA)
+も楽しめるでしょう。
 （**Conwayのライフゲーム**のConwayです。）
 
 さて、もう一度あなたのパズル入力の数字で始めて、
