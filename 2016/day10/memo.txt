@@ -1,0 +1,44 @@
+{-
+value * goes to bot *
+の行が、初期値を与える。
+bot * gives low to (bot|output) * and high to (bot|output) *
+の行が、トーナメントをする。
+しかしlow, highの両方を次に送るので、木にはならない。
+
+配列による動的プログラミングで値を導いたら終わりかと思ったらそうでもない。
+そもそも二つの値を送るのでなかなか難しいな。
+ひとつのロボットが2度発動することはないと信じて、
+どのような二つのチップを入手するかを時系列で追うしかないのかしら。
+
+その写像の中で61と17を見つけたらそれが答という感じで。
+-}
+
+data Dest = Bot Int | Bin Int  -- ロボット番号と製品箱番号
+
+data Inst = Initial Int Int    -- value 5 goes to bot 2 は Initial 5 2
+          | Give Int Dest Dest     -- Destはそれぞれ low, high
+          | Take Int Bool Int        -- False : low, True : high
+
+type Configuration = M.IntMap [Int]
+
+{-
+  let initialConf = M.fromListWith (++) [ (b,[c]) | Initial c b <- ls ]
+
+  [ (b1, [c])
+  | Give bot dL dH <- ls
+  , [c1,c2] <- [m M.! bot]
+  , (Bot b1, c) <- zip [dL, dH] [min c1 c2, max c1 c2]
+  ]
+使い終わったのを消すのがうまくできてない。
+-}
+
+{-
+違う違う、give を take の向きに束ね直して、DParrayするんだこれ。
+-}
+
+-- Give bot dL dH
+
+{-
+それも違う。一括処理をしないで、一つずつ追加していき、
+2つになったところで分配するコマンドが増える形で進めるんだ。
+-}
