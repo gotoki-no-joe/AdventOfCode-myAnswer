@@ -1,0 +1,50 @@
+{-
+-- cycleOf n xs = cycle . take n xs
+-- takeを使わないことで高速化する
+-- しかしおそらく実際にはcycleOfが重なって重くなる（エラトステネス同様）
+cycleOf :: Int -> [a] -> [a]
+cycleOf n xs = loop n xs where
+  loop 0 _ = loop n xs
+  loop _ [] = error "short length"
+  loop k (x:xs) = x : loop (pred k) xs
+-}
+
+type State =
+  ([Int]  -- ひも
+  ,Int    -- 現在位置
+  ,Int    -- スキップサイズ
+  )
+
+はみ出ない場合は、
+  let
+    (as,bs) = splitAt cur str
+    (cs,ds) = splitAt len bs
+  in
+    (as ++ reverse cs ++ ds, (cur + len + skip) `mod` base, succ skip)
+でいい。
+
+決してはみ出ないように、現在位置を一旦先頭に移動させてから処理して元に戻す
+
+  let
+    (as,bs) = splitAt cur str
+    (cs,ds) = splitAt len (bs ++ as)
+    (es,fs) = splitAt (base - cur) (reverse cs ++ ds)
+  in
+    fs ++ es
+
+というやり方はごちゃごちゃするので、
+「現在位置」という数字が今結局いくつなのかだけ追跡して、
+リストは常にその現在位置が先頭に来るようにする。
+最後にそれだけ巻き戻すことでリストの位置を復元する。
+というやり方にしよう。
+
+「現在位置」からlenだけ反転
+(as,bs) = splitAt len str
+して接続
+reverse as ++ bs
+ここから現在位置をlenだけ進めたものは
+bs ++ reverse as
+さらにskipsizeだけ進める
+(cs,ds) = splitAt skip (bs ++ reverse as)
+その結果
+ds ++ cs
