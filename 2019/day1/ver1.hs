@@ -1,3 +1,5 @@
+import Data.Array
+
 main = do
     cont <- readFile "input.txt"
     let ls = lines cont
@@ -38,3 +40,18 @@ gs = map g [0..]
 *Main> main2
 4687331
 -}
+
+-- 上限を見て配列でDPするように改善
+
+main3 = do
+  cont <- readFile "input.txt"
+  let ws = map read $ lines cont
+  let ans = compute3 ws
+  print ans
+
+compute3 :: [Int] -> Int
+compute3 ws = sum $ map (fa !) ws
+  where
+    ub = maximum ws
+    f x = if x <= 0 then 0 else fa ! x
+    fa = listArray (0,ub) [ w + f w | x <- [0..ub], let w = max 0 (x `div` 3 - 2) ]
