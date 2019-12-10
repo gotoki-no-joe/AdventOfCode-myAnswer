@@ -1,4 +1,4 @@
-import Data.List (tails)
+import Data.List
 
 main = do
   fi <- readFile "input.txt"
@@ -9,29 +9,29 @@ main = do
   print $ twos*thrs
   print $ findid ls
 
-{-
-IDは大した長さではないから、数えるのが面倒なのが問題だ。
-適当にやるか。
--}
+-- 同じ文字の出現回数を数え、2と3がそこに現れたかのペアにする
 
 id2kind :: String -> (Bool,Bool)
 id2kind xs = (elem 2 cnt, elem 3 cnt) where
-  cnt = [ length $ filter (x ==) xs | x <- xs ]
+  cnt = map length $ group $ sort xs
 
-{-
-後半も総当たりするしかないのか？
--}
+-- part 2
+-- こちらも総当たりする
 
--- findid :: [String] -> String
+findid :: [String] -> [String]
 findid xss = -- head
   [ common xs ys
   | (xs:xss1) <- tails xss
   , ys <- xss1
-  , distance xs ys == 1
+  , distance1 xs ys
   ]
 
-distance :: String -> String -> Int
-distance xs ys = length $ filter id $ zipWith (/=) xs ys
+distance1 :: String -> String -> Bool
+distance1 xs ys = singleton $ filter id $ zipWith (/=) xs ys
+
+singleton :: [a] -> Bool
+singleton [_] = True
+singleton _ = False
 
 common :: String -> String -> String
 common xs ys = map fst $ filter (uncurry (==)) $ zip xs ys
