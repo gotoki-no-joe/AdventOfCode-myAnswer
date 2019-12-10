@@ -1,13 +1,8 @@
-import Data.List.Split
 import qualified Data.IntSet as S
 
 main = do
   fi <- readFile "input.txt"
---  print fi
-  let li = endBy "\n" fi
---  print li
-  let ns = map myRead li
---  print ns
+  let ns = map myRead $ lines fi
   let ans = sum ns
   print ans
   putStrLn "part two"
@@ -21,6 +16,7 @@ myRead ds = read ds
 compute :: [Int] -> Int
 compute ns = loop S.empty 0 (cycle ns)
 
+-- 見たことのある周波数の集合、現在の周波数、変化リスト、結果
 loop :: S.IntSet -> Int -> [Int] -> Int
 loop s c (n:ns)
   | S.member c s = c
