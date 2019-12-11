@@ -3,58 +3,31 @@ import Data.List
 import qualified Data.Map as M
 
 {-
-なかなかに面倒なデータ処理ですなぁ。
-整列はそのまますればいいだろうけれど
-（着任即寝るとかないだろうから。）
-その先はどうする。
-守衛IDごとにテーブルを用意して、
-寝ている時間を++していく感じか。
-どうせ0から59しか気にしないので、
-そういうArrayでいくか。
+同時刻に複数のイベントがないと勝手に仮定して（sortコマンドで検証できる）
+字面でのソートで時系列順にする。
 
-それにしてもメンドクセェ。
+ファイルの形式
+[1518-03-28 00:04] Guard #2011 begins shift
+.........|.........|......
+時刻は16文字めから2文字、
+IDは20文字めから空白まで、
+20文字めがGなら着任、さもなくば寝たと起きたの対（区別しなくてももわかる）
 
-一気に処理する代わりに、Guard の行を見てID覚えて、
-salls asleepとwakes upの行にIDを付加する処理と、
-...いやそこまで細切れにしなくてもいい。
-ようは、falls asleepからwakes upの間だけを登録すればいいが、
-それが誰なのかを先に知っておく必要がある、というだけだ。
-
-type SleepData = IntMap (Array Int Int)
-
-はめんどいので、重いの承知で
-
+守衛IDと時刻の対に対して、寝ていた回数をカウントする
 type SleepData = Map (Int,Int) Int
-
-にしよう。
 -}
 
 main = do
   fi <- readFile "input.txt"
   let ls = sort $ lines fi
-  let fstgrd = guardID (head ls)
-  let thedata = buildSleepData M.empty fstgrd (tail ls)
-  let persondata = M.mapKeysWith (+) fst thedata
-  let theguard = mapMaxKey persondata
-  print (theguard :: Int)
-  let singledata = M.mapKeysWith (+) snd $ M.mapWithKey (\(id,m) cnt -> if id==theguard then cnt else 0) thedata
-  let minute = mapMaxKey singledata
-  print (minute :: Int)
-  print $ theguard * minute
+  let thedata = buildSleepData ls
+  let ans1 = part1 thedata
+  print ans1
+  print $ uncurry (*) ans1
   putStrLn "part2"
-  let ans2 = mapMaxKey thedata
+  let ans2 = maxKey thedata
   print ans2
   print $ uncurry (*) ans2
-
-mapMaxKey :: (Ord a, Ord k) => M.Map k a -> k
-mapMaxKey = snd . maximum . map (\(a,b) -> (b,a)) . M.toList
-
--- zeros = listArray (0,59) (replicate 60 0)
-
-{-
-[1518-03-28 00:04] Guard #2011 begins shift
-.........|.........|......
--}
 
 type SleepData = M.Map (Int,Int) Int
 
@@ -64,25 +37,41 @@ guardID cs = read $ takeWhile isDigit $ drop 26 cs
 minute :: String -> Int
 minute cs = read $ take 2 $ drop 15 cs
 
-buildSleepData :: SleepData -- 集約データ
-               -> Int -- 先頭の守衛ID
-               -> [String] -- 入力
-               -> SleepData -- 結果
-buildSleepData dat _ [] = dat
-buildSleepData dat id (l:ls)
-  | l !! 19 == 'G' = buildSleepData dat (guardID l) ls
-  | otherwise =
-    let
-      m1 = minute l
-      m2 = minute (head ls) - 1
-      dat1 = M.unionWith (+) dat $ M.fromAscList [ ((id,m),1) | m <- [m1..m2] ]
-    in
-      buildSleepData dat1 id (tail ls)
+buildSleepData :: [String] -> SleepData
+buildSleepData ls = loop ls M.empty undefined
+  where
+    -- 入力 累積データ 現在の守衛
+    loop :: [String] -> SleepData -> Int -> SleepData
+    loop [] dat _ = dat
+    loop (l:ls) dat id
+      | l !! 19 == 'G' = loop ls dat (guardID l)
+      | otherwise =
+        let
+          m1 = minute l
+          m2 = minute (head ls) - 1
+          dat1 = M.unionWith (+) dat $ M.fromAscList [((id,m),1) | m <- [m1..m2]]
+        in
+          loop (tail ls) dat1 id
+
+{-
+part1
+最も眠っている守衛を見つけるには、時刻についてSleepDataを畳み込み、最大値のIDをとる
+次に、その守衛のデータだけ抜き出し、最大値の時刻をとる
+-}
+
+part1 :: SleepData -> (Int,Int)
+part1 thedata = maxKey singledata
+  where
+    persondata = M.mapKeysWith (+) fst thedata
+    theguard = maxKey persondata
+    singledata = M.filterWithKey (\(id,_) _ -> theguard == id) thedata
+
+maxKey :: (Ord a, Ord k) => M.Map k a -> k
+maxKey = snd . maximum . map (\(a,b) -> (b,a)) . M.toList
 
 {-
 *Main> main
-401
-21
+(401,21)
 8421
 part2
 (2689,31)
