@@ -4,7 +4,7 @@ import Data.Char
 main = do
   fi <- readFile "input.txt"
   let before = init fi
-  let after = react3 before
+  let after = react4 before
   print (length after)
   putStrLn "part2"
   let part2ans = part2 after
@@ -84,7 +84,7 @@ part2 cs =
   [ (length after2, x)
   | x <- ['A'..'Z']
   , let cs1 = filter ((x /=).toUpper) cs
-  , let after2 = react3 cs1
+  , let after2 = react4 cs1
   ]
 
 {-
@@ -110,3 +110,17 @@ react3 :: String -> String
 react3 cs = loop1 False "" cs
 
 -- 結果：これが正解でした。
+
+-- もしかしてだけど、実は loop1は繰り返す必要なくない？
+
+loop2 :: String -> String -> String
+loop2 (a:ys) (b:cs)
+  | pair a b  = loop2 ys cs
+  | otherwise = loop2 (b:a:ys) cs
+loop2 "" (b:cs) = loop2 [b] cs
+loop2 ys "" = ys
+
+react4 :: String -> String
+react4 cs = loop2 "" cs
+
+-- 結果：でした。このpushdown automatonでよかったのだ。
