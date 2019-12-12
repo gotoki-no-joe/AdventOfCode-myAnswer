@@ -3,10 +3,8 @@ import Data.Char (ord)
 
 main = do
   fi <- readFile "input.txt"
-  let ls = lines fi
-  let ps = map parse ls
---  print ps
-  let steps = map head $ group $ sort (map fst ps ++ map snd ps)
+  let ps = map parse $ lines fi
+  let steps = map head $ group $ sort (map fst ps ++ map snd ps) -- faster than nub
 --  print steps -- is ['A'..'Z']
   let ans1 = compute1 steps ps
   print ans1
@@ -18,7 +16,7 @@ main = do
 -- Step C must be finished before step A can begin.
 -- .....6...|.........|.........|......7
 parse :: String -> (Char,Char)
-parse cs = (head $ drop 5 cs, head $ drop 36 cs)
+parse cs = (cs !! 5, cs !! 36)
 
 {-
 stepsが空になったら完了
@@ -32,60 +30,45 @@ compute1 steps pairs
   | null avail =" Oops! failed with:" ++ steps
   | otherwise  = s : compute1 steps1 pairs1
   where
-    avail =
-      [ s
-      | s <- steps
-      , null $ filter ((s ==).snd) pairs
-      ]
+    avail = [s | s <- steps, null $ filter ((s ==).snd) pairs]
     s = head avail
     steps1 = delete s steps
     pairs1 = filter ((s /=).fst) pairs
 
 {-
-今度はどうすればいいんだ。
-
 毎秒ごとの状況をシミュレーションする。
-・ワーカーは、仕事を持っていれば1つ減らす。ちょうど完了するなら申告する。
-・完了された仕事があったら、制約リストから削除する。
-・暇なワーカーと割り当てられる仕事の両方があったら、
-　可能なかぎりそれを割り当てる。
-　割り当て済みかつ未完了な仕事を把握するために、(x,x)という制約を追加する。(hack!)
-  いや、stepsから削除すれば検索対象になりませんから大丈夫。
-・手順がなくなってワーカーが全員暇になったら完了！
+・ワークは、残り時間が減っていく。
+・ちょうど完了した仕事について、制約リストからそれを削除する。
+・暇なワーカーと割り当てられる仕事の両方があったら、可能なかぎりそれを割り当てる。
+・手順がなくなってワークもなくなったら完了
 -}
 
--- phase1
+-- phase1 : ワークを進行させ、完了させる
 
 simulate :: String          -- 残りの仕事
-         -> [(Char, Int)]   -- ワーカーの状態
+         -> [(Char, Int)]   -- 着手しているワークの状態(記号と残り時間)
          -> [(Char,Char)]   -- 制約
-         -> [[(Char, Int)]] -- 毎秒の状況
+         -> [[(Char, Int)]] -- 毎秒の作業状況
 
-simulate "" [] [] = []
+simulate "" [] _ = []
 simulate steps ws pairs = phase2 steps ws1 pairs1 where
-  comps = [ c | (c,1) <- ws ]
-  ws1 = [ (c,pred n) | (c,n) <- ws, n > 1 ]
-  pairs1 = filter (flip notElem comps.fst) pairs
---  steps1 = filter (flip notElem comps) steps
+  comps = [ c | (c,1) <- ws ]               -- 完了するワークの記号リスト
+  ws1 = [ (c,pred n) | (c,n) <- ws, n > 1 ] -- 各ワークの残り時間を減らす。完了したワークは消える
+  pairs1 = filter (flip notElem comps.fst) pairs -- 完了したものが塞いでいた制約を消去
 
 len5 [_,_,_,_,_] = True
 len5 _ = False
 
+-- phase2 : ワークを新規に割り当てる
+
 phase2 steps ws pairs
-  | len5 ws    = ws : simulate steps ws pairs
-  | null avail = ws : simulate steps ws pairs
-  | otherwise  = phase2 steps1 ((s, 61 + ord s - ord 'A'):ws) pairs
+  | len5 ws    = ws : simulate steps ws pairs -- 全員作業中なら変化なし
+  | null avail = ws : simulate steps ws pairs -- 取り掛かれる仕事がないなら変化なし
+  | otherwise  = phase2 steps1 ((s, 61 + ord s - ord 'A'):ws) pairs -- 新たなワークを1つ起動して再度チェック
   where
-    avail =
-      [ s
-      | s <- steps
-      , null $ filter ((s ==).snd) pairs
-      ]
+    avail = [s | s <- steps, null $ filter ((s ==).snd) pairs]
     s = head avail
     steps1 = delete s steps
-
--- 防止したはずなのに、着手済みの仕事をみんな重ねて引き受けてしまう。
--- いやそんなことない。正しい結果だ多分。
 
 {-
 > main
