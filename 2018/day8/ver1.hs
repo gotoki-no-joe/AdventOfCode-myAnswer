@@ -22,13 +22,14 @@ buildTrees n (c:m:ns) = (t:ts, ns3) where
 testdata = buildTrees 1 [2,3,0,3,10,11,12,1,1,0,1,99,2,1,1,2]
 
 metasum :: Tree -> Int
-metasum (Node cs meta) = sum (map metasum cs ++ meta)
+metasum (Node cs meta) = sum (map metasum cs) + sum meta
 
 test1 = metasum $ head $ fst testdata
 
 {-
-必要になる度に計算するように書くと計算しに行ってしまうので、
-子ノードの値のリストを変数に割り当てるように書く必要がある。
+再帰的に値を求めるが、
+子ノードの値が必要なときに再帰呼び出しすると毎回計算しに行ってしまうので、
+子ノードの値のリストを変数に束縛して、たかだか一回だけ計算させるようにする。
 -}
 
 getValue :: Tree -> Int
