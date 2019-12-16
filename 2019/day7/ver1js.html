@@ -1,0 +1,191 @@
+<html>
+<head>
+<script>
+
+// IntCode processor
+class IntCodeProcessor {
+    pc = 0;
+    memory = [];
+    halting = true;
+    constructor(prog, insys, outsys) {
+        this.memory = prog.slice();
+        this.insys = insys;
+        this.outsys = outsys;
+        this.halting = false;
+        this.pc = 0;
+    }
+    step() {
+        if (this.halting) { return; }
+        let instr = this.memory[this.pc];
+        const opcode = instr % 100;
+        instr = (instr - opcode) / 100;
+        const am1 = instr % 10; instr = (instr - am1) / 10;
+        const am2 = instr % 10;
+        const v1 = (am1 == 0) ? this.memory[this.memory[this.pc+1]] : this.memory[this.pc+1]; 
+        const v2 = (am2 == 0) ? this.memory[this.memory[this.pc+2]] : this.memory[this.pc+2]; 
+        switch (opcode) {
+          case 1 : // add instruction
+            this.memory[this.memory[this.pc+3]] = v1 + v2;
+            this.pc += 4;
+            return;
+          case 2 : // mult instruction
+            this.memory[this.memory[this.pc+3]] = v1 * v2;
+            this.pc += 4;
+            return;
+          case 3 : // input instruction
+            if (this.insys.inputOK()) {
+                const v = this.insys.input();
+                this.memory[this.memory[this.pc+1]] = v;
+                this.pc += 2;
+            }
+            return;
+          case 4 : // output instruction
+            this.outsys.output(v1);
+            this.pc += 2;
+            return;
+          case 5 : // jump if non0
+            this.pc = (v1 != 0) ? v2 : this.pc + 3;
+            return;
+          case 6 : // jump if 0
+            this.pc = (v1 == 0) ? v2 : this.pc + 3;
+            return;
+          case 7 : // less than
+            this.memory[this.memory[this.pc+3]] = (v1 < v2) ? 1 : 0;
+            this.pc += 4;
+            return;
+          case 8 : // equal
+            this.memory[this.memory[this.pc+3]] = (v1 == v2) ? 1 : 0;
+            this.pc += 4;
+            return;
+          case 99 : // halt instruction
+            this.halting = true;
+            return;
+        }
+    }
+}
+
+class Pipe {
+    constructor(vals) { this.values = vals; }
+    inputOK() { return this.values.length > 0; }
+    input() { return this.values.shift(); }
+    output(v) { this.values.push(v); }
+}
+
+const sample1 = [3,15,3,16,1002,16,10,16,1,16,15,15,4,15,99,0,0];
+const sample2 = [3,23,3,24,1002,24,10,24,1002,23,-1,23,101,5,23,23,1,24,23,23,4,23,99,0,0];
+const sample3 = [3,31,3,32,1002,32,10,32,1001,31,-2,31,1007,31,0,33,1002,33,7,33,1,33,31,31,1,32,31,31,4,31,99,0,0,0];
+const input = [3,8,1001,8,10,8,105,1,0,0,21,34,51,64,81,102,183,264,345,426,99999,3,9,102,2,9,9,1001,9,4,9,4,9,99,3,9,101,4,9,9,102,5,9,9,1001,9,2,9,4,9,99,3,9,101,3,9,9,1002,9,5,9,4,9,99,3,9,102,3,9,9,101,3,9,9,1002,9,4,9,4,9,99,3,9,1002,9,3,9,1001,9,5,9,1002,9,5,9,101,3,9,9,4,9,99,3,9,102,2,9,9,4,9,3,9,101,1,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,101,1,9,9,4,9,3,9,101,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,101,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,102,2,9,9,4,9,99,3,9,101,2,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,1,9,4,9,3,9,1001,9,2,9,4,9,3,9,101,1,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,101,1,9,9,4,9,99,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,101,1,9,9,4,9,3,9,101,2,9,9,4,9,3,9,101,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,1,9,4,9,3,9,1001,9,2,9,4,9,3,9,1002,9,2,9,4,9,99,3,9,1001,9,1,9,4,9,3,9,102,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,101,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,1,9,4,9,3,9,1001,9,1,9,4,9,99,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,101,1,9,9,4,9,99];
+
+function run(prog,g) {
+    const p01 = new Pipe([g[0],0]);
+    const p12 = new Pipe([g[1]]);
+    const p23 = new Pipe([g[2]]);
+    const p34 = new Pipe([g[3]]);
+    const p45 = new Pipe([g[4]]);
+    const p56 = new Pipe([]);
+    const p1 = new IntCodeProcessor(prog, p01, p12);
+    const p2 = new IntCodeProcessor(prog, p12, p23);
+    const p3 = new IntCodeProcessor(prog, p23, p34);
+    const p4 = new IntCodeProcessor(prog, p34, p45);
+    const p5 = new IntCodeProcessor(prog, p45, p56);
+    while (! (p1.halting && p2.halting && p3.halting && p4.halting && p5.halting)) {
+        p1.step(); p2.step(); p3.step(); p4.step(); p5.step();
+    }
+    return p56.input();
+}
+
+const sample4 = [3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,27,4,27,1001,28,-1,28,1005,28,6,99,0,0,5];
+const sample5 = [3,52,1001,52,-5,52,3,53,1,52,56,54,1007,54,5,55,1005,55,26,1001,54,-5,54,1105,1,12,1,53,54,53,1008,54,0,55,1001,55,1,55,2,53,55,53,4,53,1001,56,-1,56,1005,56,6,99,0,0,0,0,10];
+
+function run2(prog,g) {
+    const p51 = new Pipe([g[0],0]);
+    const p12 = new Pipe([g[1]]);
+    const p23 = new Pipe([g[2]]);
+    const p34 = new Pipe([g[3]]);
+    const p45 = new Pipe([g[4]]);
+    const p1 = new IntCodeProcessor(prog, p51, p12);
+    const p2 = new IntCodeProcessor(prog, p12, p23);
+    const p3 = new IntCodeProcessor(prog, p23, p34);
+    const p4 = new IntCodeProcessor(prog, p34, p45);
+    const p5 = new IntCodeProcessor(prog, p45, p51);
+    while (! (p1.halting && p2.halting && p3.halting && p4.halting && p5.halting)) {
+        p1.step(); p2.step(); p3.step(); p4.step(); p5.step();
+    }
+    return p51.input();
+}
+
+// 5C5の数え上げ
+// 配列でも充分だが、generator functionを使ってみよう
+function* generate() {
+    let inUse = [];
+    let ans = [];
+    for (let i = 0; i <= 4; i++) { inUse.push(false); ans.push(0); }
+
+    function* recursion(pos) {
+        if (pos == 5) {
+            yield (ans.slice());
+        }
+        for (let i = 0; i <= 4; i++) {
+            if (inUse[i]) { continue; }
+            inUse[i] = true;
+            ans[pos] =i;
+            yield* recursion(pos+1);
+            inUse[i] = false;
+        }
+    }
+    yield* recursion(0,[]);
+}
+
+function runner(prog,flag) {
+    let g = generate();
+    let v = g.next();
+    let resk = "";
+    let resv = 0;
+
+    while (! v.done) {
+        const v1 = v.value;
+        if (flag) {
+            for (let i=0; i<5; i++) { v1[i]+=5; }
+        }
+        let res = (flag ? run2 : run)(prog,v1);
+        if (resv < res) {
+            resv = res;
+            resk = "" + v.value[0] + v.value[1] + v.value[2] + v.value[3] + v.value[4];
+        }
+        v = g.next();
+    }
+    console.log(resk, resv);
+}
+
+function part1(prog) {
+    runner(prog,false);
+}
+function part2(prog) {
+    runner(prog,true);
+}
+
+</script>
+</head>
+<body>
+<h1>IntCode Computer</h1>
+
+<input type="button" onclick="part1(sample1)" value="sample 1"/><br/>
+<input type="button" onclick="part1(sample2)" value="sample 2"/><br/>
+<input type="button" onclick="part1(sample3)" value="sample 3"/><br/>
+<input type="button" onclick="part1(input)" value="part 1"/><br/>
+<input type="button" onclick="part2(sample4)" value="sample 4"/><br/>
+<input type="button" onclick="part2(sample5)" value="sample 5"/><br/>
+<input type="button" onclick="part2(input)" value="part 2"/><br/>
+
+<el>
+<li>5!とおりの設定を生成するジェネレータ</li>
+<li>5つのIntCodeコンピュータが同時に動作できるようなカプセル化</li>
+<li>複数のそれの入出力を接続するデータパイプ</li>
+<li>全ての設定を試すドライバ、必要ならWebWorkerに仕事を投げる</li>
+</el>
+が必要。
+<p>
+ちょっち変数名が汚い書きなぐりコード。runとrun2のクローンもひどい。
+結局WebWorkerなしで答えはすぐ出てしまう。
+</body>
+</html>
