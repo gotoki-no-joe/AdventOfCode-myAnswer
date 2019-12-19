@@ -36,20 +36,12 @@ interpret pc base mem js = case opcode of
     am2 = opint `div`  1000 `mod` 10
     am3 = opint `div` 10000 `mod` 10
     ma a = findWithDefault 0 (fromIntegral a) mem
-    av1 = case am1 of
-        0 -> ma (ma $ pc + 1)
-        1 -> ma (pc + 1)
-        2 -> ma (base + ma (pc + 1))
-    av2 = case am2 of
-        0 -> ma (ma $ pc + 2)
-        1 -> ma (pc + 2)
-        2 -> ma (base + ma (pc + 2))
-    ad3 = case am3 of
-        0 -> ma $ pc + 3
-        2 -> base + ma (pc + 3)
-    ad1 = case am1 of
-        0 -> ma $ pc + 1
-        2 -> base + ma (pc + 1)
+    av am ofs = (if am == 1 then id else ma) $ ad am ofs
+    ad am ofs = (if am == 2 then (base +) else id) (ma $ pc + ofs)
+    av1 = av am1 1
+    ad1 = ad am1 1
+    av2 = av am2 2
+    ad3 = ad am3 3
     arith op = interpret (pc + 4) base (memwrite ad3 (op av1 av2)) js
     jump True  = interpret (fromIntegral av2) base mem js
     jump False = interpret (pc + 3) base mem js
