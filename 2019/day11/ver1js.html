@@ -1,0 +1,172 @@
+<html>
+<head>
+<script>
+
+// IntCode processor
+class IntCodeProcessor {
+    pc = 0;
+    memory = [];
+    halting = true;
+    base = 0;
+    constructor(prog, insys, outsys) {
+        this.memory = prog.slice();
+        this.insys = insys;
+        this.outsys = outsys;
+        this.halting = false;
+        this.pc = 0;
+        this.base = 0;
+    }
+    show() {
+        console.log("PC:", this.pc, " BASE:", this.base, " MEM:", this.memory.toString());
+    }
+    step() {
+        if (this.halting) { return; }
+        let instr = this.memory[this.pc];
+        const opcode = instr % 100;
+        instr = (instr - opcode) / 100;
+        const am1 = instr % 10; instr = (instr - am1) / 10;
+        const am2 = instr % 10; instr = (instr - am2) / 10;
+        const am3 = instr % 10;
+        const ea1 = (this.memory[this.pc+1] || 0) + ((am1 == 2) ? this.base : 0);
+        const v1 = (am1 == 1) ? ea1 : (this.memory[ea1] || 0);
+        const ea2 = (this.memory[this.pc+2] || 0) + ((am2 == 2) ? this.base : 0);
+        const v2 = (am2 == 1) ? ea2 : (this.memory[ea2] || 0);
+        const ea3 = (this.memory[this.pc+3] || 0) + ((am3 == 2) ? this.base : 0);
+        switch (opcode) {
+          case 1 : // add instruction
+            this.memory[ea3] = v1 + v2;
+            this.pc += 4;
+            return;
+          case 2 : // mult instruction
+            this.memory[ea3] = v1 * v2;
+            this.pc += 4;
+            return;
+          case 3 : // input instruction
+            if (this.insys.inputOK()) {
+                const v = this.insys.input();
+                this.memory[ea1] = v;
+                this.pc += 2;
+            }
+            return;
+          case 4 : // output instruction
+            this.outsys.output(v1);
+            this.pc += 2;
+            return;
+          case 5 : // jump if non0
+            this.pc = (v1 != 0) ? v2 : this.pc + 3;
+            return;
+          case 6 : // jump if 0
+            this.pc = (v1 == 0) ? v2 : this.pc + 3;
+            return;
+          case 7 : // less than
+            this.memory[ea3] = (v1 < v2) ? 1 : 0;
+            this.pc += 4;
+            return;
+          case 8 : // equal
+            this.memory[ea3] = (v1 == v2) ? 1 : 0;
+            this.pc += 4;
+            return;
+          case 9 : // set base
+            this.base += v1;
+            this.pc += 2;
+            return;
+          case 99 : // halt instruction
+            this.halting = true;
+            return;
+          default :
+            throw "illegal instruction";
+        }
+    }
+}
+
+const input = [3,8,1005,8,329,1106,0,11,0,0,0,104,1,104,0,3,8,102,-1,8,10,1001,10,1,10,4,10,1008,8,0,10,4,10,1002,8,1,29,2,1102,1,10,1,1009,16,10,2,4,4,10,1,9,5,10,3,8,1002,8,-1,10,101,1,10,10,4,10,108,0,8,10,4,10,101,0,8,66,2,106,7,10,1006,0,49,3,8,1002,8,-1,10,101,1,10,10,4,10,108,1,8,10,4,10,1002,8,1,95,1006,0,93,3,8,102,-1,8,10,1001,10,1,10,4,10,108,1,8,10,4,10,102,1,8,120,1006,0,61,2,1108,19,10,2,1003,2,10,1006,0,99,3,8,1002,8,-1,10,1001,10,1,10,4,10,1008,8,0,10,4,10,101,0,8,157,3,8,102,-1,8,10,1001,10,1,10,4,10,1008,8,1,10,4,10,1001,8,0,179,2,1108,11,10,1,1102,19,10,3,8,102,-1,8,10,1001,10,1,10,4,10,1008,8,1,10,4,10,101,0,8,209,2,108,20,10,3,8,1002,8,-1,10,101,1,10,10,4,10,108,1,8,10,4,10,101,0,8,234,3,8,102,-1,8,10,101,1,10,10,4,10,108,0,8,10,4,10,1002,8,1,256,2,1102,1,10,1006,0,69,2,108,6,10,2,4,13,10,3,8,102,-1,8,10,101,1,10,10,4,10,1008,8,0,10,4,10,1002,8,1,294,1,1107,9,10,1006,0,87,2,1006,8,10,2,1001,16,10,101,1,9,9,1007,9,997,10,1005,10,15,99,109,651,104,0,104,1,21101,387395195796,0,1,21101,346,0,0,1105,1,450,21101,0,48210129704,1,21101,0,357,0,1105,1,450,3,10,104,0,104,1,3,10,104,0,104,0,3,10,104,0,104,1,3,10,104,0,104,1,3,10,104,0,104,0,3,10,104,0,104,1,21101,0,46413147328,1,21102,404,1,0,1106,0,450,21102,179355823323,1,1,21101,415,0,0,1105,1,450,3,10,104,0,104,0,3,10,104,0,104,0,21102,1,838345843476,1,21101,0,438,0,1105,1,450,21101,709475709716,0,1,21101,449,0,0,1105,1,450,99,109,2,22102,1,-1,1,21102,40,1,2,21101,0,481,3,21101,0,471,0,1105,1,514,109,-2,2105,1,0,0,1,0,0,1,109,2,3,10,204,-1,1001,476,477,492,4,0,1001,476,1,476,108,4,476,10,1006,10,508,1101,0,0,476,109,-2,2106,0,0,0,109,4,2101,0,-1,513,1207,-3,0,10,1006,10,531,21101,0,0,-3,21201,-3,0,1,21201,-2,0,2,21101,1,0,3,21101,550,0,0,1105,1,555,109,-4,2106,0,0,109,5,1207,-3,1,10,1006,10,578,2207,-4,-2,10,1006,10,578,21201,-4,0,-4,1105,1,646,22101,0,-4,1,21201,-3,-1,2,21202,-2,2,3,21101,597,0,0,1105,1,555,22102,1,1,-4,21101,0,1,-1,2207,-4,-2,10,1006,10,616,21101,0,0,-1,22202,-2,-1,-2,2107,0,-3,10,1006,10,638,22102,1,-1,1,21101,638,0,0,106,0,513,21202,-2,-1,-2,22201,-4,-2,-4,109,-5,2106,0,0];
+
+// 方向を N=0,E=1,S=2,W=3 で表す
+
+// 方向に対する座標の変化量
+const dx = [0,1,0,-1];
+const dy = [-1,0,1,0];
+
+let theMap = new Map();
+
+function part12(c) {
+    theMap.clear();
+    theMap.set("0,0", c);
+    let x = 0;
+    let y = 0;
+    let d = 0;
+    let side = 0;
+    const io = {
+        inputOK : function() { return true; },
+        input : function() {
+          return theMap.get(""+x+","+y); }, // 現在位置の色を返す
+        output : function(v) {
+          if (side == 0) { // 色塗り
+            side = 1;
+            theMap.set(""+x+","+y,v);
+            return;
+          } else { // 移動
+            side = 0;
+            d = (d + v + v - 1 + 4) % 4;
+            x += dx[d];
+            y += dy[d];
+            return;
+          }
+         }
+    }
+    const p = new IntCodeProcessor(input,io,io);
+    while (! p.halting) {
+        p.step();
+    }
+    console.log(theMap.size); // 2594
+
+    mag = c == 0 ? 5 : 10;
+
+    visualize();
+}
+
+let mag = 3;
+
+function visualize() {
+  let x0 = 0, x1 = 0, y0 = 0, y1 = 0;
+  for (const xy of theMap.keys()) {
+    const a = xy.split(",").map(s=>Number.parseInt(s));
+//    const a = eval("[" + xy + "]");
+    const ax = a[0];
+    const ay = a[1];
+    x0 = Math.min(x0,ax); x1 = Math.max(x1,ax);
+    y0 = Math.min(y0,ay); y1 = Math.max(y1,ay);
+  }
+
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'white';
+  ctx.fillRect(0, 0, 640, 480);
+
+  for (let y = y0; y <= y1; y++) {
+    for (let x = x0; x <= x1; x++) {
+      const k = "" + x + "," + y;
+      let color = "dimgray";
+      if (theMap.has(k)) {
+        color = (theMap.get(k) == 0) ? "black" : "white";
+      }
+      ctx.fillStyle = color;
+      ctx.fillRect(mag * (x-x0),mag * (y-y0),mag,mag);
+    }
+  }
+//  ctx.fillStyle = 'green';
+//ctx.fillRect(10, 10, 150, 100);
+
+}
+
+</script>
+</head>
+<body>
+<h1>IntCode Computer</h1>
+
+<input type="button" onclick="part12(0)" value="part 1"/><br/>
+<input type="button" onclick="part12(1)" value="part 2"/><br/>
+<!input type="button" onclick="visualize()" value="visualize"/><br/>
+<canvas id="canvas" width="640", height="480"></canvas>
+</body>
+</html>
