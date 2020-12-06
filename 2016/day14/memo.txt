@@ -1,0 +1,14 @@
+pureMD5はByteStringの型が変なところにつながっていておかしなことになるし、
+cryptohash-md5はByteStringで生で出てくるから文字列に直すの手間だし、
+使いにくいなどっちも。なんなの。
+
+import qualified Data.ByteString.Lazy.Char8 as BS8
+import qualified Data.ByteString as BS
+
+md5 :: BS8.ByteString -> MD5Digest
+
+md5Update :: MD5Context -> BS.ByteString -> MD5Context
+md5Finalize :: MD5Context -> BS.ByteString -> MD5Digest
+md5DigestBytes :: MD5Digest -> BS.ByteString
+
+そういうことなの。
