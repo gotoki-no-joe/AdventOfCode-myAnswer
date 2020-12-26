@@ -1,0 +1,24 @@
+あるアレルゲンは、特定の一つの食材にしか含まれない、という制約があるので解ける問題になっているらしい。
+逆に、食材も複数のアレルゲンはもたず、たかだか一つだという向きの条件もある。
+
+行の食材の持つアレルゲンの部分集合が、containsに書かれる。
+
+例をどう解釈すればいいか？
+
+mxmxvkd sqjhc                 kfcds nhms (contains dairy, fish)
+mxmxvkd       fvjkl sbzzf trh            (contains dairy)
+        sqjhc fvjkl                      (contains              soy)
+mxmxvkd sqjhc       sbzzf                (contains        fish)
+                    *     *   *     *
+
+「kfcds, nhms, sbzzf, or trh は絶対にアレルゲンを含まない」
+この条件からそんなこといえるかい。書いてないかもしれないんだから。
+
+1と2から、dairyは共通部分にある、つまりmxmxvkdしかありえない、とわかる。
+1と4から、fishも共通部分のmx...以外、つまりsqjhcにあるとわかる。
+3から、soyは残るfvjklにあるとわかる。
+それ以外のは、あるとしても「どこにも情報がない」とわかる。
+
+総当たりで、両側のintersectionがsingletonになるところを探す。
+それにより、食材とアレルゲンの対応が一つ確定する。
+これを除去して、最初から繰り返す、アレルゲンが空になるまで。
