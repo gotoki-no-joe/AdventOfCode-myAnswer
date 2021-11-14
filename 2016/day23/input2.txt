@@ -1,0 +1,26 @@
+cpy a b
+dec b
+mul b a  ; cpy a d
+jnz 0 0  ; cpy 0 a
+jnz 0 0  ; cpy b c
+jnz 0 0  ; inc a
+jnz 0 0  ; dec c
+jnz 0 0  ; jnz c -2
+jnz 0 0  ; dec d
+jnz 0 0  ; jnz d -5
+dec b
+cpy b c
+cpy c d
+dec d
+inc c
+jnz d -2
+tgl c
+cpy -16 c
+jnz 1 c
+cpy 87 c
+jnz 80 d
+inc a
+inc d
+jnz d -2
+inc c
+jnz c -5

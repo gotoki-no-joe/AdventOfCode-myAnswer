@@ -1,0 +1,42 @@
+https://www.reddit.com/r/adventofcode/comments/7dvao2/comment/dq1o0q3/?utm_source=reddit&utm_medium=web2x&context=3
+
+Reddit見たら答えが書いてあった。
+
+(AoC creator)
+The assembly program calculates (a)-factorial.
+This is why using 5 is fast, but 12 is slow.
+(There are a few other operations too, but this is where all the time is spent.)
+If you trace through the operations, there is a loop-within-a-loop that, given a and b, sets a to a*b.
+
+The intended solution for the puzzle is to replace this loop with a new "mul b a" instruction
+(and a bunch of no-ops, like "jnz 0 0", to fill the space),
+avoiding 99.999999...% of the work and returning almost immediately.
+
+それはCompetitive Programmingとも違ってなんだかなぁ。ゲンナリ。
+
+cpy a b   ; 1          b <- a : input = 12
+dec b     ; 2          b = 11
+cpy a d   ; 3 <- 19    d = a
+cpy 0 a   ; 4          a = 0
+cpy b c   ; 5 <- 10    c = b
+inc a     ; 6 <- 8     \
+dec c     ; 7           \
+jnz c -2  ; 8 -> 6     a += c (, c = 0)
+dec d     ; 9          d--
+jnz d -5  ; 10 -> 5    ------- a = d * b
+dec b     ; 11         b--
+cpy b c   ; 12         c = b
+cpy c d   ; 13         d = c
+dec d     ; 14 <- 16   d--
+inc c     ; 15         c++
+jnz d -2  ; 16 -> 14   c += d, (d = 0)
+tgl c     ; 17 !!!!!!!! outrange?
+cpy -16 c ; 18         c = -16
+jnz 1 c   ; 19 -> 3 (unconditional)
+cpy 87 c  ; 20         c = 87 (dead code)
+jnz 80 d  ; 21 -> +d <- 26 (unconditional)
+inc a     ; 22 <- 24   a++
+inc d     ; 23         d++
+jnz d -2  ; 24 -> 22   --- a -= d (, d = 0)
+inc c     ; 25
+jnz c -5  ; 26 -> 21
