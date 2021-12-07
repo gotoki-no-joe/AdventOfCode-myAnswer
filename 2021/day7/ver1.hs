@@ -52,6 +52,7 @@ compute2 xs = minimum $ elems cs
     cs = accumArray (+) 0 (0,ub)
          [ (y,dk)
          | (x,k) <- assocs na
+         , k > 0
          , let dsk = map (k *) ds
          , let xdsk1 = zip (takeWhile (0 <=) [x, pred x..]) dsk
          , let xdsk2 = zip (takeWhile (ub >=) [x, succ x..]) dsk
