@@ -134,3 +134,20 @@ sample12 = "D8005AC2A8F0"
 sample13 = "F600BC2D8F"
 sample14 = "9C005AC2F8F0"
 sample15 = "9C0141080250320F1802104A08"
+
+{-
+*Main> main2 sample10
+7
+*Main> main2 sample11
+9
+*Main> main2 sample12
+1
+*Main> main2 sample13
+0
+*Main> main2 sample14
+0
+*Main> main2 sample15
+1
+*Main> main2 input
+7936430475134
+-}
