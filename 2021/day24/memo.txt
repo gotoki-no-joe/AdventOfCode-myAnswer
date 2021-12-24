@@ -1,0 +1,142 @@
+{-
+前向きに総当たりしても全く歯が立たないので、後ろ向きに実行する必要がありそうだ。
+
+inp v - 今vにある値を「これを入力する」と出力する
+add v n - vからnを引く
+mul v n - vをnで割る。割り切れない場合は放棄する。
+div v n - n=0なら放棄する。さもなくば v * n + [0..n-1] をvに入れる、しかし負の数のときはどうなるんだろう。
+mod v n - n<=0なら放棄する。さもなくば n * [0..] + v をvに入れる、ってこれ上限がないんですが。
+-}
+
+なんかコードにパターンがある感じ。
+
+inp w; mul x 0; add x z; mod x 26; div z  1; add x 13; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y  6; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z  1; add x 15; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y  7; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z  1; add x 15; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y 10; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z  1; add x 11; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y  2; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z 26; add x -7; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y 15; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z  1; add x 10; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y  8; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z  1; add x 10; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y  1; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z 26; add x -5; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y 10; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z  1; add x 15; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y  5; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z 26; add x -3; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y  3; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z 26; add x  0; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y  5; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z 26; add x -5; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y 11; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z 26; add x -9; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y 12; mul y x; add z y
+inp w; mul x 0; add x z; mod x 26; div z 26; add x  0; eql x w; eql x 0; mul y 0; add y 25; mul y x; add y 1; mul z y; mul y 0; add y w; add y 10; mul y x; add z y
+
+inp w     ; inp w = [1..9]
+mul x 0   ;
+add x z   ;
+mod x 26  ; x = z % 26
+div z [1|26] ; nop | z <- z / 26
+add x *   ; x = z % 26 + param1 [13|15|11|-7|10|-5|15|-3|0|-9]
+eql x w   ;
+eql x 0   ; x = x != w ここでxは0 or 1
+mul y 0   ;
+add y 25  ;
+mul y x   ;
+add y 1   ;
+mul z y   ; z = z * (x * 25 + 1)
+mul y 0   ; y = 0
+add y w   ; 
+add y *   ; [6|7|10|2|15|8|1|5|3|11|12]
+mul y x   ; y = (w + param2) * x
+add z y   ; z = z + y
+
+wは毎ブロックで入力値、xとyは一時変数でリセットしてから使うので引き継がない z だけが累積される
+
+この範囲なら逆算できないか？
+wとzによってxの0/1が決まり、それでyも決まる感じ。
+
+順方向に、最適化したプログラムを考える。
+元のプログラムはparam1～3のtupleのリストで与えられる。引き継ぐ状態はzの値のみ。inp wが全ての場合を試す。
+
+type State = ([(Int,Int,Int)], Int, [Int])
+type Result = ([Int],Int)
+step :: State -> ([Result],[State])
+step ([],z,is) = ([(is,z)],[])
+step ((p1,p2,p3):ps,z,is) = ([], map f [1..9])
+  where
+    f w = (ps,z1,w:is)
+      where
+        x  = if mod z 26 + p1 /= w then 1 else 0
+        z1 = div z p2 * (x * 25 + 1) + (w + p3) * x
+
+やはりまだnaiveさが抜けていないようだ。もう少し解析する。
+
+inp w     ; inp w = [1..9]
+mul x 0   ;
+add x z   ;
+mod x 26  ; x = z % 26 ここで x = [0..25]
+div z [1|26] ; nop | z <- z / 26 param2
+add x *   ; x = z % 26 + param1 [-9|-7|-5|-3|0|10|11|13|15]
+eql x w   ;
+eql x 0   ; x = x != w ここでxは0 or 1
+mul y 0   ;
+add y 25  ;
+mul y x   ;
+add y 1   ;
+mul z y   ; z = z * (x * 25 + 1)
+mul y 0   ; y = 0
+add y w   ; 
+add y *   ; [6|7|10|2|15|8|1|5|3|11|12]
+mul y x   ; y = (w + param3) * x
+add z y   ; z = z + y
+
+param1 >= 10 のとき、どうやっても x = 1
+0以下のとき、z % 26 + param1 = w のときのみ x = 0
+
+x=0のとき
+        z1 = div z p2
+x=1のとき
+        z1 = div z p2 * 26 + (w + p3)
+
+さらに、p2=1のとき
+z1 = z                  ; nop
+z1 = z * 26 + (w + p3)  ; 26進数を1桁あげて、1の位にw+p3を入れる
+p2=26のとき
+z1 = div z 26           ; 1文字削除
+z1 = div z 26 * 26 + (w + p3) ; 1の位をw+p3に差し替える
+
+つまり、zを26進数ととらえて、zzs = z0:zs で表して、z0だけが次の結果に影響する！
+
+inp w     ; inp w = [1..9]
+mul x 0   ; -- x = 0
+add x z   ; -- x = z
+mod x 26  ; -- x = z0
+div z p2  ; zzs1 = p2==1 ? zzs : tail zzs    p2 = [1|26]
+add x p1  ; -- x = z0 + p1                      p1 = [-9|-7|-5|-3|0|10|11|13|15]
+eql x w   ; -- x = z0+p1 == w ? 1 : 0
+eql x 0   ; x = z0+p1 == w ? 0 : 1     xを0にするwはピンポイントに1つまたはなし p1<=0のときのみ可能性あり
+mul y 0   ; -- y = 0
+add y 25  ; -- y = 25
+mul y x   ; -- y = 25 * x
+add y 1   ; -- y = 25 * x + 1          yは1または26
+mul z y   ; zzs2 = x == 0 ? zzs1 : (0:zzs1)
+mul y 0   ; -- y = 0
+add y w   ; -- y = w
+add y p3  ; -- y = w + p3                  p3 = [1|2|3|5|6|7|8|10|11|12|15] yは2～24
+mul y x   ; -- y = x == 0 ? 0 : (w + p3)
+add z y   ; zzs3 = x == 0 ? zzs1 : (w + p3 : zzs1)
+
+z = z0 : zs
+x = (z0+p1) == w ? 0 : 1
+zzs1 = p2 == 1 ? zzs : tail zzs
+zzs3 = x == 0 ? zzs1 : (w + p3 : zzs1)
+= p2 == 1 ? (x == 0 ? zzs : w + p3 : zzs) : (x == 0 ? tail zzs : w + p3 : tail zzs)
+
+                   z0'      zs'
+p2 == 1   x == 0   z0       zs        z0   : zs      長さ据え置き
+          x == 1   w + p3   z0:zs     w+p3 : z0 : zs 一つ伸びる
+p2 == 26  x == 0   head zs  tail zs   zs             一つ短くなる
+          x == 1   w + p3   tail zs   w+p3 : zs      長さ据え置き
+
+[13,15,15,11,-7,10,10,-5,15,-3, 0,-5,-9, 0] p1, p1 <= 0 のとき x == 0 を選択できる
+[ 1, 1, 1, 1,26, 1, 1,26, 1,26,26,26,26,26] p2
+  +  +  +  + 0-  +  + 0-  + 0- 0- 0- 0- 0-
+
+短くできるところは7箇所ぴったりしかないから、そこでは必ずそれを選択する必要がある。
+
+p2 == 1 のときは今まで通り、9,8..1 を試す。
+p2 == 26 のとき、x == 0 にできる w を選ぶ。選べないとき捨てる。
