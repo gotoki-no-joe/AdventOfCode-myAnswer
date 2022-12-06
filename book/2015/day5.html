@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Day  5 - Advent of Code</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> はじめに</a></li><li class="chapter-item expanded "><a href="../2015/index.html"><strong aria-hidden="true">2.</strong> 2015</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2015/day1.html"><strong aria-hidden="true">2.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2015/day2.html"><strong aria-hidden="true">2.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2015/day3.html"><strong aria-hidden="true">2.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2015/day4.html"><strong aria-hidden="true">2.4.</strong> Day  4</a></li><li class="chapter-item expanded "><a href="../2015/day5.html" class="active"><strong aria-hidden="true">2.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2015/day6.html"><strong aria-hidden="true">2.6.</strong> Day  6</a></li><li class="chapter-item "><a href="../2015/day7.html"><strong aria-hidden="true">2.7.</strong> Day  7</a></li><li class="chapter-item "><a href="../2015/day8.html"><strong aria-hidden="true">2.8.</strong> Day  8</a></li><li class="chapter-item "><a href="../2015/day9.html"><strong aria-hidden="true">2.9.</strong> Day  9</a></li><li class="chapter-item "><a href="../2015/day10.html"><strong aria-hidden="true">2.10.</strong> Day 10</a></li><li class="chapter-item "><a href="../2015/day11.html"><strong aria-hidden="true">2.11.</strong> Day 11</a></li><li class="chapter-item "><a href="../2015/day12.html"><strong aria-hidden="true">2.12.</strong> Day 12</a></li><li class="chapter-item "><a href="../2015/day13.html"><strong aria-hidden="true">2.13.</strong> Day 13</a></li><li class="chapter-item "><a href="../2015/day14.html"><strong aria-hidden="true">2.14.</strong> Day 14</a></li><li class="chapter-item "><a href="../2015/day15.html"><strong aria-hidden="true">2.15.</strong> Day 15</a></li><li class="chapter-item "><a href="../2015/day16.html"><strong aria-hidden="true">2.16.</strong> Day 16</a></li><li class="chapter-item "><a href="../2015/day17.html"><strong aria-hidden="true">2.17.</strong> Day 17</a></li><li class="chapter-item "><a href="../2015/day18.html"><strong aria-hidden="true">2.18.</strong> Day 18</a></li><li class="chapter-item "><a href="../2015/day19.html"><strong aria-hidden="true">2.19.</strong> Day 19</a></li><li class="chapter-item "><a href="../2015/day20.html"><strong aria-hidden="true">2.20.</strong> Day 20</a></li><li class="chapter-item "><a href="../2015/day21.html"><strong aria-hidden="true">2.21.</strong> Day 21</a></li><li class="chapter-item "><a href="../2015/day22.html"><strong aria-hidden="true">2.22.</strong> Day 22(未)</a></li><li class="chapter-item "><a href="../2015/day23.html"><strong aria-hidden="true">2.23.</strong> Day 23</a></li><li class="chapter-item "><a href="../2015/day24.html"><strong aria-hidden="true">2.24.</strong> Day 24</a></li><li class="chapter-item "><a href="../2015/day25.html"><strong aria-hidden="true">2.25.</strong> Day 25</a></li></ol></li><li class="chapter-item "><a href="../2016/index.html"><strong aria-hidden="true">3.</strong> 2016</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2016/day1.html"><strong aria-hidden="true">3.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2016/day2.html"><strong aria-hidden="true">3.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2016/day3.html"><strong aria-hidden="true">3.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2016/day4.html"><strong aria-hidden="true">3.4.</strong> Day  4</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> 2017</div></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> 2018</div></li><li class="chapter-item "><div><strong aria-hidden="true">6.</strong> 2019</div></li><li class="chapter-item "><div><strong aria-hidden="true">7.</strong> 2020</div></li><li class="chapter-item "><div><strong aria-hidden="true">8.</strong> 2021</div></li><li class="chapter-item "><a href="../2022/index.html"><strong aria-hidden="true">9.</strong> 2022</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2022/day1.html"><strong aria-hidden="true">9.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2022/day2.html"><strong aria-hidden="true">9.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2022/day3.html"><strong aria-hidden="true">9.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2022/day4.html"><strong aria-hidden="true">9.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2022/day5.html"><strong aria-hidden="true">9.5.</strong> Day  5</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Advent of Code</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="5日目彼はこれ用の妖精研修生を持っていないのですか"><a class="header" href="#5日目彼はこれ用の妖精研修生を持っていないのですか">5日目：彼はこれ用の妖精研修生を持っていないのですか？</a></h1>
+<p>(intern-elvesが何の駄洒落なのかわからない)</p>
+<p>サンタは、テキストファイルの文字列がそれぞれ、
+「いい」か「いやらしい」のどちらなのかを突き止める手助けを必要としています。</p>
+<p><strong>いい文字列</strong>とは、以下の性質のすべてを有するものです。</p>
+<ul>
+<li>少なくとも3つの母音（<code>aeiou</code>のみ）が含まれている。
+例えば<code>aei</code>, <code>xazegov</code>, <code>aeiouaeiouaeiou</code></li>
+<li>少なくとも1つ、2回続けて現れる文字を含む。
+例えば<code>xx</code>, <code>abcdde</code> (dd), <code>aabbccdd</code> (aa, bb, cc, dd)</li>
+<li><code>ab</code>, <code>cd</code>, <code>pq</code>, <code>xy</code>を<strong>含まない</strong>。
+それらが他の要件のいずれかの一部であっても例外ではない。</li>
+</ul>
+<p>いい文字列でない文字列は、いやらしい文字列です。</p>
+<p>例えば：</p>
+<ul>
+<li><code>ugknbfddgicrmopn</code> はいい文字列です。
+少なくとも3つの母音 (u...i...o...)と
+続き文字 (...dd...)を含み、
+許可されていない部分文字列を持っていません。</li>
+<li><code>aaa</code> はいい文字列です。
+少なくとも3つの母音と2つの文字を持つためです。
+異なる規則で使用されている文字が重なっていてもかまいません。</li>
+<li><code>jchzalrnumimnmhp</code> は続き文字がないのでいやらしい文字列です。</li>
+<li><code>haegwjzuvuyypxyu</code> は文字列<code>xy</code>を含んでいるのでいやらしい文字列です。</li>
+<li><code>dvszwmarrgswjxmb</code> は1つの母音しか含まれていないので、いやらしい文字列です。</li>
+</ul>
+<p>いい文字列はいくつありますか？</p>
+<details><summary>解説</summary><div>
+<p>いい文字列を判定する述語を作る。</p>
+<p>「母音を3つ」は、<code>aaa</code> の例でもわかるように、同じ文字が3つでもよいので、数えればよい。</p>
+<pre><code class="language-haskell">isVowel x = elem x &quot;aeiou&quot;
+
+cond1 xs = 3 &lt; length (filter isVowel xs)
+</code></pre>
+<p>あと2つの条件のために、連続する2文字の全ての組を作っておく。</p>
+<pre><code class="language-haskell">xys = zip xs (tail xs)
+</code></pre>
+<p>「続き文字を含む」とは、<code>xys</code> の中に、左右が等しいものがあるということになる。</p>
+<pre><code class="language-haskell">cond2 xys = any (uncurry (==)) xys
+</code></pre>
+<p>特定の対を含まないとは、そのいずれも <code>xys</code> の中に現れないことである。</p>
+<pre><code class="language-haskell">cond3 xys = all (\bad -&gt; notElem bad xys) [('a','b'),('c','d'),('p','q'),('x','y')]
+</code></pre>
+<p>入力から、これらすべてを満たす語の数を数える。</p>
+<pre><code class="language-haskell">part1 :: [String]  -- 入力
+      -&gt; Int       -- 答え
+part1 = length . filter cond123
+
+cond123 xs = cond1 xs &amp;&amp; cond2 xys &amp;&amp; cond3 xys
+  where
+    xys = zip xs (tail xs)
+</code></pre>
+</div></details>
+<h1 id="パート2"><a class="header" href="#パート2">パート2</a></h1>
+<p>サンタは自分のやり方の間違いに気がついて、
+文字列が「いい」か「いやらしい」かを判断するより良いモデルに切り替えました。
+古い規則はすべて明らかにばかげているので適用されません。</p>
+<p>さて、いい文字列は、以下のすべての性質を持つものです。</p>
+<ul>
+<li>何らかの2つの文字の対が重ならずに二回またはそれ以上に現れます。
+例えば<code>xyxy</code> (<code>xy</code>)や<code>aabcdefgaa</code> (<code>aa</code>)はこれにあてはまりますが、
+<code>aaa</code>は<code>aa</code>が2度現れますが重なっているので違います。</li>
+<li>間にちょうど1文字を挟んで同じ文字が繰り返すような並びが1回またはそれ以上に現れます。
+例えば<code>xyx</code>, <code>abcdefeghi</code> (<code>efe</code>) のようなものです。
+また<code>aaa</code>も該当します。</li>
+</ul>
+<p>例えば：</p>
+<ul>
+<li><code>qjhvhtzxzqqjkmpb</code>はいい文字列です。
+2回出現する対<code>qj</code>と、1文字置いて繰り返される文字<code>zxz</code>があるためです。</li>
+<li><code>xxyxx</code>はいい文字列です。
+二重に現れる対と間に1文字置いて繰り返される文字があります。
+両規則で使用されている文字が重なっていても構いません。</li>
+<li><code>uurcxstgmygtbstg</code>
+これには対(<code>tg</code>)はありますが、一文字置いた繰り返しがありませんので、いやらしい文字列です。</li>
+<li><code>ieodomkazucvgmuy</code>
+1文字置いた繰り返し文字がありますが(<code>odo</code>)、2回現れる対はありませんので、いやらしい文字列です。</li>
+</ul>
+<p>これらの新しい規則の下で、いい文字列はいくつありますか？</p>
+<details><summary>解説</summary><div>
+<p>前者の条件は、パート1の <code>xys</code> で考えると、直後の対は重なりがあるので、それを除いた以降に等しいものがあればよい。
+全ての対について調べ、そのようなものが一つあればよい。</p>
+<pre><code class="language-haskell">cond4 xs = any sub $ tails xys
+  where
+    xys = zip xs (tail xs)
+    sub (xy : _ : xys) = elem xy xys
+    sub _ = False
+</code></pre>
+<p>後者の条件は、<code>xys</code> と同様に対になる文字について判定すればよい。</p>
+<pre><code class="language-haskell">cond5 xs = or $ zipWith (==) xs (drop 2 xs)
+</code></pre>
+<p>最後にまとめる。</p>
+<pre><code class="language-haskell">part2 :: [String]  -- 入力
+      -&gt; Int       -- 答え
+part2 = length . filter cond5 . filter cond4
+</code></pre>
+</div></details>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../2015/day4.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../2015/day6.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../2015/day4.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../2015/day6.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

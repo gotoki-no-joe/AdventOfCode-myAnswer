@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Day 16 - Advent of Code</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> はじめに</a></li><li class="chapter-item expanded "><a href="../2015/index.html"><strong aria-hidden="true">2.</strong> 2015</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2015/day1.html"><strong aria-hidden="true">2.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2015/day2.html"><strong aria-hidden="true">2.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2015/day3.html"><strong aria-hidden="true">2.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2015/day4.html"><strong aria-hidden="true">2.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2015/day5.html"><strong aria-hidden="true">2.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2015/day6.html"><strong aria-hidden="true">2.6.</strong> Day  6</a></li><li class="chapter-item "><a href="../2015/day7.html"><strong aria-hidden="true">2.7.</strong> Day  7</a></li><li class="chapter-item "><a href="../2015/day8.html"><strong aria-hidden="true">2.8.</strong> Day  8</a></li><li class="chapter-item "><a href="../2015/day9.html"><strong aria-hidden="true">2.9.</strong> Day  9</a></li><li class="chapter-item "><a href="../2015/day10.html"><strong aria-hidden="true">2.10.</strong> Day 10</a></li><li class="chapter-item "><a href="../2015/day11.html"><strong aria-hidden="true">2.11.</strong> Day 11</a></li><li class="chapter-item "><a href="../2015/day12.html"><strong aria-hidden="true">2.12.</strong> Day 12</a></li><li class="chapter-item "><a href="../2015/day13.html"><strong aria-hidden="true">2.13.</strong> Day 13</a></li><li class="chapter-item "><a href="../2015/day14.html"><strong aria-hidden="true">2.14.</strong> Day 14</a></li><li class="chapter-item "><a href="../2015/day15.html"><strong aria-hidden="true">2.15.</strong> Day 15</a></li><li class="chapter-item expanded "><a href="../2015/day16.html" class="active"><strong aria-hidden="true">2.16.</strong> Day 16</a></li><li class="chapter-item "><a href="../2015/day17.html"><strong aria-hidden="true">2.17.</strong> Day 17</a></li><li class="chapter-item "><a href="../2015/day18.html"><strong aria-hidden="true">2.18.</strong> Day 18</a></li><li class="chapter-item "><a href="../2015/day19.html"><strong aria-hidden="true">2.19.</strong> Day 19</a></li><li class="chapter-item "><a href="../2015/day20.html"><strong aria-hidden="true">2.20.</strong> Day 20</a></li><li class="chapter-item "><a href="../2015/day21.html"><strong aria-hidden="true">2.21.</strong> Day 21</a></li><li class="chapter-item "><a href="../2015/day22.html"><strong aria-hidden="true">2.22.</strong> Day 22(未)</a></li><li class="chapter-item "><a href="../2015/day23.html"><strong aria-hidden="true">2.23.</strong> Day 23</a></li><li class="chapter-item "><a href="../2015/day24.html"><strong aria-hidden="true">2.24.</strong> Day 24</a></li><li class="chapter-item "><a href="../2015/day25.html"><strong aria-hidden="true">2.25.</strong> Day 25</a></li></ol></li><li class="chapter-item "><a href="../2016/index.html"><strong aria-hidden="true">3.</strong> 2016</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2016/day1.html"><strong aria-hidden="true">3.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2016/day2.html"><strong aria-hidden="true">3.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2016/day3.html"><strong aria-hidden="true">3.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2016/day4.html"><strong aria-hidden="true">3.4.</strong> Day  4</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> 2017</div></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> 2018</div></li><li class="chapter-item "><div><strong aria-hidden="true">6.</strong> 2019</div></li><li class="chapter-item "><div><strong aria-hidden="true">7.</strong> 2020</div></li><li class="chapter-item "><div><strong aria-hidden="true">8.</strong> 2021</div></li><li class="chapter-item "><a href="../2022/index.html"><strong aria-hidden="true">9.</strong> 2022</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2022/day1.html"><strong aria-hidden="true">9.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2022/day2.html"><strong aria-hidden="true">9.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2022/day3.html"><strong aria-hidden="true">9.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2022/day4.html"><strong aria-hidden="true">9.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2022/day5.html"><strong aria-hidden="true">9.5.</strong> Day  5</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Advent of Code</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="16日目スーおばさん"><a class="header" href="#16日目スーおばさん">16日目：スーおばさん</a></h1>
+<p>あなたのスーおばさんはあなたに素晴らしい贈り物をくれました。
+そこであなたは彼女に感謝の手紙を送りたいのです。
+しかし、ちょっとした問題があります。
+彼女は「スーおばさんより」と記名していました。</p>
+<p>あなたには「スー」という名前のおばが500人います。</p>
+<p>だから、間違った人に手紙を送るのを避けるために、
+あなたはどのスーおばさん
+（あなたは自分の正気を保つために便宜上1から500の番号を付けています）
+があなたに贈り物をしたのかを知る必要があります。
+あなたは贈り物を開けます。なんと運のいいことでしょう。
+古きよきスーおばさんはあなたにマイファースト犯罪現場分析機をくれました！
+まさにあなたが欲しいもの、あるいは必要なもの、です。</p>
+<p>マイファースト犯罪現場分析機
+（My First Crime Scene Analysis Machine, 略してMFCSAM）は、
+与えられたサンプル中のいくつかの特定の化合物、
+およびそれらの化合物の種類がいくつあるかを検出することができます。
+説明書によると、MFCSAMが検出できるものは以下のとおりです。</p>
+<ul>
+<li><code>children</code>（子供） 人間のDNA年齢分析ができます。</li>
+<li><code>cats</code>（猫） 個々の品種は区別できません。</li>
+<li>いくつかの一見ランダムな犬の品種：
+<code>samoyeds</code>（サモエド）, <code>pomeranians</code>（ポメラニアン）,
+<code>akitas</code>（秋田犬）, <code>vizslas</code>（ショートヘアード・ハンガリアン・ビズラ）</li>
+<li><code>goldfish</code>（金魚）それ以外の魚は検出できません。</li>
+<li><code>trees</code> （木）1つのグループにまとめられています。</li>
+<li><code>cars</code>（車）おそらく排気ガスかガソリンか何かによって。</li>
+<li><code>perfumes</code>（香水）あなたのスーおばさんの多くはいくつかを付けているので、これは便利です。</li>
+</ul>
+<p>実際には、あなたのスーおばさんの多くはこれらの多くを持っています。
+あなたは贈り物の包装をMFCSAMに入れました。
+それはあなたに数回不思議にビープ音を鳴らしてから
+紙テープ(ticker tape)にメッセージをプリントアウトします。</p>
+<pre><code>children: 3
+cats: 7
+samoyeds: 2
+pomeranians: 3
+akitas: 0
+vizslas: 0
+goldfish: 5
+trees: 3
+cars: 2
+perfumes: 1
+</code></pre>
+<p>あなたはそれぞれのスーおばさんについて、思い出せたもののリストを作ります。
+あなたのリストには欠けているものは、
+あなたが単に数を覚えていなかいということで、
+ゼロだという意味ではありません。</p>
+<p>あなたに贈り物をしたスーおばさんの<strong>番号</strong>はいくつですか？</p>
+<details><summary>解説</summary><div>
+<p>物の名前と、整数が対になっている。
+思い出したメモの内容で、MFCSAMの情報と矛盾がないものを選択する。
+おばさんの情報は <code>Data.Map.Map String Int</code> の形式で扱う。</p>
+<pre><code class="language-haskell">import qualified Data.Map as M
+import Data.Maybe
+
+mfcsam =
+  [(&quot;children:&quot;,3),(&quot;cats:&quot;,7),(&quot;samoyeds:&quot;,2),(&quot;pomeranians:&quot;,3),(&quot;akitas:&quot;,0)
+  ,(&quot;vizslas:&quot;,0),(&quot;goldfish:&quot;,5),(&quot;trees:&quot;,3),(&quot;cars:&quot;,2),(&quot;perfumes:&quot;,1)]
+
+part1 aunts = [id | (id, aunt) &lt;- zip [1..] aunts, all (check aunt) mfcsam]
+
+check aunt (k,v) = maybe True (v ==) $ M.lookup k aunt
+
+parse xs = M.fromList $ loop ws
+  where
+    ws = drop 2 $ words xs
+    loop [k,v] = [(k, read v)] -- 最後だけコンマがないため
+    loop (k:v:ws) = (k, read $ init v) : loop ws
+
+main1 = do
+  co &lt;- readFile &quot;input.txt&quot;
+  let aunts = map parse $ lines co
+  print $ part1 aunts
+</code></pre>
+</div></details>
+<h1 id="パート2"><a class="header" href="#パート2">パート2</a></h1>
+<p>あなたがお礼状を送ろうとしたそのとき、
+MFCSAMの説明書の中の何かがあなたの目を引きます。</p>
+<p>どうやら、それは旧式のテム＝レイサーキット
+（原文では<a href="https://www.youtube.com/watch?v=RXJKdh1KZ0w">retroencabulator</a>, <a href="https://en.wikipedia.org/wiki/Turboencabulator">Wikipedia</a>）
+を使っているため、機械からの出力は正確な値ではありません。
+それらのいくつかは範囲を示しています。</p>
+<p>特に、<code>cats</code>と<code>trees</code>の読み取り値は、
+それ<strong>より多く</strong>のものがあることを示しています
+（猫のフケと木の花粉の予測できない核崩壊のため）、
+一方<code>pomeranians</code>と<code>goldfish</code>の読み取り値は、
+それ<strong>より少ない</strong>ことを示しています
+（磁気抵抗のモード相互作用による） 。
+(modial?)</p>
+<p>本物のスーおばさんの<strong>番号</strong>は何でしょう？</p>
+<details><summary>解説</summary><div>
+<p>比較関数を妥当なものに交換しつつ検査する形に変更する。</p>
+<pre><code class="language-haskell">part2 =
+  [ id
+  | (id, aunt) &lt;- zip [1..] aunts
+  , all (check   aunt) mfcsamEQ
+  , all (checkLT aunt) mfcsamLT
+  , all (checkGT aunt) mfcsamGT]
+
+checkLT aunt (k,v) = maybe True (v &gt;) $ M.lookup k aunt
+checkGT aunt (k,v) = maybe True (v &lt;) $ M.lookup k aunt
+
+mfcsamEQ = [(&quot;children:&quot;,3),(&quot;samoyeds:&quot;,2),(&quot;akitas:&quot;,0)
+           ,(&quot;vizslas:&quot;,0),(&quot;cars:&quot;,2),(&quot;perfumes:&quot;,1)]
+mfcsamLT = [(&quot;pomeranians:&quot;,3),(&quot;goldfish:&quot;,5)]
+mfcsamGT = [(&quot;cats:&quot;,7),(&quot;trees:&quot;,3)]
+
+main2 = readFile &quot;input.txt&quot; &gt;&gt;= print . part2 . map parse . lines
+</code></pre>
+</div></details>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../2015/day15.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../2015/day17.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../2015/day15.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../2015/day17.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

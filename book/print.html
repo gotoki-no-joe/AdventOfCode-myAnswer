@@ -1,0 +1,3523 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Advent of Code</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="index.html"><strong aria-hidden="true">1.</strong> はじめに</a></li><li class="chapter-item "><a href="2015/index.html"><strong aria-hidden="true">2.</strong> 2015</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="2015/day1.html"><strong aria-hidden="true">2.1.</strong> Day  1</a></li><li class="chapter-item "><a href="2015/day2.html"><strong aria-hidden="true">2.2.</strong> Day  2</a></li><li class="chapter-item "><a href="2015/day3.html"><strong aria-hidden="true">2.3.</strong> Day  3</a></li><li class="chapter-item "><a href="2015/day4.html"><strong aria-hidden="true">2.4.</strong> Day  4</a></li><li class="chapter-item "><a href="2015/day5.html"><strong aria-hidden="true">2.5.</strong> Day  5</a></li><li class="chapter-item "><a href="2015/day6.html"><strong aria-hidden="true">2.6.</strong> Day  6</a></li><li class="chapter-item "><a href="2015/day7.html"><strong aria-hidden="true">2.7.</strong> Day  7</a></li><li class="chapter-item "><a href="2015/day8.html"><strong aria-hidden="true">2.8.</strong> Day  8</a></li><li class="chapter-item "><a href="2015/day9.html"><strong aria-hidden="true">2.9.</strong> Day  9</a></li><li class="chapter-item "><a href="2015/day10.html"><strong aria-hidden="true">2.10.</strong> Day 10</a></li><li class="chapter-item "><a href="2015/day11.html"><strong aria-hidden="true">2.11.</strong> Day 11</a></li><li class="chapter-item "><a href="2015/day12.html"><strong aria-hidden="true">2.12.</strong> Day 12</a></li><li class="chapter-item "><a href="2015/day13.html"><strong aria-hidden="true">2.13.</strong> Day 13</a></li><li class="chapter-item "><a href="2015/day14.html"><strong aria-hidden="true">2.14.</strong> Day 14</a></li><li class="chapter-item "><a href="2015/day15.html"><strong aria-hidden="true">2.15.</strong> Day 15</a></li><li class="chapter-item "><a href="2015/day16.html"><strong aria-hidden="true">2.16.</strong> Day 16</a></li><li class="chapter-item "><a href="2015/day17.html"><strong aria-hidden="true">2.17.</strong> Day 17</a></li><li class="chapter-item "><a href="2015/day18.html"><strong aria-hidden="true">2.18.</strong> Day 18</a></li><li class="chapter-item "><a href="2015/day19.html"><strong aria-hidden="true">2.19.</strong> Day 19</a></li><li class="chapter-item "><a href="2015/day20.html"><strong aria-hidden="true">2.20.</strong> Day 20</a></li><li class="chapter-item "><a href="2015/day21.html"><strong aria-hidden="true">2.21.</strong> Day 21</a></li><li class="chapter-item "><a href="2015/day22.html"><strong aria-hidden="true">2.22.</strong> Day 22(未)</a></li><li class="chapter-item "><a href="2015/day23.html"><strong aria-hidden="true">2.23.</strong> Day 23</a></li><li class="chapter-item "><a href="2015/day24.html"><strong aria-hidden="true">2.24.</strong> Day 24</a></li><li class="chapter-item "><a href="2015/day25.html"><strong aria-hidden="true">2.25.</strong> Day 25</a></li></ol></li><li class="chapter-item "><a href="2016/index.html"><strong aria-hidden="true">3.</strong> 2016</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="2016/day1.html"><strong aria-hidden="true">3.1.</strong> Day  1</a></li><li class="chapter-item "><a href="2016/day2.html"><strong aria-hidden="true">3.2.</strong> Day  2</a></li><li class="chapter-item "><a href="2016/day3.html"><strong aria-hidden="true">3.3.</strong> Day  3</a></li><li class="chapter-item "><a href="2016/day4.html"><strong aria-hidden="true">3.4.</strong> Day  4</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> 2017</div></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> 2018</div></li><li class="chapter-item "><div><strong aria-hidden="true">6.</strong> 2019</div></li><li class="chapter-item "><div><strong aria-hidden="true">7.</strong> 2020</div></li><li class="chapter-item "><div><strong aria-hidden="true">8.</strong> 2021</div></li><li class="chapter-item "><a href="2022/index.html"><strong aria-hidden="true">9.</strong> 2022</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="2022/day1.html"><strong aria-hidden="true">9.1.</strong> Day  1</a></li><li class="chapter-item "><a href="2022/day2.html"><strong aria-hidden="true">9.2.</strong> Day  2</a></li><li class="chapter-item "><a href="2022/day3.html"><strong aria-hidden="true">9.3.</strong> Day  3</a></li><li class="chapter-item "><a href="2022/day4.html"><strong aria-hidden="true">9.4.</strong> Day  4</a></li><li class="chapter-item "><a href="2022/day5.html"><strong aria-hidden="true">9.5.</strong> Day  5</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Advent of Code</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="advent-of-code"><a class="header" href="#advent-of-code">Advent of Code</a></h1>
+<p><a href="https://adventofcode.com/">Advent of Code</a>の問題を翻訳しています。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="2015年"><a class="header" href="#2015年">2015年</a></h1>
+<p>サンタはホワイトクリスマスを望んでいましたが、
+彼のお天気制御装置の「雪」機能はスターが動力源なのに、
+彼はスターを使い切ってしまったところです！
+クリスマスを救うには、12月25日までに50個のスターを集める必要があります。</p>
+<p>サンタがパズルを解くのを助けることでスターを集めよう。
+このアドベントカレンダーでは、毎日2つのパズルが利用可能になります。
+2番目のパズルは、1番目を完了するとロックが解除されます。
+各パズルで1つずつ星が貰えます。がんばろう！</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="1日目lispではない"><a class="header" href="#1日目lispではない">1日目：Lispではない</a></h1>
+<p>今日はあなたの準備運動のための簡単なパズルです。</p>
+<p>サンタは大きなマンションでプレゼントを配ろうとしていますが、
+彼は正しいフロアを見つけることができません。
+彼が得た指示は何だかややこしいものです。
+彼は地上階(0階)から開始し、一度に1文字ずつ指示に従います。</p>
+<p>開き括弧 <code>(</code> は1階上がるべきであることを意味し、
+閉じ括弧 <code>)</code> はフロアを1つ降りることを意味します。</p>
+<p>マンションの建物は非常に高く、地下室も非常に深いです。
+彼は決して最上階や最下層に到達することはありません。</p>
+<h2 id="例"><a class="header" href="#例">例</a></h2>
+<ul>
+<li><code>(())</code> と <code>()()</code> はどちらも0階で終わります。</li>
+<li><code>(((</code> と <code>(()(()(</code> はどちらも3階で終わります。</li>
+<li><code>))(((((</code> もまた3階になります。</li>
+<li><code>())</code> と <code>))(</code> はどちらも \(-1\) 階（地下1階）になります。</li>
+<li><code>)))</code> と <code>)())())</code> はどちらも \(-3\) 階になります。</li>
+</ul>
+<p>さて、指示書に従ったサンタが最後にたどり着くのは<strong>何階</strong>でしょうか？</p>
+<details><summary>解説</summary><div>
+階数を 0 から始めて、開きカッコで増やし、閉じ括弧で減らせばよい。
+<pre><code class="language-haskell">part1 :: String  -- 入力
+      -&gt; Int     -- 答え
+part1 = foldl step 0
+
+step n '(' = succ n
+step n ')' = pred n
+</code></pre>
+</div></details>
+<h1 id="パート2"><a class="header" href="#パート2">パート2</a></h1>
+<p>今度は、同じ指示書を受け取ったとして、
+彼を地下1階（\(-1\)階）に到達させる最初の文字の位置を見つけてください。
+指示書の最初の文字の位置は1、
+2番目の文字は位置2、以下同文とします。</p>
+<h2 id="例-1"><a class="header" href="#例-1">例</a></h2>
+<ul>
+<li><code>)</code> 彼は位置1の文字で地下1階に入る。</li>
+<li><code>()())</code> 彼は位置5の文字で地下1階に入る。</li>
+</ul>
+<p>サンタが最初に地下1階に入る原因となる<strong>文字の位置</strong>は？</p>
+<details><summary>解説</summary><div>
+<p>パート1と同様に現在位置を追跡し、最初に \(-1\) になったところで止めて、
+そこまでの位置の個数が答えである。</p>
+<pre><code class="language-haskell">part2 :: String -&gt; Int
+part2 = length . takeWhile (-1 &lt;) . scanl step 0
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="2日目数学は使わないと私は言われた"><a class="header" href="#2日目数学は使わないと私は言われた">2日目：数学は使わない、と私は言われた</a></h1>
+<p>妖精は包装紙を使い切りそうになっているので、もっと注文する必要があります。
+彼らは各プレゼントの寸法（長さ \(l\) 、幅 \(w\) 、高さ \(h\) ）のリストを持っていて、
+必要なだけを正確に注文したいです。</p>
+<p>幸いなことに、すべてのプレゼントは箱（正確な直方体）です。
+これは、それぞれの贈り物に必要な包装紙の計算を少し簡単にします。
+箱の表面積 \(2 \times l \times w + 2 \times w \times h + 2 \times h \times l\)
+を求めてください。
+妖精はまた、それぞれのプレゼントに少し、
+具体的には最も小さい面の面積だけ紙を余分に必要とします。</p>
+<h2 id="例-2"><a class="header" href="#例-2">例</a></h2>
+<ul>
+<li>寸法 \(2 \times 3 \times 4\) のプレゼントは、
+\(2 \times 6 + 2 \times 12 + 2 \times 8 = 52\) 平方フィートに、
+余裕を6加えた58平方フィートの包装紙が必要です。</li>
+<li>寸法 \(1 \times 1 \times 10\) のプレゼントは
+\(2 \times  1 + 2 \times 10 + 2 \times 10 = 42\) 平方フィートに
+余裕を1加えた43平方フィートの包装紙が必要です。</li>
+</ul>
+<p>妖精のリストに載っている数字はすべてフィートです。
+注文するべき<strong>包装紙の総面積</strong>は何平方フィートですか？</p>
+<details><summary>解説</summary><div>
+<p>要求どおりに計算するだけ。</p>
+<pre><code class="language-haskell">part1 :: [(Int,Int,Int)]  -- l,w,h
+      -&gt; Int              -- 答え
+part1 = sum . map fun1
+
+fun1 (l,w,h) = minimum as + 2 * sum as
+  where
+    as = [l * w, w * h, h * l]
+</code></pre>
+</div></details>
+<h1 id="パート2-1"><a class="header" href="#パート2-1">パート2</a></h1>
+<p>妖精はリボンも使い切りそうです。
+リボンはすべて同じ幅であるため、
+注文するときに気にすることは必要な長さだけで、
+やはり正確に注文したいと考えています。</p>
+<p>プレゼントを縛るために必要なリボンは、
+その側面の周長のうち最短のもの、
+言い換えるといずれかの面の周長の最小値です。
+それぞれのプレゼントには、リボンの蝶結びも必要です。
+完璧な蝶結びに必要なリボンの長さは、
+プレゼントの容積の立方フィートと同じです。
+彼らがどのように蝶結びを作るのか尋ねないでください。
+彼らは決して教えてくれません。</p>
+<h2 id="例-3"><a class="header" href="#例-3">例</a></h2>
+<ul>
+<li>寸法 \(2 \times 3 \times 4\) のプレゼントは、縛るために \(2+2+3+3 = 10\) フィートのリボンが、
+蝶結びのために \(2 \times 3 \times 4 = 24\) フィートのリボンが必要で、
+合わせて34フィート必要です。</li>
+<li>寸法 \(1 \times 1 \times 10\) のプレゼントは、縛るために \(1+1+1+1 = 4\) フィートのリボンが、
+蝶結びのために \(1 \times 1 \times 10 = 10\) フィートのリボンが必要で、
+合わせて14フィート必要です。</li>
+</ul>
+<p>彼らが注文するべき<strong>リボンの総長</strong>はどれだけですか？</p>
+<details><summary>解説</summary><div>
+<p>やはり要求どおりに計算するだけ。</p>
+<pre><code class="language-haskell">part2 :: [(Int,Int,Int)]  -- l,w,h
+      -&gt; Int              -- 答え
+part2 = sum . map fun2
+
+fun2 (l,w,h) = 2 * minimum rs + l * w * h
+  where
+    rs = [l + w, w + h, h + l]
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="3日目真空中の完全球形住宅"><a class="header" href="#3日目真空中の完全球形住宅">3日目：真空中の完全球形住宅</a></h1>
+<p>サンタは無限の2次元グリッド住宅街にプレゼントを届けています。</p>
+<p>彼は出発地にある家にプレゼントを配達することから始めます。
+北極にいる妖精が無線で彼に連絡し、次にどこへ行くべきかを彼に伝えます。
+移動は常にちょうど1軒隣の
+北（<code>^</code>）、南（<code>v</code>）、東（<code>&gt;</code>）、西（<code>&lt;</code>）の家です。
+それぞれの移動の後、彼は彼の新しい位置の家に次のプレゼントを届けます。</p>
+<p>しかし、北極にいる妖精は卵酒を少し飲み過ぎてしまったために指示が少しずれて、
+その結果サンタがいくつかの家を複数回訪れてしまいました。
+<strong>少なくとも1つ</strong>プレゼントを受けとる家は何軒ありますか？</p>
+<p>例えば：</p>
+<ul>
+<li><code>&gt;</code> は2軒にプレゼントを届けます。
+出発地に1つ、東に1つ。</li>
+<li><code>^&gt;v&lt;</code> は四角く並んだ4軒にプレゼントを届けます。
+彼の出発かつ終了地点の家には2度訪れます。</li>
+<li><code>^v^v^v^v^v</code> は2軒の家だけにいる
+非常に幸運な子どもたちにたくさんのプレゼントを届けます。</li>
+</ul>
+<details><summary>解説</summary><div>
+<p>座標がどちらに広がるのか事前に予測できないので、配列で扱うのは難しい。
+座標の集合で扱うと制約なく扱いやすい。</p>
+<pre><code class="language-haskell">import qualified Data.Set as S
+
+part1 :: String  -- 指示
+      -&gt; Int     -- 答え
+part1 = S.size . S.fromList . scanl step (0,0)
+
+step (x,y) '^' = (pred x, y)
+step (x,y) 'v' = (succ x, y)
+step (x,y) '&lt;' = (x, pred y)
+step (x,y) '&gt;' = (x, succ y)
+</code></pre>
+</div></details>
+<h1 id="パート2-2"><a class="header" href="#パート2-2">パート2</a></h1>
+<p>翌年、処理を高速化するために、
+サンタは自分自身のロボット版である<strong>メカサンタ</strong>を作成しました。
+彼と一緒にプレゼントを届けるためのものです。</p>
+<p>サンタとメカサンタは同じ場所から出発し
+（同じ出発地点の家に2つのプレゼントを配達する）、
+卵酒を飲み過ぎたせいで去年と同じ行動計画を読み上げる妖精の指示に基づいて<strong>交互に</strong>移動します。</p>
+<p>今年は、何軒の家が<strong>少なくとも1つ</strong>のプレゼントを受け取りますか？</p>
+<p>例えば：</p>
+<ul>
+<li><code>^v</code> は3軒にプレゼントを届けます。
+サンタは北に行き、その後メカサンタが南に行くからです。</li>
+<li><code>^&gt;v&lt;</code> は今回3軒にプレゼントを配達し、
+サンタとメカサンタは彼らが始めた地点に戻ってきます。</li>
+<li><code>^v^v^v^v^v</code> は今回11軒の家にプレゼントを届けます。
+サンタは一方向に、メカサンタはそれと反対向きに向かって行きます。</li>
+</ul>
+<details><summary>解説</summary><div>
+<p>入力を、サンタ用とメカサンタ用に分離した後はパート1と同じやり方で座標を得て、
+合わせてから数えればよい。</p>
+<pre><code class="language-haskell">part2 :: String  -- 指示
+      -&gt; Int     -- 答え
+part2 cs = S.size . S.fromList $ go cs1 ++ go cs2
+  where
+    cbs = zip cs $ cycle [True, False]
+    cs1 = [c | (c, True ) &lt;- cbs]
+    cs2 = [c | (c, False) &lt;- cbs]
+    go = scanl step (0,0)
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="4日目理想的な長靴下の詰め合わせ"><a class="header" href="#4日目理想的な長靴下の詰め合わせ">4日目：理想的な長靴下の詰め合わせ</a></h1>
+<p>（原題は stocking stuffer で頭韻を踏んでいる）</p>
+<p>サンタは
+AdventCoins（<strong>bitcoins</strong>と非常によく似た何か）を<strong>マイニング</strong>する手助けを求めています。
+経済的に先進的な全ての子供たちへのプレゼントにするのです。</p>
+<p>それには、<strong>MD5</strong>ハッシュが<strong>16進数</strong>で少なくとも<strong>5つのゼロ</strong>で始まるようなものを見つける必要があります。
+MD5ハッシュへの入力は何かの秘密鍵（パズル入力）に10進数の数字を続けたものです。
+AdventCoinsをマイニングするために、
+そのようなハッシュを生成するような最小の正の数（先行する零は付けずに1,2,3,…で）を見つける必要があります。</p>
+<p>例えば：</p>
+<ul>
+<li>あなたの秘密鍵が<code>abcdef</code>のとき、その答は<code>609043</code>です。
+というのは<code>abcdef609043</code>のMD5のハッシュは5つの零で始まり（<code>000001dbbfa...</code>）、またそうなる最小の数だからです。</li>
+<li>あなたの秘密鍵が<code>pqrstuv</code>のとき、連結して5つの零で始まるMD5ハッシュを作る最小の数は<code>1048970</code>です。
+つまり、<code>pqrstuv1048970</code>のMD5ハッシュは<code>000006136ef...</code>となります。</li>
+</ul>
+<p>あなたのパズル入力は<code>iwrupvqb</code>です。</p>
+<details><summary>解説</summary><div>
+<p>これを解くためだけにMD5ハッシュの計算を実装するのはつらいので、ライブラリの力を借りる。
+<a href="https://ja.wikipedia.org/wiki/MD5">Wikipedia</a>を見ると、512ビット=64バイトが処理の単位なので、
+この問題の入力はまるまる収まるだろう。</p>
+<ul>
+<li><a href="https://hackage.haskell.org/package/cryptohash-md5">cryptohash-md5</a></li>
+<li><a href="https://hackage.haskell.org/package/pureMD5">pureMD5</a></li>
+</ul>
+<p>あたりを使えばよいだろう。</p>
+<pre><code class="language-haskell">import qualified Data.ByteString.Char8 as BS
+import qualified Crypto.Hash.MD5 as MD5
+
+part1 :: String  -- 秘密鍵
+      -&gt; Int     -- 答え
+part1 sk = head
+  [ i
+  | i &lt;- [1..]
+  , let digest = MD5.hash $ BS.pack $ sk ++ show i
+  , fromEnum (BS.index digest 0) ==  0
+  , fromEnum (BS.index digest 1) ==  0
+  , fromEnum (BS.index digest 2) &lt;  16
+  ]
+</code></pre>
+</div></details>
+<h1 id="パート2-3"><a class="header" href="#パート2-3">パート2</a></h1>
+<p>今度は6つの0で始まるようなものを見つけてください。</p>
+<details><summary>解説</summary><div>
+<p>パート1と変わらない。</p>
+<pre><code class="language-haskell">part2 :: String  -- 秘密鍵
+      -&gt; Int     -- 答え
+part2 sk = head
+  [ i
+  | i &lt;- [1..]
+  , let digest = MD5.hash $ BS.pack $ sk ++ show i
+  , fromEnum (BS.index digest 0) == 0
+  , fromEnum (BS.index digest 1) == 0
+  , fromEnum (BS.index digest 2) == 0
+  ]
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="5日目彼はこれ用の妖精研修生を持っていないのですか"><a class="header" href="#5日目彼はこれ用の妖精研修生を持っていないのですか">5日目：彼はこれ用の妖精研修生を持っていないのですか？</a></h1>
+<p>(intern-elvesが何の駄洒落なのかわからない)</p>
+<p>サンタは、テキストファイルの文字列がそれぞれ、
+「いい」か「いやらしい」のどちらなのかを突き止める手助けを必要としています。</p>
+<p><strong>いい文字列</strong>とは、以下の性質のすべてを有するものです。</p>
+<ul>
+<li>少なくとも3つの母音（<code>aeiou</code>のみ）が含まれている。
+例えば<code>aei</code>, <code>xazegov</code>, <code>aeiouaeiouaeiou</code></li>
+<li>少なくとも1つ、2回続けて現れる文字を含む。
+例えば<code>xx</code>, <code>abcdde</code> (dd), <code>aabbccdd</code> (aa, bb, cc, dd)</li>
+<li><code>ab</code>, <code>cd</code>, <code>pq</code>, <code>xy</code>を<strong>含まない</strong>。
+それらが他の要件のいずれかの一部であっても例外ではない。</li>
+</ul>
+<p>いい文字列でない文字列は、いやらしい文字列です。</p>
+<p>例えば：</p>
+<ul>
+<li><code>ugknbfddgicrmopn</code> はいい文字列です。
+少なくとも3つの母音 (u...i...o...)と
+続き文字 (...dd...)を含み、
+許可されていない部分文字列を持っていません。</li>
+<li><code>aaa</code> はいい文字列です。
+少なくとも3つの母音と2つの文字を持つためです。
+異なる規則で使用されている文字が重なっていてもかまいません。</li>
+<li><code>jchzalrnumimnmhp</code> は続き文字がないのでいやらしい文字列です。</li>
+<li><code>haegwjzuvuyypxyu</code> は文字列<code>xy</code>を含んでいるのでいやらしい文字列です。</li>
+<li><code>dvszwmarrgswjxmb</code> は1つの母音しか含まれていないので、いやらしい文字列です。</li>
+</ul>
+<p>いい文字列はいくつありますか？</p>
+<details><summary>解説</summary><div>
+<p>いい文字列を判定する述語を作る。</p>
+<p>「母音を3つ」は、<code>aaa</code> の例でもわかるように、同じ文字が3つでもよいので、数えればよい。</p>
+<pre><code class="language-haskell">isVowel x = elem x &quot;aeiou&quot;
+
+cond1 xs = 3 &lt; length (filter isVowel xs)
+</code></pre>
+<p>あと2つの条件のために、連続する2文字の全ての組を作っておく。</p>
+<pre><code class="language-haskell">xys = zip xs (tail xs)
+</code></pre>
+<p>「続き文字を含む」とは、<code>xys</code> の中に、左右が等しいものがあるということになる。</p>
+<pre><code class="language-haskell">cond2 xys = any (uncurry (==)) xys
+</code></pre>
+<p>特定の対を含まないとは、そのいずれも <code>xys</code> の中に現れないことである。</p>
+<pre><code class="language-haskell">cond3 xys = all (\bad -&gt; notElem bad xys) [('a','b'),('c','d'),('p','q'),('x','y')]
+</code></pre>
+<p>入力から、これらすべてを満たす語の数を数える。</p>
+<pre><code class="language-haskell">part1 :: [String]  -- 入力
+      -&gt; Int       -- 答え
+part1 = length . filter cond123
+
+cond123 xs = cond1 xs &amp;&amp; cond2 xys &amp;&amp; cond3 xys
+  where
+    xys = zip xs (tail xs)
+</code></pre>
+</div></details>
+<h1 id="パート2-4"><a class="header" href="#パート2-4">パート2</a></h1>
+<p>サンタは自分のやり方の間違いに気がついて、
+文字列が「いい」か「いやらしい」かを判断するより良いモデルに切り替えました。
+古い規則はすべて明らかにばかげているので適用されません。</p>
+<p>さて、いい文字列は、以下のすべての性質を持つものです。</p>
+<ul>
+<li>何らかの2つの文字の対が重ならずに二回またはそれ以上に現れます。
+例えば<code>xyxy</code> (<code>xy</code>)や<code>aabcdefgaa</code> (<code>aa</code>)はこれにあてはまりますが、
+<code>aaa</code>は<code>aa</code>が2度現れますが重なっているので違います。</li>
+<li>間にちょうど1文字を挟んで同じ文字が繰り返すような並びが1回またはそれ以上に現れます。
+例えば<code>xyx</code>, <code>abcdefeghi</code> (<code>efe</code>) のようなものです。
+また<code>aaa</code>も該当します。</li>
+</ul>
+<p>例えば：</p>
+<ul>
+<li><code>qjhvhtzxzqqjkmpb</code>はいい文字列です。
+2回出現する対<code>qj</code>と、1文字置いて繰り返される文字<code>zxz</code>があるためです。</li>
+<li><code>xxyxx</code>はいい文字列です。
+二重に現れる対と間に1文字置いて繰り返される文字があります。
+両規則で使用されている文字が重なっていても構いません。</li>
+<li><code>uurcxstgmygtbstg</code>
+これには対(<code>tg</code>)はありますが、一文字置いた繰り返しがありませんので、いやらしい文字列です。</li>
+<li><code>ieodomkazucvgmuy</code>
+1文字置いた繰り返し文字がありますが(<code>odo</code>)、2回現れる対はありませんので、いやらしい文字列です。</li>
+</ul>
+<p>これらの新しい規則の下で、いい文字列はいくつありますか？</p>
+<details><summary>解説</summary><div>
+<p>前者の条件は、パート1の <code>xys</code> で考えると、直後の対は重なりがあるので、それを除いた以降に等しいものがあればよい。
+全ての対について調べ、そのようなものが一つあればよい。</p>
+<pre><code class="language-haskell">cond4 xs = any sub $ tails xys
+  where
+    xys = zip xs (tail xs)
+    sub (xy : _ : xys) = elem xy xys
+    sub _ = False
+</code></pre>
+<p>後者の条件は、<code>xys</code> と同様に対になる文字について判定すればよい。</p>
+<pre><code class="language-haskell">cond5 xs = or $ zipWith (==) xs (drop 2 xs)
+</code></pre>
+<p>最後にまとめる。</p>
+<pre><code class="language-haskell">part2 :: [String]  -- 入力
+      -&gt; Int       -- 答え
+part2 = length . filter cond5 . filter cond4
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="6日目火災の危険性あり"><a class="header" href="#6日目火災の危険性あり">6日目：火災の危険性あり</a></h1>
+<p>あなたのご近所さんがホリデーハウスデコレーションコンテストであなたを
+毎年敗北させ続けるので、
+\(1,000 \times 1,000\) グリッドに 100万本のライトを配備することに決めました。</p>
+<p>さらに、あなたは今年、特にいい子でいたので、
+理想的な照明を表示する構成の手順書をサンタからメールで受け取りました。</p>
+<p>グリッド内のライトは、各方向に0から999の番号が付けられます。
+四隅のライトはそれぞれ座標<code>0,0</code>、<code>0,999</code>、<code>999,999</code>、<code>999,0</code>となります。
+各指示は
+<code>turn on</code>（点灯）、<code>turn off</code>（消灯）、<code>toggle</code>（反転）
+のいずれかです。
+指示には、座標の対によりその操作を行う範囲（境界を含む）が含まれます。
+各座標対は、長方形の対向する角を表します。
+よって例えば <code>0,0 through 2,2</code> という座標対は、\(3 \times 3\) の正方形の9つのライトを指します。
+すべてのライトはオフで始まります。</p>
+<p>今年あなたのご近所さんに打ち勝つためには、
+サンタから送られた手順書に従って、
+あなたのライトを設定しさえすればよいのです。</p>
+<p>例えば：</p>
+<ul>
+<li><code>turn on 0,0 through 999,999</code> はすべてのライトをオンにします。
+（元からオンのものはオンのままです）。</li>
+<li><code>toggle 0,0 through 999,0</code> 第1行の1000個のライトを反転します。
+オンになっていたものをオフにし、オフになっていたものをオンにします。</li>
+<li><code>turn off 499,499 through 500,500</code> 中央の4つのライトをオフにします。
+（元からオフのものはオフのままです。）</li>
+</ul>
+<p>一通り指示書に従った後、<strong>点灯しているライトはいくつですか？</strong></p>
+<details><summary>解説</summary><div>
+<p>このように、妙に冗長な入力データを読み取る必要があるのもAoCの特徴。
+指示の種類を表す列挙型と、範囲を表す座標の対を組にした指示の型を定義する。</p>
+<pre><code class="language-haskell">data Cmd = LOff | LOn | LTgl
+type Instr = (Cmd, ((Int,Int),(Int,Int)))
+</code></pre>
+<p>コンマで区切られた数字列を、二つの整数の対として読み込む補助関数を定義しておく。</p>
+<pre><code class="language-haskell">csv :: String -&gt; (Int, Int)
+csv xs = (read as, read bs)
+  where
+    (as, _:bs) = span (',' /=) xs
+</code></pre>
+<p>一行を読み込むには、まず <code>words</code> で分割し、2語めが何かで見分けると話が早い。
+<code>toggle</code>だけ、左上座標がどこにあるかが違う。右下座標は常に末尾にある。</p>
+<pre><code class="language-haskell">parse :: String -&gt; (Cmd, ((Int, Int), (Int, Int)))
+parse xs =
+  case w2 of
+    &quot;on&quot;  -&gt; (LOn , (csv w3, xy9))
+    &quot;off&quot; -&gt; (LOff, (csv w3, xy9))
+    _     -&gt; (LTgl, (csv w2, xy9))
+  where
+    (_:w2:w3:ws) = words xs
+    xy9 = csv (last ws)
+</code></pre>
+<p>入力データを読み込んで指示のリストに変換したら、\(1000 \times 1000\) の配列を作り、
+指示通りにライトを操作して、最終結果を取り出せばよい。
+ここで、<code>Data.Ix.range</code> を使うと、範囲の要素を列挙することが容易にできる。
+その結果を <code>accumArray</code> で累積すれば結果が得られる。</p>
+<pre><code class="language-haskell">import Data.Ix
+import Data.Array
+
+part1 :: [String] -&gt; Int
+part1 ls = length $ filter id $ elems arr
+  where
+    arr = accumArray control1 False ((0,0),(999,999))
+          [(xy, cmd) | l &lt;- ls, let (cmd, bnds) = parse l, xy &lt;- range bnds]
+
+control1 :: Bool -&gt; Cmd -&gt; Bool
+control1 _ LOn  = True
+control1 _ LOff = False
+control1 b LTgl = not b
+</code></pre>
+</div></details>
+<h1 id="パート2-5"><a class="header" href="#パート2-5">パート2</a></h1>
+<p>勝利パターンを実装し終わったとき、サンタからのメッセージを
+古代ノルディック妖精語から翻訳するときに間違えていたことに気付きました。</p>
+<p>あなたが購入したライトグリッドには、実際には個々の明るさコントロールがありました。
+各ライトは0以上の明るさを持ちます。ライトはすべて明るさ0で始まります。</p>
+<p><code>turn on</code>というフレーズは実際には
+あなたがそれらのライトの明るさを1増やすべきであることを意味します。</p>
+<p><code>turn off</code>というフレーズは実際には
+あなたがライトの明るさを1下げる必要があることを意味します。
+その最小値は零です。</p>
+<p><code>toggle</code>のフレーズは実際には
+あなたがそれらのライトの明るさを2増やすべきであることを意味します。</p>
+<p>サンタの指示に従った後に、すべてのライトの明るさを合わせた
+<strong>明るさの合計値</strong>はいくつでしょう？</p>
+<p>例えば：</p>
+<ul>
+<li><code>turn on 0,0 through 0,0</code>は合計値を1増加させます。</li>
+<li><code>toggle 0,0 through 999,999</code>は合計値を2000000増加させます。</li>
+</ul>
+<details><summary>解説</summary><div>
+<p>パート1では2値だったライトの状態を整数にし、指示に対する操作を定義通りに差し替えるだけ。</p>
+<pre><code class="language-haskell">part2 :: [String] -&gt; Int
+part2 ls = sum $ elems arr
+  where
+    arr = accumArray control2 0 ((0,0),(999,999))
+          [(xy, cmd) | l &lt;- ls, let (cmd, bnds) = parse l, xy &lt;- range bnds]
+
+control2 :: Int -&gt; Cmd -&gt; Int
+control2 n LOn  = succ n
+control2 n LOff = max 0 (pred n)
+control2 n LTgl = n + 2
+</code></pre>
+<p>ちなみに、「二次元累積和」という手法を使うと、この問題の答えをずっと効率的に求めることができる。</p>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="7日目組み立てが少々必要"><a class="header" href="#7日目組み立てが少々必要">7日目：組み立てが少々必要</a></h1>
+<p>今年、サンタはボビー・テーブルス少年に
+配線ワイヤとビット<strong>論理ゲート</strong>のセットを届けました！
+残念ながら、Bobbyは推奨の年齢層より少し小さいので、
+彼は回路を組み立てるのに助けが必要です。</p>
+<p>各ワイヤは識別子（小文字アルファベット）を持ち、
+16ビットの信号（0～65535の数）を伝えることができます。
+各ワイヤには、ゲートまたは別のワイヤから信号が伝えられるか、定数値が与えられます。
+各ワイヤは1つの信号源からのみ信号を得ることができますが、複数の接続先に信号を供給することができます。
+ゲートは、その入力のすべてが信号を持つまで信号を供給しません。</p>
+<p>付属の取扱説明書には、どのようにパーツを接続するかが書かれています。
+<code>x AND y -&gt; z</code>は
+ワイヤ<code>x</code>とワイヤ<code>y</code>を<code>AND</code>ゲートに接続し、
+その出力をワイヤ<code>z</code>に接続することを意味します。</p>
+<p>例えば：</p>
+<ul>
+<li><code>123 -&gt; x</code> は信号<code>123</code>がワイヤ<code>x</code>に供給されることを意味します。</li>
+<li><code>x AND y -&gt; z</code> はワイヤ<code>x</code>とワイヤ<code>y</code>との<strong>ビット単位の論理積</strong>が
+ワイヤ<code>z</code>に供給されることを意味します。</li>
+<li><code>p LSHIFT 2 -&gt; q</code> はワイヤ<code>p</code>からの値が2だけ<strong>左シフト</strong>され、
+そのワイヤ<code>q</code>に提供されることを意味します。</li>
+<li><code>NOT e -&gt; f</code> はワイヤ<code>e</code>からの値の<strong>ビット単位の反転</strong>が
+ワイヤ<code>f</code>に供給されることを意味します。</li>
+</ul>
+<p>他の使用可能なゲートには、<code>OR</code>（<strong>ビット単位OR</strong>）および<code>RSHIFT</code>（<strong>右シフト</strong>）があります。
+何らかの理由で代わりに回路を<strong>エミュレート</strong>したい場合、
+ほとんどすべてのプログラミング言語（C, JavaScript, Pythonなど）はこれらのゲートの演算子を提供しています。</p>
+<p>例えば、ここには簡単な回路があります：</p>
+<pre><code>123 -&gt; x
+456 -&gt; y
+x AND y -&gt; d
+x OR y -&gt; e
+x LSHIFT 2 -&gt; f
+y RSHIFT 2 -&gt; g
+NOT x -&gt; h
+NOT y -&gt; i
+</code></pre>
+<p>それが実行された後、ワイヤ上の信号は次のようになります。</p>
+<pre><code>d: 72
+e: 507
+f: 492
+g: 114
+h: 65412
+i: 65079
+x: 123
+y: 456
+</code></pre>
+<p>ボビー少年のキットの説明書
+（あなたのパズル入力として提供されている）
+では、最終的にどのような信号が<strong>ワイヤ<code>a</code>に</strong>流れますか？</p>
+<details><summary>解説</summary><div>
+<p>状況を整理すると、
+アルファベット文字列で名前の付けられたワイヤ（信号線）があり、入力で与えられる回路結線で内容が定められる。
+ループになっていたり、ひとつの信号に複数の入力が与えられたりはしていない。
+結線は、他のワイヤの内容を読み取り、論理演算を施すもの。
+正則な計算でこのような相互参照を解決するのは面倒な話だが、遅延評価を使うと非常に簡潔に解ける。
+（ループや矛盾がないという保証がある場合に限る。）</p>
+<p>すなわち、ワイヤ名を添え字として、その値を計算してコンテナに格納するが、
+値を計算するために他のワイヤを読み取るとき、コンテナに値を問い合わせる。</p>
+<p>ひとつの配線が3項組 <code>([String], [Word16] -&gt; Word16, String)</code> で表されているとする。
+第1要素は、参照しているワイヤ名、または定数の文字列のリスト。
+第2要素は、参照した信号の内容を計算して、結果を返す演算を表す関数。
+第3要素は、結果を供給する先のワイヤ名。
+この情報のリストから、それぞれのワイヤに流れる信号を持つマップが次のように作れる。</p>
+<pre><code class="language-haskell">import qualified Data.Map as M
+
+type Instr = ([String], [Word16] -&gt; Word16, String)
+
+part1Body :: [Instr] -&gt; M.Map String Word16
+part1Body is = m
+  where
+    m = M.fromList [(tgt, f $ map g ws) | (ws, f, tgt &lt;- is)]
+    g w
+      | all isDigit w = read w
+      | otherwise     = m M.! w
+</code></pre>
+<p>つまり、入力列から配線指示読み取ることができれば、<code>part1Body</code> の返すマップから答えは得られる。</p>
+<pre><code class="language-haskell">part1 :: [String] -&gt; Word16
+part1 ls = (part1Body $ map parse ls) M.! &quot;a&quot;
+</code></pre>
+<p>演算の名前がどこにあるのかは、語数からわかる。</p>
+<pre><code class="language-haskell">import Data.Bits
+
+parse :: String -&gt; Instr
+parse xs =
+  case length ws of
+    3 -&gt; ([ws !! 0], \[x] -&gt; x, tgt)                  -- 123 -&gt; x
+    4 -&gt; ([ws !! 1], \[x] -&gt; complement x, tgt)       -- NOT x -&gt; h
+    5 -&gt; ([ws !! 0, ws !! 2], getFun $ ws !! 1, tgt)  -- x AND y -&gt; d
+  where
+    ws = words xs
+    tgt = last ws
+
+getFun &quot;AND&quot; = \[x,y] -&gt; x .&amp;. y
+getFun &quot;OR&quot;  = \[x,y] -&gt; x .|. y
+getFun &quot;LSHIFT&quot; = \[x,y] -&gt; shiftL x $ fromIntegral y
+getFun &quot;RSHIFT&quot; = \[x,y] -&gt; shiftR x $ fromIntegral y
+</code></pre>
+</div></details>
+<h1 id="パート2-6"><a class="header" href="#パート2-6">パート2</a></h1>
+<p>今度は、ワイヤ<code>a</code>上にある信号を取り出し、
+その信号をワイヤ<code>b</code>へ上書きし、
+他のワイヤ（ワイヤ<code>a</code>を含む）をリセットします。
+最終的にどのような新しい信号がワイヤ<code>a</code>に流れますか？</p>
+<details><summary>解説</summary><div>
+<p>パート1の結果は手元にあるので、<code>part1Body</code> の中の <code>g</code> に細工をするのが手っ取り早い。</p>
+<pre><code class="language-haskell">part2 :: [String] -&gt; Word16
+part2 ls = m M.! &quot;a&quot;
+  where
+    m = M.fromList [(tgt, f $ map g ws) | (ws, f, tgt) &lt;- map parse ls]
+    g &quot;b&quot; = undefined -- パート1の結果をここに入れる
+    g w
+      | all isDigit w = read w
+      | otherwise     = m M.! w
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="8日目マッチ棒"><a class="header" href="#8日目マッチ棒">8日目：マッチ棒</a></h1>
+<p>今年はソリの容積が制限されているので、サンタはリストをデジタルコピーにして持ち込む予定です。
+彼は、リストを保存したときどのくらいのメモリ容量を使うかを知る必要があります。</p>
+<p>多くのプログラミング言語では、
+文字列内の特殊文字をエスケープする方法を提供することが一般的です。
+例えばC, JavaScript, Perl, Python, またPHPさえ特殊文字を非常に似た方法で扱います。</p>
+<p>ただし、<strong>文字列リテラルのコード表現</strong>の文字数と
+<strong>メモリ中の文字列自体の文字数</strong>の違いを理解することが重要です。</p>
+<p>例えば：</p>
+<ul>
+<li><code>&quot;&quot;</code> はコード表現では2文字（2つのダブルクオート）ですが、文字列は文字を零個持ちます。</li>
+<li><code>&quot;abc&quot;</code> はコード表現では5文字ですが、文字列データ内は3文字です。</li>
+<li><code>&quot;aaa\&quot;aaa&quot;</code> はコード表現では10文字ですが、
+文字列自体は6個の文字<code>a</code>と
+エスケープされたダブルクオートを1文字持ち、
+合わせて文字列データ内は7文字です。</li>
+<li><code>&quot;\x27&quot;</code> はコード表現では6文字ですが、
+文字列自体は16進表記を使用してエスケープしたアポストロフィ<code>'</code>1文字だけからなります。</li>
+</ul>
+<p>サンタのリストは、ダブルクオートで囲まれた文字列リテラルを各行に1つずつ含む大きなファイルです。
+使用されるエスケープシーケンスは
+<code>\\</code>（単一のバックスラッシュを表す）、
+<code>\&quot;</code>（単独のダブルクオートを表す）、
+<code>\x</code> に16進文字を2つ続けたもの（そのASCIIコードを持つ1文字を表す）
+だけです。</p>
+<p>ファイル内の空白を無視して、
+ファイル全体で
+<strong>文字列リテラルのコード表現での文字数</strong>から、
+<strong>文字列データのメモリ中の文字数</strong>
+を引いた値はいくらですか？</p>
+<p>たとえば、上の4つの文字列を指定すると、
+コード表現の文字列の総文字数 \(2 + 5 + 10 + 6 = 23\) から
+文字列データのメモリ中の総文字数 \(0 + 3 + 7 + 1 = 11\) を引くと
+\(23 - 11 = 12\) となります。</p>
+<details><summary>解説</summary><div>
+<p>行に対して、見た目の長さは <code>length</code> で数えられる。
+表現される文字列を作るには、両端のダブルクオートを取り除いた後、
+エスケープシーケンスを忠実に解釈すればできる。
+（<code>\x</code>の後に16進数でない文字が来るような場合は考えない。）</p>
+<pre><code class="language-haskell">import Data.Char
+
+decode :: String -&gt; String
+decode = loop . init . tail
+  where
+    loop ('\':'x':a:b:xs) = chr (digitToInt a * 16 + digitToInt b) : loop xs
+    loop ('\':'\':xs) = '\' : loop xs
+    loop ('\':'&quot;':xs) = '&quot;' : loop xs
+    loop (x:xs) = x : loop xs
+    loop [] = []
+
+part1 :: [String] -&gt; Int
+part1 ls = sum [length l - length (decode l) | l &lt;- ls]
+</code></pre>
+<p>生成後の文字列の長さだけ、直接計測することもできる。</p>
+<pre><code class="language-haskell">decodeLen :: String -&gt; Int
+decodeLen = loop (-2)
+  where
+    loop n ('\':'x':_:_:xs) = loop (succ n) xs
+    loop n ('\':'\':xs) = loop (succ n) xs
+    loop n ('\':'&quot;':xs) = loop (succ n) xs
+    loop n (x:xs) = loop (succ n) xs
+    loop n [] = n
+
+part1 :: [String] -&gt; Int
+part1 ls = sum [length l - decodeLen l | l &lt;- ls]
+</code></pre>
+</div></details>
+<h1 id="パート2-7"><a class="header" href="#パート2-7">パート2</a></h1>
+<p>では今度は逆をしましょう。
+コード表現の文字列の文字数を求めることに加えて、
+<strong>個々のコード表現を新しい文字列としてエンコード</strong>し、
+新しいエンコードされた表現の文字数（ダブルクオートを含めて）を求めてください。</p>
+<p>例えば：</p>
+<ul>
+<li><code>&quot;&quot;</code> は <code>&quot;\&quot;\&quot;&quot;</code> とエンコードされ、2文字から6文字に増加します。</li>
+<li><code>&quot;abc&quot;</code> は <code>&quot;\&quot;abc\&quot;&quot;</code> とエンコードされ、5文字から9文字に増加します。</li>
+<li><code>&quot;aaa\&quot;aaa&quot;</code> は <code>&quot;\&quot;aaa\\\&quot;aaa\&quot;&quot;</code> とエンコードされ、10文字から16文字に増加します。</li>
+<li><code>&quot;\x27&quot;</code> は <code>&quot;\&quot;\\x27\&quot;&quot;</code> とエンコードされ、6文字から11文字に増加します。</li>
+</ul>
+<p>あなたの仕事は、<strong>新しくエンコードされた文字列を表すためち必要な文字の総数</strong>から、
+<strong>それぞれの元の文字列リテラルのコード表現での文字数</strong>を引いたものを見つけることです。
+たとえば、上記の文字列の場合、
+コード化された長さ (\(6 + 9 + 16 + 11 = 42\)) から
+元のコード表現の文字の長さ (このパズルの前半と同じ23) を差し引いた結果は
+\(42 - 23 = 19\) です。</p>
+<details><summary>解説</summary><div>
+<p>生成する必要はなかった。</p>
+<pre><code class="language-haskell">encodeLen :: String -&gt; Int
+encodeLen = sum . map f
+  where
+    f '#' = 2
+    f '\' = 2
+    f  _  = 1
+
+part2 :: [String] -&gt; Int
+part2 ls = sum $ [encodeLen l - length l | l &lt;- ls]
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="9日目一晩で"><a class="header" href="#9日目一晩で">9日目：一晩で</a></h1>
+<p>毎年、サンタは、一晩ですべてのプレゼントを配達します。</p>
+<p>しかし、今年は新たに訪れる場所がいくつか増えました。
+彼の妖精は彼に場所のすべての対の間の距離を与えました。
+彼は自分が望む任意の2つの（異なる）場所から出発して終了することができますが、
+各場所をちょうど1回ずつ訪問する必要があります。
+これを達成するための彼の移動する<strong>最短距離</strong>は何ですか？</p>
+<p>たとえば、次の距離が与えられたとします。</p>
+<pre><code>London to Dublin = 464
+London to Belfast = 518
+Dublin to Belfast = 141
+</code></pre>
+<p>したがって、可能なルートは次のとおりです。</p>
+<pre><code>Dublin -&gt; London -&gt; Belfast = 982
+London -&gt; Dublin -&gt; Belfast = 605
+London -&gt; Belfast -&gt; Dublin = 659
+Dublin -&gt; Belfast -&gt; London = 659
+Belfast -&gt; Dublin -&gt; London = 605
+Belfast -&gt; London -&gt; Dublin = 982
+</code></pre>
+<p>これらの中で最短のものはLondon -&gt; Dublin -&gt; Belfast = 605で、
+この例に対する答は605です。</p>
+<p>最短ルートの距離はどれくらいですか？</p>
+<details><summary>解説</summary><div>
+<p>都市間を飛び回る距離なので、どちら向きにも移動できる無向グラフと見なせる。
+都市の数も大した事ないので、都市のリストの順列を生成し、その距離を求める。</p>
+<p>まず読み取りを行う。</p>
+<pre><code class="language-haskell">parse :: String -&gt; (String,String,Int)
+parse xs = (ws !! 0, ws !! 2, read $ ws !! 4)
+  where
+    ws = words xs
+</code></pre>
+<p>読み取った距離は、都市名を昇順にしたペアをキーに、距離を値とするマップに入れておく。
+また、順不同で都市名ペアから距離を取り出す補助関数も定義しておく。</p>
+<pre><code class="language-haskell">import qualified Data.Map as M
+
+-- ccds は parse の結果のリストとする
+distMap :: M.Map (String,String) Int
+distMap = M.fromList [(minMax c1 c2, d) | (c1,c2,d) &lt;- ccds]
+
+distOf :: String -&gt; String -&gt; Int
+distOf c1 c2 = distMap M.! minMax c1 c2
+
+minMax :: Ord a =&gt; a -&gt; a -&gt; (a, a)
+minMax a b = if a &lt;= b then (a,b) else (b,a)
+</code></pre>
+<p>順列は <code>Data.List.permutations</code> で生成できるし、自分で作っても大した手間ではない。</p>
+<pre><code class="language-haskell">perms [] = [ [] ]
+perms xs = [x:ys | x &lt;- xs, ys &lt;- perms $ delete x xs]
+</code></pre>
+<p>順列を作りだす元として、都市名のリストが必要。
+重複を <code>nub</code> で除去する。</p>
+<pre><code class="language-haskell">import Data.List
+
+cities = nub [c | (c1,c2,_) &lt;- ccds, c &lt;- [c1,c2]]
+</code></pre>
+<p><code>perms cities</code> のそれぞれの結果の総距離を求める。</p>
+<pre><code class="language-haskell">fullDist :: [String] -&gt; Int
+fullDist cs = sum $ zipWith distOf cs (tail cs)
+</code></pre>
+<p>以上の流れを対話環境で実行してもいいし、IOアクションにまとめてもよい。</p>
+<pre><code class="language-haskell">import qualified Data.Map as M
+import Data.List
+
+main1 = do
+  co &lt;- readFile &quot;input.txt&quot;
+  print $ part1 $ lines co
+
+part1 ls = (minimum dps, maximum dps)
+  where
+    ccds = map parse ls
+    distMap = M.fromList [(minMax c1 c2, d) | (c1,c2,d) &lt;- ccds]
+    cities = nub [c | (c1,c2,_) &lt;- ccds, c &lt;- [c1,c2]]
+    dps = [(fullDist cs, cs) | cs &lt;- permutations cities]
+</code></pre>
+</div></details>
+<h1 id="パート2-8"><a class="header" href="#パート2-8">パート2</a></h1>
+<p>翌年、見せびらかすために、逆にサンタは<strong>最長距離</strong>の経路を取ることにしました。</p>
+<p>前回同様、
+彼は自分が望む任意の2つの（異なる）場所から出発して終了することができますが、
+各場所をちょうど1回ずつ訪問する必要があります。</p>
+<p>例えば、上記の距離を考えると、
+最長の経路は例えば Dublin -&gt; London -&gt; Belfastの982です。</p>
+<p>最長ルートの距離はどれくらいですか？</p>
+<details><summary>解説</summary><div>
+<p>パート1でついうっかり最長の経路の距離まで求めてしまったら、
+パート2ですることがなくなってしまった。</p>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="10日目妖精は見る妖精は話す"><a class="header" href="#10日目妖精は見る妖精は話す">10日目：妖精は見る、妖精は話す</a></h1>
+<p>今日、妖精たちは
+<a href="https://ja.wikipedia.org/wiki/%E8%AA%AD%E3%81%BF%E4%B8%8A%E3%81%92%E6%95%B0%E5%88%97">読み上げ数列</a>（
+<a href="https://en.wikipedia.org/wiki/Look-and-say_sequence">look-and-say</a>）
+というゲームをしています。
+彼らは順番に前の列を朗読し、その読みを次の列として使用して列を作ります。
+たとえば、<code>211</code>は「1つの2、2つの1」と読み、<code>1221</code>という列になります。</p>
+<p>前回の値を次のステップの入力として使用して、look-and-sayの列は反復して生成されます。
+各ステップについて、前回の値を取って、
+<code>111</code>のようなそれぞれの同じ数字の並びを個数に続けてその数字そのもので置き換えます。</p>
+<p>例えば：</p>
+<ul>
+<li><code>1</code>は<code>11</code>となります。（1つの数字の<code>1</code>）</li>
+<li><code>11</code>は<code>21</code>に（2つの数字の1）</li>
+<li><code>21</code>は<code>1211</code>に（1つの数字の2、1つの数字の1）</li>
+<li><code>1211</code>は<code>111221</code>に（1つの1、1つの2、2つの1）</li>
+<li><code>111221</code>は<code>312211</code>に（3つの1、2つの2、1つの1）</li>
+</ul>
+<p>パズル入力の数字から始めて、このプロセスを40回適用します。
+<strong>結果の長さ</strong>はどれだけですか？</p>
+<details><summary>解説</summary><div>
+<p>入力は文字列として受け取り、1桁の数のリストで扱うことにする。</p>
+<pre><code class="language-haskell">import Data.Char
+
+part1 cs = ...
+  where
+    ds = map digitToInt cs
+</code></pre>
+<p><code>Data.List.group</code> で等しいものどうしに分割し、その長さを数える。
+長さは10以上になりうるので、数リストに直接戻せないことに注意。</p>
+<pre><code class="language-haskell">step :: [Int] -&gt; [Int]
+step ds =
+  [ e
+  | ds1 &lt;- group ds
+  , e &lt;- (map digitToInt $ show $ length ds1) ++ [head ds1]
+  ]
+</code></pre>
+<p>40回繰り返した結果の長さを求める。</p>
+<pre><code class="language-haskell">part1 cs = length ds40
+  where
+    ds0 = map digitToInt cs
+    ds40 = iterate step ds0 !! 40
+</code></pre>
+</div></details>
+<h1 id="パート2-9"><a class="header" href="#パート2-9">パート2</a></h1>
+<p>すばらしい！わかった？
+あなたは<a href="https://www.youtube.com/watch?v=ea7lJkEhytA">John Conwayのこの列に関する講演</a>
+も楽しめるでしょう。
+（<strong>Conwayのライフゲーム</strong>のConwayです。）</p>
+<p>さて、もう一度あなたのパズル入力の数字で始めて、
+このプロセスを<strong>50回</strong>適用してください。
+<strong>新しい結果の長さ</strong>はどのくらいですか？</p>
+<details><summary>解説</summary><div>
+<p>Wikipediaの解説を見ると、
+「1, 2, 3以外の数字は、シード番号にそのような数字または
+同じ数字の3つを超えるランが含まれていない限り、シーケンスに現れない。」
+とある。そんなことがあるのか。
+それはともかく、特に計算量を節約する何かがあるわけでもなさそうなので、
+ただ計算機をブン回す。</p>
+<pre><code class="language-haskell">part2 cs = length ds50
+  where
+    ds0 = map digitToInt cs
+    ds50 = iterate step ds0 !! 50
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="11日目企業方針"><a class="header" href="#11日目企業方針">11日目：企業方針</a></h1>
+<p>サンタの以前のパスワードは期限切れです。
+新しいパスワードを選択するのに手助けが必要です。</p>
+<p>古いパスワードが期限切れになった後に
+新しいパスワードを覚えるのを助けるために、
+サンタは前のパスワードに基づいてパスワードを設定する方法を考案しました。
+企業の方針では、
+セキュリティ上の理由からパスワードは全て小文字で
+ちょうど8文字にする必要があるため、
+古いパスワード文字列を有効になるまで
+繰り返し<strong>インクリメント</strong>して新しいパスワードを探します。</p>
+<p>インクリメントはちょうど数字で数えるようなものです。
+<code>xx</code>, <code>xy</code>, <code>xz</code>, <code>ya</code>, <code>yb</code>, などと続きます。
+一番右の文字を1つ次にしてください。
+それが<code>z</code>であった場合は<code>a</code>に巻き戻り、
+巻き戻りしなくなるまで左の次の文字について繰り返します。</p>
+<p>サンタにとって残念なことに、新しいセキュリティ担当の妖精が最近着任しました。
+彼はいくつかの追加パスワード要求を課しています。</p>
+<ul>
+<li>パスワードは少なくとも3文字の連続したインクリメントした並びを一つ含む必要がある。
+それは<code>abc</code>, <code>bcd</code>, <code>cde</code> から <code>xyz</code> までのようなものである。
+文字をスキップすることはできない。<code>abd</code>はこれに含まれない。</li>
+<li>パスワードには文字<code>i</code>, <code>o</code>, <code>l</code> を含めることはできない。
+これらの文字は他の文字と間違える可能性があり、
+したがって混乱する可能性があるためである。</li>
+<li>パスワードは<code>aa</code>, <code>bb</code>, <code>zz</code>のような文字の対を、重なりなく別個に少なくとも2つ含む必要がある。</li>
+</ul>
+<p>例えば：</p>
+<ul>
+<li><code>hijklmmn</code> 第1の要件を満たしています。（インクリメント列<code>hij</code>が含まれています。）
+しかし第2の要件に失敗しています。（<code>i</code>および<code>l</code>が含まれています。）</li>
+<li><code>abbceffg</code> 第3の要件を満たしています。（<code>bb</code>と<code>ff</code>を繰り返しています。）
+しかし第1の要件を満たしていません。</li>
+<li><code>abbcegjk</code> 第3の要件に失敗します。なぜなら、二重文字がひとつ(<code>bb</code>)しかないからです。</li>
+<li><code>abcdefgh</code>のパスワードは<code>abcdffaa</code>です。</li>
+<li><code>ghijklmn</code>のパスワードは<code>ghjaabcc</code>です。
+これは<code>i</code>が許されないために<code>ghi...</code>で始まるすべてのパスワードを結局スキップするためです。</li>
+</ul>
+<p>サンタの現在のパスワード（あなたのパズル入力）が与えられたとき、
+彼の<strong>次のパスワード</strong>は何ですかか？</p>
+<p>あなたのパズル入力は<code>hxbxwxba</code>です。</p>
+<details><summary>解説</summary><div>
+<p>繰り上がりありで列をインクリメントするには、逆順になっているとHaskell的には都合がよい。</p>
+<pre><code class="language-haskell">incr ('z':cs) = 'a' : incr cs  -- 繰り上がり
+incr ( c :cs) = succ c : cs
+  | elem c &quot;iol&quot; = succ (succ c) : cs -- 禁止文字は飛ばす
+  | otherwise    = succ       c  : cs
+incr &quot;&quot; = &quot;&quot;
+</code></pre>
+<p>インクリメント列は、後ろからはデクリメント列に見える。</p>
+<pre><code class="language-haskell">cond1 (c1:c2:c3:_) | succ c3 == c2 &amp;&amp; succ c2 == c1 = True
+cond1 (_:cs) = cond1 cs
+cond1 [] = False
+</code></pre>
+<p>禁止文字はインクリメントでは出現しないが、
+初期文字の全ての禁止文字がインクリメントで消えるまで捨て続けるのも無駄になる。
+禁止文字が全て消えた最初の文字列とは、元の順序で最も前にある禁止文字を次の文字にし、
+それ以降を全て <code>a</code> にしたものである。これを構築することで条件2の判定に代える。</p>
+<pre><code class="language-haskell">clearCond2 &quot;&quot; = &quot;&quot;
+clearCond2 (c:cs)
+  | elem c &quot;iol&quot; = succ c : map (const 'a') cs
+  | otherwise    = c : clearCond2 cs
+</code></pre>
+<p>最後の例が <code>ghjaabaa</code> とならず <code>ghjaabcc</code> であることから、条件3の「別個」が厳しい意味であるとわかる？
+そうでなくて、&quot;abc&quot;という続きが必要だ、という条件の方らしい。厳しくないのなら <code>nub</code> を消せばよい。</p>
+<pre><code class="language-haskell">cond3 cs =
+  case nub [c | (c,d) &lt;- zip cs $ tail cs, c == d] of
+    (_:_:_) -&gt; True
+    _       -&gt; False
+</code></pre>
+<p>全体をまとめる。</p>
+<pre><code class="language-haskell">part1 :: String -&gt; String
+part1 = reverse . until cond13 incr . reverse . clearCond2
+
+cond13 xs = cond1 xs &amp;&amp; cond3 xs
+</code></pre>
+</div></details>
+<h1 id="パート2-10"><a class="header" href="#パート2-10">パート2</a></h1>
+<p>サンタのパスワードが再び期限切れになりました。次は何ですか？</p>
+<details><summary>解説</summary><div>
+<p>パート1の結果を <code>part1</code> にかけるだけで、コードの追加はない。</p>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="12日目jsabacusframeworkio"><a class="header" href="#12日目jsabacusframeworkio">12日目：JSAbacusFramework.io</a></h1>
+<p>サンタの会計担当妖精は、最近の注文後の帳簿のバランスを取るのに手助けか必要です。
+残念なことに、彼らの会計ソフトウェアは異様な記録形式を使用しています。
+そんなところにあなたが来ました。</p>
+<p>彼らはJSON文書を持っています。
+それは様々なものを含んでいます。
+配列(<code>[1,2,3]</code>)、オブジェクト(<code>{&quot;a&quot;:1, &quot;b&quot;:2}</code>)、数値、文字列です。
+あなたの最初の仕事は、
+文書全体からすべての数値を見つけてそれらを足し合わせることです。</p>
+<p>例えば：</p>
+<ul>
+<li><code>[1,2,3]</code>と<code>{&quot;a&quot;:2,&quot;b&quot;:4}</code>は両方とも合計6です。</li>
+<li><code>[[[3]]]</code>と<code>{&quot;a&quot;:{&quot;b&quot;:4},&quot;c&quot;:-1}</code>は両方とも合計3です。</li>
+<li><code>{&quot;a&quot;:[-1,1]}</code>と<code>[-1,{&quot;a&quot;:1}]</code>は両方とも合計0です。</li>
+<li><code>[]</code>と<code>{}</code>は両方とも合計0です。</li>
+</ul>
+<p>文字列に数字が含まれることはありません。</p>
+<p>文書内の<strong>すべての数値</strong>の合計はいくつですか？</p>
+<details><summary>解説</summary><div>
+<p>JSONライブラリを使ってもいいが、この程度の構文は自分で読み込んでしまおう。
+まず、JSONデータとは、数字列、ダブルクオートで囲まれた文字列、角括弧とコンマによる配列、
+波括弧と文字列とコロンとコンマによるオブジェクトである。</p>
+<pre><code class="language-haskell">import Text.Parsec
+import Text.Parsec.Char
+
+data JSON = JSONNum Int | JSONStr String | JSONList [JSON] | JSONObj [(String, JSON)] deriving Eq
+
+numP :: Parsec String u JSON
+numP = do
+  s &lt;- option id (negate &lt;$ char '-')
+  JSONNum . s . read &lt;$&gt; many1 digit
+
+strP :: Parsec String u JSON
+strP = JSONStr &lt;$&gt; between (char '&quot;') (char '&quot;') (many1 letter)
+
+lstP :: Parsec String u JSON
+lstP = JSONList &lt;$&gt; between (char '[') (char ']') (sepBy jsonP (char ','))
+
+objP :: Parsec String u JSON
+objP = JSONObj &lt;$&gt; between (char '{') (char '}') (sepBy colonedP (char ','))
+  where
+    colonedP = do
+      k &lt;- between (char '&quot;') (char '&quot;') (many1 letter)
+      char ':'
+      v &lt;- jsonP
+      return (k,v)
+
+jsonP :: Parsec String u JSON
+jsonP = choice [try numP, try strP, try lstP, objP]
+
+allP :: Parsec String u JSON
+allP = do
+  j &lt;- jsonP
+  eof
+  return j
+</code></pre>
+<p><code>JSON</code>型の値が読み込めたら、走査して数値をすべて列挙し、それを足し合わせる。</p>
+<pre><code class="language-haskell">traverse1 :: JSON -&gt; [Int]
+traverse1 j = iter j []
+  where
+    iter (JSONNum n) rest = n : rest
+    iter (JSONList js) rest = foldr iter rest js
+    iter (JSONObj kvs) rest = foldr (iter . snd) rest kvs
+    iter _ rest = rest
+
+part1 = do
+  co &lt;- readFile &quot;input.txt&quot;
+  let Right j = runParser allP () &quot;&quot; co
+  print $ sum $ traverse1 j
+</code></pre>
+</div></details>
+<h1 id="パート2-11"><a class="header" href="#パート2-11">パート2</a></h1>
+<p>あちゃー…会計担当妖精は、彼らは赤字をすべて二重に数えたことに気付いた。</p>
+<p>値<code>&quot;red&quot;</code>を持つ任意のプロパティを持つオブジェクト（およびそのすべての子）を無視します。
+これはオブジェクト(<code>{...}</code>)だけで行い、配列(<code>[...]</code>)では行いません。</p>
+<ul>
+<li><code>[1,2,3]</code>はやはり合計6です。</li>
+<li><code>[1,{&quot;c&quot;:&quot;red&quot;,&quot;b&quot;:2},3]</code>は中間のオブジェクトが無視されるため、今は合計4です。</li>
+<li><code>{&quot;d&quot;:&quot;red&quot;,&quot;e&quot;:[1,2,3,4],&quot;f&quot;:5}</code>は構造体全体が無視されるため、今は合計0です。</li>
+<li><code>[1,&quot;red&quot;,5]</code>は合計6です。配列中の<code>&quot;red&quot;</code>には何の効果もありません。</li>
+</ul>
+<details><summary>解説</summary><div>
+<p>走査の際に、オブジェクトに遭遇した場合、値に <code>&quot;red&quot;</code> があれば0で戻るロジックを追加する。</p>
+<pre><code class="language-haskell">traverse2 :: JSON -&gt; [Int]
+traverse2 j = iter j []
+  where
+    iter (JSONNum n) rest = n : rest
+    iter (JSONList js) rest = foldr iter rest js
+    iter (JSONObj kvs) rest
+      | elem (JSONStr &quot;red&quot;) vs = rest
+      | otherwise               = foldr iter rest vs
+      where
+        vs = map snd kvs
+    iter _ rest = rest
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="13日目食卓の騎士"><a class="header" href="#13日目食卓の騎士">13日目：食卓の騎士</a></h1>
+<p>この数年間、あなたの家族との休暇の饗宴はあまりうまくいっていませんでした。
+皆が仲良しという訳にはいかないのです！
+今年はそんな状況を変えようとあなたは決心しました。
+<strong>最適な座席の配置</strong>を見つけ、それらの気まずい会話をすべてなくすつもりです。</p>
+<p>あなたはまず招待したすべての人のリストと、
+彼らが隣に誰が座っているときにその幸福度が増減する量を
+すべての組み合わせについて書くことから始めました。
+全員が快適にちょうど収まる大きさの円形テーブルがあなたの家にあり、
+それぞれの人が2人の隣人を持つことになります。</p>
+<p>たとえば、予定されている出席者が4人だけで、次のように幸福度を算出したとします。</p>
+<pre><code>Alice would gain 54 happiness units by sitting next to Bob.
+Alice would lose 79 happiness units by sitting next to Carol.
+Alice would lose 2 happiness units by sitting next to David.
+Bob would gain 83 happiness units by sitting next to Alice.
+Bob would lose 7 happiness units by sitting next to Carol.
+Bob would lose 63 happiness units by sitting next to David.
+Carol would lose 62 happiness units by sitting next to Alice.
+Carol would gain 60 happiness units by sitting next to Bob.
+Carol would gain 55 happiness units by sitting next to David.
+David would gain 46 happiness units by sitting next to Alice.
+David would lose 7 happiness units by sitting next to Bob.
+David would gain 41 happiness units by sitting next to Carol.
+</code></pre>
+<p>あなたがAliceをDavidの隣に着席させると、Aliceは幸せを2単位を失います。
+（Davidがとてもおしゃべりなせいです。）
+一方Davidは幸せを46単位得るでしょう。
+（Aliceはとても良い聞き手だからです。）
+合計で+44です。</p>
+<p>テーブルを周って続けて、BobをAliceの隣に座らせるかもしれません。
+（Bobは83得て、Aliceは54得る。）
+最後にCarolを席に着かせて、隣はBob（Carolは60得て、Bobは7失う）とDavid（Carolは55得て、Davidは41得る）。
+配置は次のようになります。</p>
+<pre><code>     +41 +46
++55   David    -2
+Carol       Alice
++60    Bob    +54
+     -7  +83
+</code></pre>
+<p>この仮定のシナリオで、他のすべての座席配置を試すと、
+これが最も最適であり、全体の幸せ度が330となることがわかります。</p>
+<p>実際のゲストのリストに対する最適な座席配置における
+<strong>幸せ度の合計</strong>はいくつですか？</p>
+<details><summary>解説</summary><div>
+<p>まずこのフォーマットの読み込みから始める必要がある。</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: right">位置</th><th>内容</th></tr></thead><tbody>
+<tr><td style="text-align: right">0</td><td>主語</td></tr>
+<tr><td style="text-align: right">2</td><td>gain/lose</td></tr>
+<tr><td style="text-align: right">3</td><td>幸せ度</td></tr>
+<tr><td style="text-align: right">10</td><td>隣人</td></tr>
+</tbody></table>
+</div>
+<p>この結果を保存するデータ構造を選ぶのに、本体でどう使うかを考える。
+人の名前の順列を作り、隣同士のペアで幸せ度を集計する。
+つまり、人の名前の（主語, 隣人）という対をキーとすればよいだろう。</p>
+<pre><code class="language-haskell">parse :: String -&gt; ((String,String), Int)
+parse xs = ((w0, init w10), (if w2 == &quot;gain&quot; then id else negate) (read w3))
+  where
+    [w0,_,w2,w3,_,_,_,_,_,_,w10] = words xs
+</code></pre>
+<p>ペアの左を集めて <code>nub</code> することで参加者一覧を得て、順列を作り、幸福度の合計を求める。
+先頭の一人は固定して構わない。</p>
+<pre><code class="language-haskell">import Data.List
+import qualified Data.Map as M
+
+main1 = do
+  co &lt;- readFile &quot;input.txt&quot;
+  print $ part1 $ lines co
+
+part1 ls = maximum $ map score $ permutations ps
+  where
+    pqxs = map parse ls
+    (p1:ps) = nub $ map (fst . fst) pqxs
+    pqxm = M.fromList pqxs
+    score ps = sum
+      [pqxm M.! (p,q) + pqxm M.! (q,p) | (p,q) &lt;- zip (p1 : ps) (ps ++ [p1])]
+</code></pre>
+</div></details>
+<h1 id="パート2-12"><a class="header" href="#パート2-12">パート2</a></h1>
+<p>大騒ぎの中で、あなたは自分を座らせるのを忘れていたことに気づきます。</p>
+<!-- そういやそうだ。ワロス。-->
+<p>この点で、あなたは全体に対してかなり無関心であり、
+隣に座っている人によってあなたの幸福度は実際のところ上がったり下がったりしません。
+あなたは他の人についても、
+誰もがあなたが隣に座っていることについて
+同様に無関心である(ambivalent ?)と仮定します。</p>
+<p>よって、自分自身をリストに追加して、
+あなたに関係するすべての幸福関係にスコア0を与えてください。</p>
+<!-- やり方バラしてるやん -->
+<p>実際にあなた自身を含む最適な座席配置に対する<strong>幸せ度の合計</strong>はいくつですか？</p>
+<details><summary>解説</summary><div>
+<p>書いてあるとおりに求める。</p>
+<pre><code class="language-haskell">main2 = do
+  co &lt;- readFile &quot;input.txt&quot;
+  print $ part2 $ lines co
+
+part2 ls = maximum $ map score $ permutations ps
+  where
+    pqxs = map parse ls
+    ps = nub $ map (fst . fst) pqxs
+    pqxm = M.fromList $ pqxs ++ [(pq, 0) | p &lt;- ps, pq &lt;- [(&quot;me&quot;,p), (p,&quot;me&quot;)]]
+    score ps = sum
+      [pqxm M.! (p,q) + pqxm M.! (q,p) | (p,q) &lt;- zip (&quot;me&quot; : ps) (ps ++ [&quot;me&quot;])]
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="14日目トナカイオリンピック"><a class="header" href="#14日目トナカイオリンピック">14日目：トナカイオリンピック</a></h1>
+<p>今年はトナカイオリンピックです！
+トナカイは高速で飛ぶことができますが、
+エネルギーを回復するために時々休まなければなりません。
+サンタは、彼のトナカイのどれが最速かを知りたいので、
+彼はレースをさせます。(have one race?)</p>
+<p>トナカイは<strong>飛行状態</strong>（常に最高速度）
+または<strong>休息</strong>（全く動かない）のいずれかで、
+すべての時間でいずれかの状態にあります。</p>
+<p>たとえば、次のようなトナカイがあるとします。</p>
+<ul>
+<li>Cometは<strong>14km/sで10秒間</strong>飛行できますが、その後<strong>127秒間</strong>休む必要があります。</li>
+<li>Dancerは<strong>16km/sで11秒間</strong>飛行できますが、その後は<strong>162秒間</strong>休む必要があります。</li>
+</ul>
+<p>1秒後、Cometは14km、Dancerは16km進みました。
+10秒後、Cometは140km、Dancerは160km進みました。
+11秒目に、Cometは休息を開始し（140kmに留まる）、Dancerは飛び続けて176kmまで進みます。
+12秒目には、両方のトナカイが休息しています。
+Comentがさらに10秒間飛ぼうとするまでの138秒目まで、
+彼らは休み続けます。
+174秒目に、Dancerは次の11秒間の飛行を開始します。</p>
+<p>この例では、1000秒後に両方のトナカイが休息しており、
+Cometが<strong>1120km</strong>で先行しています。
+（この時点ではかわいそうなDancerは<strong>1056km</strong>しか進めていません。）
+したがって、この状況ではComentが勝ちます（レースが1000秒で終了した場合）。</p>
+<p>（あなたのパズル入力として）各トナカイの説明が与えられています。
+ちょうど2503秒後に、<strong>優勝したトナカイはどれだけの距離を移動しましたか？</strong></p>
+<details><summary>解説</summary><div>
+<p>また読み込みから。</p>
+<pre><code class="language-haskell">parse :: String -&gt; (Int,Int,Int)
+parse xs = (read $ ws !! 3, read $ ws !! 6, read $ ws !! 13)
+  where
+    ws = words xs
+</code></pre>
+<p>(速度 \(s\)、飛行時間 \(t\)、休憩時間 \(u\)) というトナカイが \(D\) 秒飛ぶとき、
+全体のサイクルを回せる回数 \(q\) と、最後のサイクルをさらにする秒数 \(r\) は
+\((q,r) = \textrm{divMod}(D, t+u)\) である。
+このとき飛行した時間の総計は \(q \, t + \min(t, r)\)となる。</p>
+<pre><code class="language-haskell">main1 = do
+  co &lt;- readFile &quot;input.txt&quot;
+  print $ part1 2503 $ lines co
+
+part1 time ls = maximum
+  [ s * (q * t + min t r) | (s,t,u) &lt;- map parse ls, let (q,r) = divMod time (t + u)]
+</code></pre>
+</div></details>
+<h1 id="パート2-13"><a class="header" href="#パート2-13">パート2</a></h1>
+<p>トナカイが爆発的に動くのを見て、
+サンタは自分が古い評価体系に満足していないと判断します。</p>
+<p>代わりに、各秒の終わりに、
+彼は現在首位であるトナカイに1点を与えます。
+（同点一位のトナカイが複数いる場合は、全員がれぞれ1点を得ます。）
+彼はもちろん、伝統的な2503秒の制限時間を守りました。
+そうしないのは完全にばかげているからです。</p>
+<p>上の例のトナカイを考えると、
+最初の1秒後、Dancerが先行して1点を獲得します。
+彼はComentの2回目の爆発までの数秒の間は先行しつづけます。
+140秒後、Cometが先頭に立ち、最初の得点を獲得します。
+もちろん、Dancerはそれまでの139秒間は先行していたので、
+140秒めまでに139点を貯めています。</p>
+<p>1000秒後、Dancerは<strong>689</strong>点を貯めていましたが、
+以前の勝者であるかわいそうなCometは312点しか持っていません。
+したがって、新しい評価体系ではDancerが勝利します（レースが1000秒で終了した場合）。</p>
+<p>今回も（あなたのパズル入力の中の）各トナカイの説明が与えられたとき、
+ちょうど2503秒後に、<strong>優勝したトナカイはどれだけの点を獲得しましたか？</strong></p>
+<details><summary>解説</summary><div>
+<p>それぞれのトナカイについて、次の1秒で進む距離（または0）のリストを作り、
+これを累積することで各時刻の位置を作り、一位を選んで点数を付与する、を繰り返す。</p>
+<pre><code class="language-haskell">import Data.List
+
+main2 = do
+  co &lt;- readFile &quot;input.txt&quot;
+  print $ part2 2503 $ lines co
+
+part2 time ls =
+  maximum $ foldl1 (zipWith (+)) $
+  map score2max $ take time $ transpose $
+  [ scanl1 (+) $ cycle $ replicate t s ++ replicate u 0
+  | (s,t,u) &lt;- map parse ls ]
+
+score2max xs = [if m == x then 1 else 0 | x &lt;- xs]
+  where
+    m = maximum xs
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="第15日飢えた人々のための科学"><a class="header" href="#第15日飢えた人々のための科学">第15日：飢えた人々のための科学</a></h1>
+<p>今日あなたは牛乳浸しクッキーのレシピを完成させる作業を開始しました。
+あなたがしなければならないことは、原材料の適切なバランスを見つけることだけです。</p>
+<p>あなたのレシピは小さじちょうど100杯の原材料の余地が残っています。
+<strong>レシピを完成させるために使用できる残りの原材料</strong>のリスト（パズルの入力）と
+小さじ1杯ごとの特性値のリストを作成します。</p>
+<ul>
+<li><code>capacity</code> （容量：クッキーが牛乳を吸収するのをどれくらい助けるか）</li>
+<li><code>durability</code> （耐久：牛乳でいっぱいになったときにクッキーをどのくらい崩れなく保つか）</li>
+<li><code>flavor</code> （風味：クッキーをどれだけ美味しくするか）</li>
+<li><code>texture</code> （口当たり：クッキーの感触をどれだけよくするか）</li>
+<li><code>calories</code> （栄養価：クッキーに追加されるカロリーの量）</li>
+</ul>
+<p>あなたは原材料を小さじ1杯単位でのみ量り取ることができ、
+また今後も結果を再現できるように正確でなければなりません。
+クッキーの<strong>総合点</strong>は、
+特性値をそれぞれ合算して（負の合計は0となる）、
+カロリー以外のすべてを掛け合わせることで得られます。</p>
+<p>たとえば、次の2つの原材料があるとします。</p>
+<pre><code>Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8
+Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3
+</code></pre>
+<p>すると、バタースコッチを小さじ44杯とシナモンを小さじ56杯使う
+（各原材料の量は合計して100になる必要があります）
+ことを選択すると、
+以下の特性値を有するクッキーが得られます。</p>
+<ul>
+<li>容量 \(44 \times (-1) + 56 \times 2 = 68\)</li>
+<li>耐久 \(44 \times (-2) + 56 \times 3 = 80\)</li>
+<li>風味 \(44 \times 6 + 56 \times (-2) = 152\)</li>
+<li>口当たり \(44 \times 3 + 56 \times (-1) = 76\)</li>
+</ul>
+<p>これらを掛け合わせると（\(68 \times 80 \times 152 \times 76\), ここではカロリーは無視します）、
+総合点<code>62842880</code>が得られます。
+これはこれらの原材料が与えられたときに可能な最高得点です。
+いずれかの特性値が負の合計を生成した場合は、
+それは零になるので、掛け合わせることで総合点が零になります。</p>
+<p>あなたの台所にある原材料その特性値が与えられたとき、
+作ることができる最高得点のクッキーの<strong>総合点</strong>はいくらですか？</p>
+<details><summary>解説</summary><div>
+<p>場合の数が相当になるがともかく、全ての配分を作り出す。
+あとk種類の材料で合計wを作る。</p>
+<pre><code class="language-haskell">recipe 1 w = [[w]]
+recipe k 0 = [replicate k 0]
+recipe k w = [ x : ys | x &lt;- [0..w], ys &lt;- recipe (pred k) (w - x)]
+</code></pre>
+<p>配列DPにすると、重複した呼び出しを節約できる。</p>
+<pre><code class="language-haskell">import Data.Array
+import Data.Ix
+
+-- numは材料の種類の数
+mkRecipe num = recipeA ! (num, 100)
+  where
+    bnds = ((1,0), (num,100))
+    recipeA = array bnds [(kw,recipeF kw) | kw &lt;- range bnds]
+    recipeF (1,w) = [[w]]
+    recipeF (k,0) = [replicate k 0]
+    recipeF (k,w) = [x : ys | x &lt;- [0..w], ys &lt;- recipeA ! (pred k, w - x)]
+</code></pre>
+<p>材料ごとに、その特性値がリストのリスト(<code>list</code>)で与えられているとして、
+<code>recipes</code>の各要素について使用量を掛けて足し合わせ、0で足切りした合計を（カロリーを除いて）求め、
+その最大値を見つければよい。</p>
+<pre><code class="language-haskell">part1 list recipes =
+  maximum
+    [ product $ map (max 0) $ init $ foldl1' (zipWith (+)) $ zipWith (\r ps -&gt; map (r *) ps) re list
+    | re &lt;- recipes ]
+</code></pre>
+<p>このようにリストを読み込む。</p>
+<pre><code class="language-haskell">parse :: String -&gt; [Int]
+parse xs = map read (map init [cap,dur,fvr,tex] ++ [cal])
+  where
+    [_,_,cap,_,dur,_,fvr,_,tex,_,cal] = words xs
+
+main1 = do
+  co &lt;- readFile &quot;input.txt&quot;
+  let list = map parse $ lines co
+  let recipes = mkRecipe $ length list
+  print $ part1 list recipes
+</code></pre>
+</div></details>
+<h1 id="パート2-14"><a class="header" href="#パート2-14">パート2</a></h1>
+<p>あなたのクッキーレシピは大人気になりました！</p>
+<p>クッキーひとつがちょうど500カロリーを持つ
+別のレシピを作ることができるかどうかを尋ねられました。
+（そうすると彼らは食事の代わりとしてそれを使用することができます。）
+残りのあなたの受賞歴のあるプロセスは同じにしてください。
+（小さじ100杯、同じ材料、同じ採点システム）</p>
+<p>例えば、上の材料を考えれば、
+代わりに小さじ40杯のバタースコッチと小さじ60杯のシナモンを選択した場合、
+（やはり合計で100杯になる必要があります）
+合計カロリーは \($40 \times 8 + 60 \times 3 = 500$になります。
+ただし総合点はたった57600000に下がります。
+これはこの試行中の状況でできる最高値です。</p>
+<p>あなたの台所にある原材料とその特性値が与えられたとき、</p>
+<p>を考えると、あなたがの
+500カロリーで作ることができる
+最高得点のクッキーの<strong>総合点</strong>はいくらですか？</p>
+<details><summary>解説</summary><div>
+<p>スコアを求める内包表記を改造して、カロリー500のもの限定にする。</p>
+<pre><code class="language-haskell">part2 list recipes =
+  maximum
+    [ product $ map (max 0) $ init vals
+    | re &lt;- recipes
+    , let vals = foldl1' (zipWith (+)) $ zipWith (map . (*)) re list
+    , last vals == 500
+    ]
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="16日目スーおばさん"><a class="header" href="#16日目スーおばさん">16日目：スーおばさん</a></h1>
+<p>あなたのスーおばさんはあなたに素晴らしい贈り物をくれました。
+そこであなたは彼女に感謝の手紙を送りたいのです。
+しかし、ちょっとした問題があります。
+彼女は「スーおばさんより」と記名していました。</p>
+<p>あなたには「スー」という名前のおばが500人います。</p>
+<p>だから、間違った人に手紙を送るのを避けるために、
+あなたはどのスーおばさん
+（あなたは自分の正気を保つために便宜上1から500の番号を付けています）
+があなたに贈り物をしたのかを知る必要があります。
+あなたは贈り物を開けます。なんと運のいいことでしょう。
+古きよきスーおばさんはあなたにマイファースト犯罪現場分析機をくれました！
+まさにあなたが欲しいもの、あるいは必要なもの、です。</p>
+<p>マイファースト犯罪現場分析機
+（My First Crime Scene Analysis Machine, 略してMFCSAM）は、
+与えられたサンプル中のいくつかの特定の化合物、
+およびそれらの化合物の種類がいくつあるかを検出することができます。
+説明書によると、MFCSAMが検出できるものは以下のとおりです。</p>
+<ul>
+<li><code>children</code>（子供） 人間のDNA年齢分析ができます。</li>
+<li><code>cats</code>（猫） 個々の品種は区別できません。</li>
+<li>いくつかの一見ランダムな犬の品種：
+<code>samoyeds</code>（サモエド）, <code>pomeranians</code>（ポメラニアン）,
+<code>akitas</code>（秋田犬）, <code>vizslas</code>（ショートヘアード・ハンガリアン・ビズラ）</li>
+<li><code>goldfish</code>（金魚）それ以外の魚は検出できません。</li>
+<li><code>trees</code> （木）1つのグループにまとめられています。</li>
+<li><code>cars</code>（車）おそらく排気ガスかガソリンか何かによって。</li>
+<li><code>perfumes</code>（香水）あなたのスーおばさんの多くはいくつかを付けているので、これは便利です。</li>
+</ul>
+<p>実際には、あなたのスーおばさんの多くはこれらの多くを持っています。
+あなたは贈り物の包装をMFCSAMに入れました。
+それはあなたに数回不思議にビープ音を鳴らしてから
+紙テープ(ticker tape)にメッセージをプリントアウトします。</p>
+<pre><code>children: 3
+cats: 7
+samoyeds: 2
+pomeranians: 3
+akitas: 0
+vizslas: 0
+goldfish: 5
+trees: 3
+cars: 2
+perfumes: 1
+</code></pre>
+<p>あなたはそれぞれのスーおばさんについて、思い出せたもののリストを作ります。
+あなたのリストには欠けているものは、
+あなたが単に数を覚えていなかいということで、
+ゼロだという意味ではありません。</p>
+<p>あなたに贈り物をしたスーおばさんの<strong>番号</strong>はいくつですか？</p>
+<details><summary>解説</summary><div>
+<p>物の名前と、整数が対になっている。
+思い出したメモの内容で、MFCSAMの情報と矛盾がないものを選択する。
+おばさんの情報は <code>Data.Map.Map String Int</code> の形式で扱う。</p>
+<pre><code class="language-haskell">import qualified Data.Map as M
+import Data.Maybe
+
+mfcsam =
+  [(&quot;children:&quot;,3),(&quot;cats:&quot;,7),(&quot;samoyeds:&quot;,2),(&quot;pomeranians:&quot;,3),(&quot;akitas:&quot;,0)
+  ,(&quot;vizslas:&quot;,0),(&quot;goldfish:&quot;,5),(&quot;trees:&quot;,3),(&quot;cars:&quot;,2),(&quot;perfumes:&quot;,1)]
+
+part1 aunts = [id | (id, aunt) &lt;- zip [1..] aunts, all (check aunt) mfcsam]
+
+check aunt (k,v) = maybe True (v ==) $ M.lookup k aunt
+
+parse xs = M.fromList $ loop ws
+  where
+    ws = drop 2 $ words xs
+    loop [k,v] = [(k, read v)] -- 最後だけコンマがないため
+    loop (k:v:ws) = (k, read $ init v) : loop ws
+
+main1 = do
+  co &lt;- readFile &quot;input.txt&quot;
+  let aunts = map parse $ lines co
+  print $ part1 aunts
+</code></pre>
+</div></details>
+<h1 id="パート2-15"><a class="header" href="#パート2-15">パート2</a></h1>
+<p>あなたがお礼状を送ろうとしたそのとき、
+MFCSAMの説明書の中の何かがあなたの目を引きます。</p>
+<p>どうやら、それは旧式のテム＝レイサーキット
+（原文では<a href="https://www.youtube.com/watch?v=RXJKdh1KZ0w">retroencabulator</a>, <a href="https://en.wikipedia.org/wiki/Turboencabulator">Wikipedia</a>）
+を使っているため、機械からの出力は正確な値ではありません。
+それらのいくつかは範囲を示しています。</p>
+<p>特に、<code>cats</code>と<code>trees</code>の読み取り値は、
+それ<strong>より多く</strong>のものがあることを示しています
+（猫のフケと木の花粉の予測できない核崩壊のため）、
+一方<code>pomeranians</code>と<code>goldfish</code>の読み取り値は、
+それ<strong>より少ない</strong>ことを示しています
+（磁気抵抗のモード相互作用による） 。
+(modial?)</p>
+<p>本物のスーおばさんの<strong>番号</strong>は何でしょう？</p>
+<details><summary>解説</summary><div>
+<p>比較関数を妥当なものに交換しつつ検査する形に変更する。</p>
+<pre><code class="language-haskell">part2 =
+  [ id
+  | (id, aunt) &lt;- zip [1..] aunts
+  , all (check   aunt) mfcsamEQ
+  , all (checkLT aunt) mfcsamLT
+  , all (checkGT aunt) mfcsamGT]
+
+checkLT aunt (k,v) = maybe True (v &gt;) $ M.lookup k aunt
+checkGT aunt (k,v) = maybe True (v &lt;) $ M.lookup k aunt
+
+mfcsamEQ = [(&quot;children:&quot;,3),(&quot;samoyeds:&quot;,2),(&quot;akitas:&quot;,0)
+           ,(&quot;vizslas:&quot;,0),(&quot;cars:&quot;,2),(&quot;perfumes:&quot;,1)]
+mfcsamLT = [(&quot;pomeranians:&quot;,3),(&quot;goldfish:&quot;,5)]
+mfcsamGT = [(&quot;cats:&quot;,7),(&quot;trees:&quot;,3)]
+
+main2 = readFile &quot;input.txt&quot; &gt;&gt;= print . part2 . map parse . lines
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="17日目多くていけないものはない"><a class="header" href="#17日目多くていけないものはない">17日目：多くていけないものはない</a></h1>
+<p>妖精はまたもや卵酒を買いすぎました、今度は150リットル。
+それをすべてあなたの冷蔵庫に収めるには、小さな容器に移す必要があります。
+あなたは利用可能な容器の容量のリストを書きます。</p>
+<p>たとえば、あなたが20, 15, 10, 5, 5リットルの容器を持っているとします。
+25リットルを保管する必要がある場合は、4つの方法があります。</p>
+<ul>
+<li>15と10</li>
+<li>20と5（ひとつめの5）</li>
+<li>20と5（ふたつめの5）</li>
+<li>15, 5, 5</li>
+</ul>
+<p>使う容器はいっぱいにして使うという条件で、
+150リットルの卵酒をちょうど収める
+<strong>容器の異なる組み合わせ</strong>
+はいくつありますか？</p>
+<details><summary>解説</summary><div>
+<p>入力の容器の個数は20個あるので、その総当たりの組み合わせは \(2^20 = 1,048,576\) と少々多い。
+（力任せにやれないこともないが。）</p>
+<p>容器を順に追加して、xxリットルを量る方法の通り数を数えるDPを行う。
+最初は「0リットルを量る方法は1とおり」から、
+\(x\) リットルの容器を追加したとき、既知の方法に \(+x\) した方法が足しこまれる。</p>
+<pre><code class="language-haskell">import qualified Data.IntMap as IM
+
+part1 xs = IM.findWithDefault 0 150 im
+  where
+    im = foldl step (IM.singleton 0 1) xs
+    step im x = IM.unionWith (+) im $ IM.mapKeysMonotonic (x +) im
+
+main1 = readFile &quot;input.txt&quot; &gt;&gt;= print . part1 . map read . lines
+</code></pre>
+</div></details>
+<h1 id="パート2-16"><a class="header" href="#パート2-16">パート2</a></h1>
+<p>台所のあるだけの容器で遊んでいる間に、卵酒の別の配達が到着しました！
+出荷部門と受入部門は、できるだけ多くの容器を使えるようにしておくことを求めています。</p>
+<p>150リットルの卵酒をぴったり入れられる容器の最小数を見つけてください。
+その数の容器をいっぱいにしてちょうど150リットルを保持できる<strong>方法はいくつありますか？</strong></p>
+<p>上記の例では、容器の最小数は2です。
+その数の容器をを使用する方法は3とおりあり、
+よって答は3となります。</p>
+<details><summary>解説</summary><div>
+<p>マップで記録することがらを、単なる場合の数でなく、
+使う容器の個数ごとの場合の数のリストに変更する。</p>
+<pre><code class="language-haskell">part2 xs = (length as, b) -- 答えは snd、fstは使う容器の個数
+  where
+    im = foldl step (IM.singleton 0 [1]) xs
+    step im x = IM.unionWith (zipWith1 (+)) im $ IM.mapKeysMonotonic (x +) $ IM.map (0 :) im
+    (as,b:_) = span (0 ==) $ IM.findWithDefault [] 150 im
+
+zipWith1 :: (a-&gt;a-&gt;a) -&gt; [a] -&gt; [a] -&gt; [a]
+zipWith1 _ xs [] = xs
+zipWith1 _ [] ys = ys
+zipWith1 f (x:xs) (y:ys) = f x y : zipWith1 f xs ys
+
+main2 = readFile &quot;input.txt&quot; &gt;&gt;= print . part2 . map read . lines
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="18日目あなたの庭のgifアニメ"><a class="header" href="#18日目あなたの庭のgifアニメ">18日目：あなたの庭のGIFアニメ</a></h1>
+<p>100万灯ライト事件の後、防火条例がより厳しくなりました。
+今では許されるのは1万本までのライトです。
+あなたはそれを \(100 \times 100\) の碁盤状に並べました。</p>
+<p>あなたを失望させることは絶対にありません、
+サンタは今回も理想的な照明の構成の手順をメールであなたに送りました。
+それほど少ない数のライトでは、彼の言うには、
+<strong>アニメーション</strong>の力を借りる必要があるとのことです。</p>
+<p>同封した初期状態（あなたのパズル入力）にライトを構成して始めます。
+<code>#</code>は点灯、<code>.</code>は消灯を表します。</p>
+<p>そして、ステップであなたのグリッドをアニメーションさせてください。
+各ステップでは現在の構成に基づいて次の構成を決定します。
+それぞれのライトの次の状態（点灯または消灯）は
+その現在の状態とそれに隣接（斜めも含む）する8個のライトの
+現在の状態に依存しています。
+グリッドの縁にあるライトは隣人が8より少ないですが、欠けている部分は常に消灯として数えます。</p>
+<p>例えば、下の単純化した6x6のグリッドで、
+<code>A</code>と印したライトは1から8の隣人を持ちますが、
+<code>B</code>と印したライトは縁にあるので、1から5の隣人しかありません。</p>
+<pre><code>1B5...
+234...
+......
+..123.
+..8A4.
+..765.
+</code></pre>
+<p>ライトの次の状態は現在の状態（点灯または消灯）と
+<strong>点灯している隣人の数</strong>に基づいて決まります。</p>
+<ul>
+<li><strong>点灯</strong>しているライトは
+点灯している隣人が2または3であるとき点灯を続け、
+さもなくば消灯します。</li>
+<li><strong>消灯</strong>しているライトは
+点灯している隣人がちょうど3のとき点灯し、
+さもなくば消灯し続けます。</li>
+</ul>
+<p>すべてのライトは同時に更新されます。
+ライトはみな同じ現在の状態で考えて次の状態に動きます。</p>
+<p>6x6グリッドの構成例での動作ステップを示します。</p>
+<p>初期状態：</p>
+<pre><code>.#.#.#
+...##.
+#....#
+..#...
+#.#..#
+####..
+</code></pre>
+<p>1ステップ後：</p>
+<pre><code>..##..
+..##.#
+...##.
+......
+#.....
+#.##..
+</code></pre>
+<p>2ステップ後：</p>
+<pre><code>..###.
+......
+..###.
+......
+.#....
+.#....
+</code></pre>
+<p>3ステップ後：</p>
+<pre><code>...#..
+......
+...#..
+..##..
+......
+......
+</code></pre>
+<p>4ステップ後：</p>
+<pre><code>......
+......
+..##..
+..##..
+......
+......
+</code></pre>
+<p>4ステップ後、この例は4つのライトが点灯しています。</p>
+<p>あなたの100x100のライトで、与えられた初期構成で、
+<strong>100ステップ後にはいくつのライトが点灯していますか？</strong></p>
+<details><summary>解説</summary><div>
+<p>せっかくなので、どんなイルミネーションになるのか鑑賞しながら100ステップ進めるプログラムを作りましょう。</p>
+</div></details>
+<h1 id="パート2-17"><a class="header" href="#パート2-17">パート2</a></h1>
+<p>あなたは手順書をペラっとめくりました。
+サンタからのメッセージの続きに、これは単にConwayのライフゲームの実装に過ぎないという指摘がありました。
+少なくとも、購入したライトのグリッドに問題があることに気づくまでは。
+4つの角に1つずつあるライトが<strong>点灯しっぱなし</strong>で消灯できません。
+上記の例は、実際には次のようになります。</p>
+<p>初期状態：</p>
+<pre><code>##.#.#
+...##.
+#....#
+..#...
+#.#..#
+####.#
+</code></pre>
+<p>1ステップ後：</p>
+<pre><code>#.##.#
+####.#
+...##.
+......
+#...#.
+#.####
+</code></pre>
+<p>2ステップ後：</p>
+<pre><code>#..#.#
+#....#
+.#.##.
+...##.
+.#..##
+##.###
+</code></pre>
+<p>3ステップ後：</p>
+<pre><code>#...##
+####.#
+..##.#
+......
+##....
+####.#
+</code></pre>
+<p>4ステップ後：</p>
+<pre><code>#.####
+#....#
+...#..
+.##...
+#.....
+#.#..#
+</code></pre>
+<p>5ステップ後：</p>
+<pre><code>##.###
+.##..#
+.##...
+.##...
+#.#...
+##...#
+</code></pre>
+<p>5ステップ後、この例では17ライトが点灯しています。</p>
+<p>あなたの100x100のライトで、与えられた初期構成で、
+ただし角の4つのライトは常に<strong>点灯</strong>しているとき、
+<strong>100ステップ後にはいくつのライトが点灯していますか？</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="19日目ルドルフのための薬"><a class="header" href="#19日目ルドルフのための薬">19日目：ルドルフのための薬</a></h1>
+<p>赤鼻のトナカイのルドルフは病気です！
+彼の鼻はあまり明るく輝いていません、
+そして彼は薬を必要としています。</p>
+<p>赤鼻のトナカイ生物学は通常のトナカイ生物学と似ていません。
+ルドルフは特製の薬を必要とするでしょう。
+残念なことに、赤鼻のトナカイ化学も通常のトナカイ化学と似ていません。</p>
+<p>北極には赤鼻のトナカイ核融合・核分裂プラントが装備されており、
+必要なあらゆる赤鼻のトナカイ分子を構築することができます。
+それはいくつかの入力分子から始めて、
+それからそれが正しい分子を持つまでステップごとに1つの、
+一連の<strong>置換</strong>をすることによって働きます。</p>
+<p>ただし、この装置は使用する前に校正する必要があります。
+校正は、与えられた出発点から1ステップで生成され得る分子の数を決定することで行います。</p>
+<p>たとえば、以下の置換のみに対応した、ずっと単純な装置を想像してみてください。</p>
+<pre><code>H =&gt; HO
+H =&gt; OH
+O =&gt; HH
+</code></pre>
+<p>上記の置換が与えられ、<code>HOH</code>から始めると、
+次のような分子が生成される可能性があります。</p>
+<ul>
+<li><code>HOOH</code> （1番目の<code>H</code>に<code>H =&gt; HO</code>）</li>
+<li><code>HOHO</code> （2番目の<code>H</code>に<code>H =&gt; HO</code>）</li>
+<li><code>OHOH</code> （1番目の<code>H</code>に<code>H =&gt; OH</code>）</li>
+<li><code>HOOH</code> （2番目の<code>H</code>に<code>H =&gt; OH</code>）</li>
+<li><code>HHHH</code> （<code>O =&gt; HH</code>）</li>
+</ul>
+<p>よって、上記の例では、<code>HOH</code>からの1回の置換の後に、
+<strong>4種類</strong>の異なる分子があります。
+（<code>HOOH</code>が2回出現するため5種類ではありません。）
+サンタのお気に入りの分子<code>HOHOHO</code>は、
+（<code>H</code>から6つ、<code>O</code>から3つの9個の置換を経て）
+<strong>7種類</strong>の分子になることができます。</p>
+<p>装置は周囲の文字を無視して置換します。
+たとえば、文字列<code>H2O</code>が与えられると、遷移<code>H =&gt; OO</code>により<code>OO2O</code>となります。</p>
+<p>あなたのパズル入力はすべての可能な置換について説明しています。
+そして最下部に、あなたが装置を校正するのに必要な薬品分子があります。
+薬品分子に1つの置換を行うことができるすべてのさまざまな方法の後に、
+<strong>何種類の異なる分子を作成することができますか？</strong></p>
+<details><summary>解説</summary><div>
+<p>原子記号は大文字1文字または大文字1文字+小文字1文字でひとつなので、原子記号一つをひとつの整数で扱うように読み込む。</p>
+<pre><code class="language-haskell">import Data.Char
+
+encode :: String -&gt; [Int]
+encode (c1:c2:cs) | isLower c2 = ord c1 * 256 + ord c2 : encode cs
+encode (c:cs) = ord c1 : encode cs
+encode &quot;&quot; = []
+
+parse :: String -&gt; (Int,[Int])
+parse xs = (head $ parse w1, parse w3)
+  where
+    [w1,_,w3] = words xs
+</code></pre>
+<p>初期列に対して可能な置き換えを行った全ての結果を作る。
+規則の左辺は重複があるので注意。</p>
+<pre><code class="language-haskell">part1 rules molec0 = S.size s
+  where
+    rs = IM.fromListWith (++) [(l,[r]) | (l,r) &lt;- rules]
+    (_, s) = foldr step ([], S.empty) molec0
+
+    step elem (elems, s) = (elem:elems, S.union s1 $ S.map (elem :) s)
+      where
+        s1 = S.fromList [es ++ elems | es &lt;- IM.findWithDefault [] elem rs]
+</code></pre>
+</div></details>
+<h1 id="パート2-18"><a class="header" href="#パート2-18">パート2</a></h1>
+<p>これで装置は校正されたので、分子製造を始める準備が整いました。</p>
+<p>分子製造は、常に単一の電子だけから始まります。
+そして校正のときと同様に、一度にひとつの置換を適用します。</p>
+<p>たとえば、次のような置換があるとします。</p>
+<pre><code>e =&gt; H
+e =&gt; O
+H =&gt; HO
+H =&gt; OH
+O =&gt; HH
+</code></pre>
+<p><code>HOH</code>を作成したいならば、<code>e</code>から始め、次のように置換します。</p>
+<ul>
+<li><code>e =&gt; O</code> これは<code>O</code>を得るため</li>
+<li><code>O =&gt; HH</code> これは<code>HH</code>を得るため</li>
+<li><code>H =&gt; OHH</code> （2番目の<code>H</code>に）これで<code>HOH</code>を得る</li>
+</ul>
+<p>よって、<strong>3ステップ</strong>で<code>HOH</code>を作ることができます。
+サンタの好きな分子<code>HOHOHO</code>は<strong>6ステップ</strong>で作ることができます。</p>
+<p>薬を作るのにどれくらいかかりますか？
+あなたのパズル入力にある
+利用可能な<strong>置換</strong>と<strong>薬の分子</strong>を考えるとき、
+<code>e</code>から薬の分子に行くための<strong>最小のステップ数</strong>はいくつですか？</p>
+<details><summary>解説</summary><div>
+<p>前向きな計算はどう考えても発散するので、目標から還元して電子1つに戻す。
+また、規則は優しく作られていて、端から貪欲に書き換えを行えばよいと仮定して試す。
+（もしこれがうまくいかないと、書き換えできる位置を見逃す形で深さ優先探索するコードが必要になる。）</p>
+<p>規則の右辺の先頭文字をキーにして規則を分類しておく。</p>
+<pre><code class="language-haskell">rulesM = IM.fromListWith (++) [(head r, [lr]) | lr@(_,r) &lt;- rules]
+</code></pre>
+<p>右畳み込みで、新たに繋がる文字をキーにして規則表を調べ、その中で実際に適合する規則を逆向きに適用した結果の一覧を作る。
+変換を一度行ったら、それ以降は規則を調べず、残りの文字の連結につとめる。</p>
+<pre><code class="language-haskell">-- m は新たな文字、msはその続きのこれまでの文字列
+ms1 = m : ms
+reps =
+  [ l : drop (length r) ms1
+  | (l,r) &lt;- IM.findWithDefault [] m rulesM
+  , isPrefixOf r ms1
+  ]
+</code></pre>
+<p><code>reps</code>が要素1ならその書き換えを実行、空リストなら書き換えずに次の文字へ、要素が複数あるなら失敗で落とす。
+また、一度書き換えを行ったら、それを覚えるフラグによって、以降は書き換えをしないで抜ける。</p>
+<pre><code class="language-haskell">-- molec が書き換え対象の列全体
+(molec1, acted) = foldr step ([], False) molec
+step m (ms, True) = (m:ms, True)
+step m (ms, False)
+  | null reps      = (m:ms, False)
+  | singleton reps = (head reps, True)
+  | otherwise      = error (show reps)
+  where
+    ms1 = ...
+    reps = ...
+</code></pre>
+<p>書き換えが起きたなら繰り返し、さもなくば終了する。</p>
+<pre><code class="language-haskell">loop cnt molec
+  | acted = print (length molec1) &gt;&gt; loop (succ cnt) molec1
+  | otherwise  = print (&quot;end&quot;, molec, cnt) &gt;&gt; return ()
+  where
+    ...
+</code></pre>
+<p>幸い、これで電子までさかのぼることができた。</p>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="20日目無限の妖精と無限の家"><a class="header" href="#20日目無限の妖精と無限の家">20日目：無限の妖精と無限の家</a></h1>
+<p>妖精たちを忙しくしておくために、サンタは彼らにいくつかのプレゼントを
+ドアからドアへ、手渡しで配達させます。
+サンタは妖精たちを
+順に番号が1,2,3,4,5…と振られている家が無限に並ぶ通りに
+送り込みました。</p>
+<p>各妖精にも番号が割り当てられており、
+その番号に基づいて家にプレゼントを配達します。</p>
+<ul>
+<li>1番目の妖精（1番）はすべての家にプレゼントを配達します。1, 2, 3, 4, 5, …</li>
+<li>2番目の妖精（2番）はひとつおきの家にプレゼントを配達します。2, 4, 6, 8, 10, …</li>
+<li>3番目の妖精はふたつおきのすべての家にプレゼントを配達します。3, 6, 9, 12, 15, …</li>
+</ul>
+<p>1で始まる番号が付けられた無数の妖精がいます。
+各妖精は家ごとに自分の数の10倍に相当するプレゼントを配達します。</p>
+<p>よって、通りの最初の9つの家は最終的に次のようになります。</p>
+<pre><code>House 1 got 10 presents.
+House 2 got 30 presents.
+House 3 got 40 presents.
+House 4 got 70 presents.
+House 5 got 60 presents.
+House 6 got 120 presents.
+House 7 got 80 presents.
+House 8 got 150 presents.
+House 9 got 130 presents.
+</code></pre>
+<p>1番目の家はプレゼント10個受け取ります。
+それはプレゼントを \(1 \times 10\) 個届ける1番の妖精によってのみ訪問されます。
+4番目の家は番号1,2,4の妖精が訪れているので、
+合計で \(10 + 20 + 40 = 70\) 個のプレゼントを受け取ります。</p>
+<p>あなたのパズル入力の数と少なくとも同じだけの数のプレゼントを得る家の、
+<strong>最も小さい家番号</strong>は何番ですか？</p>
+<p>あなたのパズル入力は36000000です。</p>
+<details><summary>解説</summary><div>
+<p>家番号 \(N\) が \(a\) の倍数であるとき、プレゼントを \(10a\) 受け取る、
+その総和が目標を超えるような最小の \(N\) を見つけたい。
+家番号 \(N\) に、妖精 \(N\) は必ず訪問するので、 \(N \leq 3,600,000\) が上限。</p>
+<pre><code class="language-haskell">import Data.Array.Unboxed
+
+theInput :: Int
+theInput = 36000000
+theInput10 = div theInput 10
+
+part1 = head $ filter ((theInput10 &lt;=) . snd) $ assocs arr
+  where
+    arr :: UArray Int Int
+    arr = accumArray (+) 1 (1,theInput10)
+          [(j, i) | i &lt;- [2 .. theInput10], j &lt;- [i, i+i .. theInput10]]
+</code></pre>
+<p>探索範囲を倍々に増やしながら答えを見つけるまで続けるようなコードにすることもできる。</p>
+<pre><code class="language-haskell">part1a = loop 1 100
+  where
+    loop lb ub
+      | null ans = loop (succ ub) (min theInput (ub * 2))
+      | otherwise = head ans
+      where
+        arr :: UArray Int Int
+        arr = accumArray (+) 1 (lb,ub)
+          [(j, i) | i &lt;- [2..ub], let j0 = i * divrup lb i, j &lt;- [j0, j0+i .. ub]]
+        ans = filter ((theInput10 &lt;=) . snd) $ assocs arr
+
+-- 切り上げ除算
+divrup x y = negate $ div (negate x) y
+</code></pre>
+<p>こちらの方が少し速く完了する。</p>
+</div></details>
+<h1 id="パート2-19"><a class="header" href="#パート2-19">パート2</a></h1>
+<p>妖精たちは無限の数の家を訪れたくないと考えました。
+代わりに、妖精はそれぞれ50軒にプレゼントを配達した後に停止します。
+それを補うために、
+彼らは各家で自分の番号の11倍に相当するプレゼントを届けることにしました。</p>
+<p>これらの変更により、
+あなたのパズル入力の数と少なくとも同じ数のプレゼントを得る家の
+新しい<strong>最小の家番号</strong>は何番ですか？</p>
+<details><summary>解説</summary><div>
+<p>家番号 \(K\) に訪れる妖精の番号は \(K\) 以下である。
+\(K=1\) から順に、妖精 \(K\) の配達まで済ませた状況を作り、家 \(K\) の個数を確認する。
+目標に達していなければさらに次に進む。このとき、\(K\) 以下の家の状況は今後更新されないので捨ててよい。</p>
+<pre><code class="language-haskell">import qualified Data.IntMap as IM
+
+part2 = loop 1 IM.empty
+  where
+    loop k im
+      | n &gt;= theInput = (k, n)
+      | otherwise     = loop (succ k) im1
+      where
+        ((k1, n), im1) =
+          IM.deleteFindMin $
+          IM.unionWith (+) im $
+          IM.fromDistinctAscList $
+          [(i, 11 * k) | i &lt;- map (k *) [1 .. 50]]
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="21日目rpgシミュレータ20xx"><a class="header" href="#21日目rpgシミュレータ20xx">21日目：RPGシミュレータ20XX</a></h1>
+<p>Little Henry Caseがクリスマス用の新しいビデオゲームを手に入れました。
+それはRPGです、そして、彼はボスで立ち往生しています。
+彼は店でどんな装備を買うべきかを知る必要があります。
+彼はあなたにコントローラーを渡します。</p>
+<p>このゲームでは、プレイヤー（あなた）と敵（ボス）が交互に攻撃します。
+常にプレイヤーが最初に行動します。
+各攻撃は相手のヒットポイントを少なくとも1減少させます。
+先にヒットポイント0以下になったキャラクターが負けます。</p>
+<p>各ターンに攻撃側によって与えられるダメージは、
+攻撃側のダメージスコアから防御側のアーマースコアを引いたものになります。
+攻撃者は常に少なくとも1ダメージを与えます。
+したがって、攻撃側のダメージスコアが8で、
+防御側のアーマースコアがである3場合、
+防御側は5ヒットポイントを失います。
+防御側のアーマースコアが300であれば、
+防御側は依然として1ヒットポイントを失います。</p>
+<p>あなたのダメージスコアとアーマースコアは両方ともゼロから始まります。
+それらは金と引き換えにアイテムを購入することで増やすことができます。
+始めあなたはアイテムなしで、お金はいくらでも必要なだけ持っています。
+あなたの総ダメージスコアやアーマースコアは
+あなたのアイテム全てからのそれらの属性値の合計になります。
+あなたは<strong>100ヒットポイント</strong>を持っています。</p>
+<p>これがアイテムショップで売っているものです。</p>
+<pre><code>Weapons:    Cost  Damage  Armor
+Dagger        8     4       0
+Shortsword   10     5       0
+Warhammer    25     6       0
+Longsword    40     7       0
+Greataxe     74     8       0
+
+Armor:      Cost  Damage  Armor
+Leather      13     0       1
+Chainmail    31     0       2
+Splintmail   53     0       3
+Bandedmail   75     0       4
+Platemail   102     0       5
+
+Rings:      Cost  Damage  Armor
+Damage +1    25     1       0
+Damage +2    50     2       0
+Damage +3   100     3       0
+Defense +1   20     0       1
+Defense +2   40     0       2
+Defense +3   80     0       3
+</code></pre>
+<p>あなたは武器を一つだけ購入しなければなりません。二刀流ではありません。
+防具はオプションですが、複数使用することはできません。
+あなたは0～2個の指輪を購入することができます（両手にそれぞれ最大1個）。
+あなたはあなたが買ったアイテムを全て使わなければなりません。
+ショップには各アイテムが1つしかないので、
+例えばダメージ+3の指輪を2つ買うことはできません。</p>
+<p>たとえば、あなたは8ヒットポイント、5ダメージスコア、5アーマースコアを持ち、
+ボスは12ヒットポイント、7ダメージスコア、2アーマースコアを持つとします。</p>
+<ul>
+<li>プレイヤーは \(5-2 = 3\) ダメージを与えます。ボスは9ヒットポイントになります。</li>
+<li>ボスは \(7-5 = 2\) ダメージを与えます。プレイヤーは6ヒットポイントになります。</li>
+<li>プレイヤーは \(5-2 = 3\) ダメージを与えます。ボスは6ヒットポイントになります。</li>
+<li>ボスは \(7-5 = 2\) ダメージを与えます。プレイヤーは4ヒットポイントになります。</li>
+<li>プレイヤーは \(5-2 = 3\) ダメージを与えます。ボスは3ヒットポイントになります。</li>
+<li>ボスは \(7-5 = 2\) ダメージを与えます。プレイヤーは2ヒットポイントになります。</li>
+<li>プレイヤーは \(5-2 = 3\) ダメージを与えます。ボスは0ヒットポイントになります。</li>
+</ul>
+<p>このシナリオでは、（かろうじて）プレイヤーが勝ちます！</p>
+<p>あなたは<strong>100ヒットポイント</strong>を持っています。
+ボスの実際の属性値はあなたのパズルの入力にあります。
+あなたが使う<strong>最小の、それでも戦いに勝つことができる金額</strong>はいくらですか？</p>
+<details><summary>解説</summary><div>
+<p>お買い物の全ての場合を数え上げてみる。</p>
+<p>武器はひとつだけ選んで購入する。</p>
+<pre><code class="language-haskell">weapon &lt;- [(8,4.0),(10,5,0),(25,6,0),(40,7,0),(74,8,0)]
+</code></pre>
+<p>防具はひとつだけ選んで購入するか、使わないでもよい。</p>
+<pre><code class="language-haskell">armor &lt;- [(0,0,0),(13,0,1),(31,0,2),(53,0,3),(75,0,4),(102,0,5)]
+</code></pre>
+<p>指輪は二つまで使える。</p>
+<pre><code class="language-haskell">rings = [(25,1,0),(50,2,0),(100,3,0),(20,0,1),(40,0,2),(80,0,3),(0,0,0)]
+(ring1:rs) &lt;- tails rings
+ring2 &lt;- if null rs then [ring1] else rs
+</code></pre>
+<p>総当たりの組み合わせを、費用の安い順にする。</p>
+<pre><code class="language-haskell">cags = sort
+  [ weapon `add` armor `add` ring1 `add` ring2
+  | weapon &lt;- ...]
+add (a,b,c) (d,e,f) = (a+d,b+e,c+f)
+</code></pre>
+<p>自分のHP、攻撃力、防御力を \(h_1 = 100, a_1, g_1\)、
+ボスのそれを \(h_2, a_2, g_2\) とする。</p>
+<p>こちらの攻撃1回で削るHP量は \(\max(1, a_1-g_2)\) で、
+ボスを倒すまでかかるターン数は \(\lceil \frac{h_2}{\max(1, a_1 - g_2)} \rceil\) である。</p>
+<p>ボスからの攻撃1回で削られるHP量は \(\max(1, a_2-g_1)\) で、
+耐えるターン数は \(\lceil \frac{h_1}{\max(1, a_1-g_2)} \rceil\) である。</p>
+<p>結局、この戦いに勝つ条件は
+\(\lceil \frac{h_1}{\max(1, a_1 - g_2)} \rceil \geq \lceil \frac{h_2}{\max(1, a_1 - g_2)} \rceil\)
+となる。</p>
+<pre><code class="language-haskell">win a1 g1 = divrup h1 (max 1 (a2 - g1)) &gt;= divrup h2 (max 1 (a1 - g2))
+
+h2 = ...
+a2 = ...
+g2 = ... -- 入力データ
+
+part1 = head $ filter (\(_,a1,g1) -&gt; win a1 g1) cags
+</code></pre>
+</div></details>
+<h1 id="パート2-20"><a class="header" href="#パート2-20">パート2</a></h1>
+<p>店主がボスと通じていることが判明しました。
+店主はそうしたいものを何でも、あなたに買うように説得することができます。
+他の規則はまだ適用され、彼はやはり各アイテムを1つずつしか持っていません。</p>
+<p>あなたが使う<strong>最大の、それでも戦いに負けることになる金額</strong>はいくらですか？</p>
+<details><summary>解説</summary><div>
+<p>つまり上の逆順に、負ける最大の金額を探せばよい。</p>
+<pre><code class="language-haskell">part2 = head $ filter (\(_,a1,g1) -&gt; not $ win a1 g1) $ reverse cags
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="22日目魔法使いシミュレータ-20xx"><a class="header" href="#22日目魔法使いシミュレータ-20xx">22日目：魔法使いシミュレータ 20XX</a></h1>
+<p>Little Henry Caseは、刀や杖でボスを倒すのは退屈だと判断しました。
+今、彼は魔法使いでゲームをしています。
+もちろん、彼は別のボスに立ち往生しているし、もう一度あなたの助けが必要です。</p>
+<p>このバージョンでは、プレイヤーとボスが交互に交代しながら戦闘が進行します。
+プレイヤーはやはり先に行動します。
+しかし今、あなたは装備を持っていません。
+代わりに、あなたは唱えるためにあなたの呪文の1つを選ばなければなりません。
+先にヒットポイント0以下になったキャラクターが負けます。</p>
+<p>あなたは魔法使いなので、あなたは鎧を着ることができず、
+あなたは普通に攻撃することはできません。
+しかし、あなたは<strong>魔法のダメージを与える</strong>ので、
+あなたの対戦相手の装甲は無視され、そのためボスも事実上装甲は零です。
+以前のように、（この場合、呪文からの）装甲がダメージを1未満に減少させるのであれば、
+それは代わりに1になります。
+つまり、ボスの攻撃は常に少なくとも1ダメージを与えます。</p>
+<p>あなたの各ターンに、
+あなたは唱えるためにあなたの呪文の一つを選ぶ必要があります。
+呪文を唱える余裕がない場合、あなたは負けます。
+呪文は<strong>マナ</strong>を消費します。
+あなたは<strong>500</strong>マナから始めますが、上限はありません。
+あなたは呪文を唱えるのに十分なマナを持っていなければならず、
+あなたがそれを唱えたときにそのコストは即座に差し引かれます。
+あなたの呪文はマジックミサイル、ドレイン、シールド、ポイズン、リチャージです。</p>
+<ul>
+<li><strong>マジックミサイル</strong>は53マナかかります。即座に4ダメージを与えます。</li>
+<li><strong>ドレイン</strong>は73マナがかかります。
+それは即座に2ダメージを与え、2ヒットポイントを回復します。</li>
+<li><strong>シールド</strong>は113マナがかかります。
+それは6ターン持続する<strong>効果</strong>を開始します。
+それがアクティブになっている間、あなたのアーマースコアは7増加します。</li>
+<li><strong>ポイズン</strong>は173マナかかります。
+それは6ターン持続する<strong>効果</strong>を開始します。
+それがアクティブである間、各ターンの開始時に、それはボスに3ダメージを与えます。</li>
+<li><strong>リチャージ</strong>は229マナかかります。
+それは5ターン持続する<strong>効果</strong>を開始します。
+それがアクティブになっている間、各ターンの開始時に、
+それはあなたに新しいマナを101与えます。</li>
+</ul>
+<p><strong>効果</strong>はすべて同じように機能します。
+効果はプレイヤーのターンとボスのターンの両方の開始時に適用されます。
+効果はタイマー（それらが持続するターン数）を伴って作成されます。
+各ターンの開始時に、彼らが持っている効果を適用した後、
+それらのタイマーは1減少する。
+これによりタイマーが零になると、効果は終了します。
+あなたはすでにアクティブになっている効果を開始する呪文を唱えることはできません。
+ただし、効果はそれらが終了するのと同じターンに開始することができます。</p>
+<p>たとえば、プレイヤーに10ヒットポイントと250マナがあり、
+ボスに13ヒットポイントと8ダメージがあるとします。</p>
+<pre><code>-- Player turn --
+- Player has 10 hit points, 0 armor, 250 mana
+- Boss has 13 hit points
+Player casts Poison.
+
+-- Boss turn --
+- Player has 10 hit points, 0 armor, 77 mana
+- Boss has 13 hit points
+Poison deals 3 damage; its timer is now 5.
+Boss attacks for 8 damage.
+
+-- Player turn --
+- Player has 2 hit points, 0 armor, 77 mana
+- Boss has 10 hit points
+Poison deals 3 damage; its timer is now 4.
+Player casts Magic Missile, dealing 4 damage.
+
+-- Boss turn --
+- Player has 2 hit points, 0 armor, 24 mana
+- Boss has 3 hit points
+Poison deals 3 damage. This kills the boss, and the player wins.
+</code></pre>
+<p>それでは、
+ボスが代わりに14ヒットポイントを持っていることを除いて、
+同じ初期条件を仮定します。</p>
+<pre><code>-- Player turn --
+- Player has 10 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Player casts Recharge.
+
+-- Boss turn --
+- Player has 10 hit points, 0 armor, 21 mana
+- Boss has 14 hit points
+Recharge provides 101 mana; its timer is now 4.
+Boss attacks for 8 damage!
+
+-- Player turn --
+- Player has 2 hit points, 0 armor, 122 mana
+- Boss has 14 hit points
+Recharge provides 101 mana; its timer is now 3.
+Player casts Shield, increasing armor by 7.
+
+-- Boss turn --
+- Player has 2 hit points, 7 armor, 110 mana
+- Boss has 14 hit points
+Shield's timer is now 5.
+Recharge provides 101 mana; its timer is now 2.
+Boss attacks for 8 - 7 = 1 damage!
+
+-- Player turn --
+- Player has 1 hit point, 7 armor, 211 mana
+- Boss has 14 hit points
+Shield's timer is now 4.
+Recharge provides 101 mana; its timer is now 1.
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+
+-- Boss turn --
+- Player has 3 hit points, 7 armor, 239 mana
+- Boss has 12 hit points
+Shield's timer is now 3.
+Recharge provides 101 mana; its timer is now 0.
+Recharge wears off.
+Boss attacks for 8 - 7 = 1 damage!
+
+-- Player turn --
+- Player has 2 hit points, 7 armor, 340 mana
+- Boss has 12 hit points
+Shield's timer is now 2.
+Player casts Poison.
+
+-- Boss turn --
+- Player has 2 hit points, 7 armor, 167 mana
+- Boss has 12 hit points
+Shield's timer is now 1.
+Poison deals 3 damage; its timer is now 5.
+Boss attacks for 8 - 7 = 1 damage!
+
+-- Player turn --
+- Player has 1 hit point, 7 armor, 167 mana
+- Boss has 9 hit points
+Shield's timer is now 0.
+Shield wears off, decreasing armor by 7.
+Poison deals 3 damage; its timer is now 4.
+Player casts Magic Missile, dealing 4 damage.
+
+-- Boss turn --
+- Player has 1 hit point, 0 armor, 114 mana
+- Boss has 2 hit points
+Poison deals 3 damage. This kills the boss, and the player wins.
+</code></pre>
+<p>あなたは<strong>50ヒットポイント</strong>と<strong>500マナポイント</strong>から始めます。
+ボスの実際の属性値はあなたのパズルの入力にあります。
+あなたが使うことができ、それでも戦いに勝てる<strong>マナの最小量</strong>は何ですか？
+（リチャージの効果を負のマナを「支出する」として含めないでください。）</p>
+<h1 id="パート2-21"><a class="header" href="#パート2-21">パート2</a></h1>
+<p>次回のゲームでは、難易度を「ハード」に上げます。</p>
+<p>各<strong>プレイヤーターン</strong>の開始時（他の効果が適用される前）に、
+あなたは1ヒットポイントを失います。
+これで0ヒットポイント以下になった場合、あなたは負けます。</p>
+<p>あなたとボスの開始属性値は上と同じで、
+あなたが使うことができて、まだ戦いに勝つことができる<strong>マナの最小量</strong>は何ですか？</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="23日目チューリングロックを開く"><a class="header" href="#23日目チューリングロックを開く">23日目：チューリングロックを開く</a></h1>
+<p>Little Jane Marieはとある篤志家からクリスマスに彼女の最初のコンピュータを贈られました。
+説明書とサンプルプログラムが付属していますが、コンピュータ自体が誤動作しているようです。
+彼女はそのプログラムが何をするのか知りたがっているので、
+彼女がそれを実行するのをあなたに手伝ってほしいのです。</p>
+<p>このマニュアルでは、
+コンピュータが2つのレジスタと6つの命令をサポートしていると説明しています。
+（本当に、読者に確認しておくと、これは最新技術です。）
+レジスタには<code>a</code>と<code>b</code>という名前が付けられ、負でない整数を保持できます。
+値が0の状態で始まります。
+命令は次のとおりです。</p>
+<ul>
+<li><code>hlf r</code> レジスタrを現在の値の<strong>半分に</strong>設定してから、次の命令に進みます。</li>
+<li><code>tpl r</code> レジスタrを現在の値の<strong>3倍に</strong>設定してから、次の命令に進みます。</li>
+<li><code>inc r</code> レジスタrを<strong>インクリメント</strong>する、すなわちそれに1を足して、次の命令に進みます。</li>
+<li><code>jmp offset</code> は<strong>ジャンプ</strong>です。
+それはそれ自身に対して相対的に<code>offset</code>離れた命令に進みます。</li>
+<li><code>jie r, offset</code> は<code>jmp</code>に似ていますが、
+レジスタrが偶数の場合にのみジャンプします。
+（jump if even 「偶数の場合はジャンプ」）</li>
+<li><code>jio r, offset</code> は<code>jmp</code>に似ていますが、
+レジスタrが1の場合にのみジャンプします。
+（jump if one 「1であればジャンプ」「奇数」ではないので注意。）</li>
+</ul>
+<p>3つのジャンプ命令はすべて、その命令に対する相対的<strong>オフセット</strong>で機能します。
+オフセットは常にジャンプの方向を示す接頭辞<code>+</code>または<code>-</code>を付けて
+（それぞれ順方向または逆方向）書かれます。
+例えば、<code>jmp +1</code>は単に次の命令に進むだけで、
+<code>jmp +0</code>は継続的にそれ自体に永遠に戻ります。</p>
+<p>プログラムは、定義されている命令を超えて命令を実行しようとすると終了します。</p>
+<p>たとえば、このプログラムは、<code>a</code>を<code>2</code>に設定します。
+それは<code>jio</code>命令によって<code>tpl</code>命令がスキップされるためです。</p>
+<pre><code>inc a
+jio a, +2
+tpl a
+inc a
+</code></pre>
+<p>あなたのパズル入力のプログラムが実行を終了したときの<strong>レジスタbの値</strong>は何ですか？</p>
+<details><summary>解説</summary><div>
+<p>命令を観察すると、指定したレジスタの内容を演算して更新するものと、
+レジスタの内容に関する条件によってジャンプをするもののふたつに分かれていることがわかる。
+（無条件ジャンプも「常に成立する」条件が指定されていると見なせる。）</p>
+<p>後で、レジスタの実体は配列で実現すると想定して、レジスタは番号で呼ぶことにする。
+これらを踏まえて、命令を表す代数的データ型を定義する。</p>
+<pre><code class="language-haskell">type Reg = Int
+data Inst = Ialu (Int -&gt; Int) Reg | Ijmp (Int -&gt; Bool) Reg Int
+</code></pre>
+<p>命令一行を読み込む関数を定義する。
+このとき命令に応じて妥当な関数を設定する。</p>
+<pre><code class="language-haskell">parse :: String -&gt; Inst
+parse xs =
+  case words xs of
+    [&quot;hlf&quot;, reg] -&gt; Ialu (flip div 2) (regp reg)
+    [&quot;tpl&quot;, reg] -&gt; Ialu (3 *)        (regp reg)
+    [&quot;inc&quot;, reg] -&gt; Ialu succ         (regp reg)
+    [&quot;jmp&quot;, ofs] -&gt; Ijmp (const True) undefined (readofs ofs) -- 無条件
+    [&quot;jie&quot;, reg, ofs] -&gt; Ijmp even   (regp reg) (readofs ofs)
+    [&quot;jio&quot;, reg, ofs] -&gt; Ijmp (1 ==) (regp reg) (readofs ofs)
+  where
+    regp ('a':_) = 0             -- 後ろのコンマを無視できるように
+    regp ('b':_) = 1
+    readofs ('+':cs) = read cs   -- 数値は'+'付きだとreadできない
+    readofs cs = read cs
+</code></pre>
+<p>プログラムカウンタが逸脱するまで命令を実行し続けるCPUエミュレータを作る。</p>
+<pre><code class="language-haskell">exec :: Array Int Inst -&gt; Int -&gt; Array Reg Int -&gt; Array Reg Int
+exec prog pc regF
+  | not $ inRange (bounds prog) pc = regF
+  | otherwise =
+    case prog ! pc of
+      Ialu f r -&gt; exec prog (succ pc) (regF // [(r, f $ regF ! r)])
+      Ijmp p r ofs | p (regF ! r) -&gt; exec prog (pc + ofs) regF
+                   | otherwise    -&gt; exec prog (succ pc)  regF
+</code></pre>
+<p>入力を読み込み、レジスタを0に初期化して実行し、レジスタの最終状態を観察する。</p>
+<pre><code class="language-haskell">main = do
+  co &lt;- readFile &quot;input.txt&quot;
+  let is = map parse $ lines co
+  let prog = listArray (1, length is) is
+  putStrLn &quot;part 1&quot;
+  print $ exec prog 1 (listArray (0,1) [0,0])
+</code></pre>
+</div></details>
+<h1 id="パート2-22"><a class="header" href="#パート2-22">パート2</a></h1>
+<p>匿名の篤志家はあなたがまんまと騙されて結果を出してくれたこと、ではなくて、
+コンピュータのことでLittle Jane Marieを助けてくれたことを<strong>とても</strong>感謝しています。
+レジスタaが代わりに1で始まった場合、
+プログラムが実行を終了したときのレジスタbの値は何ですか？
+という問題は、決してあなたを失望させることはないでしょう。
+（ちょっと英語がよくわからない。）</p>
+<details><summary>解説</summary><div>
+<p>レジスタの初期値を変えて実行するだけ。</p>
+<pre><code class="language-haskell">main = do
+  ...
+  putStrLn &quot;part 2&quot;
+  print $ exec prog 1 (listArray (0,1) [1,0])
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="24日目バランスしてぶら下がっている"><a class="header" href="#24日目バランスしてぶら下がっている">24日目：バランスしてぶら下がっている</a></h1>
+<p>クリスマスイブです、そしてサンタは今年の配達のためにそりに積み込んで​​います。
+しかし、1つ小さな問題があります。
+彼はそりのバランスをとることができません。
+バランスが取れていなければ、彼は物理学に逆らうことはできず、
+そして今年誰もプレゼントをもらうことができません。</p>
+<p>無理をしないで。</p>
+<p>サンタはそりにうまく詰め込む必要のあるすべての包みの重量のリストをあなたに提供しました。
+包みは、<strong>まったく同じ重さの3つのグループ</strong>に分割する必要があり、
+すべての包みを収める必要があります。
+最初のグループはそりの客室に行き、
+2番目と3番目のグループは左右のコンテナに入ります。
+3つのグループすべてがまったく同じ重さになったときにのみ、そりは飛ぶことができます。
+物理学に反することには規則があります、わかりますね！</p>
+<p>もちろん、それだけが問題ではありません。
+最初のグループ、つまり客室内に移動するグループは、
+サンタの足元に余裕を持たせるために、
+<strong>包みの数をできるだけ少なく</strong>する必要があります。
+すべてのグループの重量が同じであれば、
+他の2つのグループにはいくつ包みが含まれていてもかまいません。</p>
+<p>さらに、サンタは、
+可能な限り少ないものが最初のグループになるように包みを配置する方法が複数ある場合、
+最初のグループが最小の<strong>量子もつれ</strong> (Quantum Entanglement)を持つ方法を選択して、
+「複雑化」(complication, 合併症？) の可能性を減らすようにする必要があります。
+包みのグループの量子もつれは、それらの重みの積、つまり、それらの重みを掛け合わせたときに得られる値です。
+すべてのグループの重量が同じでかつ
+最初のグループに含まれる可能性のある包みの数が最も少ない場合にのみ、量子もつれを考慮してください。</p>
+<p>たとえば、1から5と7から11の重みを持つ10の包みがあるとします。
+この状況に関して、
+いくつかの一意な最初のグループ、その量子もつれ、
+そして残りの包みを分割する方法は以下の通りです。</p>
+<pre><code>Group 1;             Group 2; Group 3
+11 9       (QE= 99); 10 8 2;  7 5 4 3 1
+10 9 1     (QE= 90); 11 7 2;  8 5 4 3
+10 8 2     (QE=160); 11 9;    7 5 4 3 1
+10 7 3     (QE=210); 11 9;    8 5 4 2 1
+10 5 4 1   (QE=200); 11 9;    8 7 3 2
+10 5 3 2   (QE=300); 11 9;    8 7 4 1
+10 4 3 2 1 (QE=240); 11 9;    8 7 5
+9 8 3      (QE=216); 11 7 2;  10 5 4 1
+9 7 4      (QE=252); 11 8 1;  10 5 3 2
+9 5 4 2    (QE=360); 11 8 1;  10 7 3
+8 7 5      (QE=280); 11 9;    10 4 3 2 1
+8 5 4 3    (QE=480); 11 9;    10 7 2 1
+7 5 4 3 1  (QE=420); 11 9;    10 8 2
+</code></pre>
+<p>これらのうち、<code>10 9 1</code>が最も小さい量子もつれ（90）を持っていますが、
+2つの包みだけからなる構成<code>11 9</code>が、
+客室内にあるときサンタに最も大きな足元の余裕を与えて勝ちます。
+この状況では、理想的な配置に対する量子もつれは99です。
+最初のグループに包みが2つしかない構成が2つあった場合は、
+より小さな量子もつれを持つ構成が選択されます。</p>
+<p>理想的な構成における包みの最初のグループの<strong>量子もつれ</strong>はいくつですか？</p>
+<details><summary>解説</summary><div>
+<p>入力の行数から、包みの個数はほどほどで、部分集合をビット表現するのに整数で足りる。
+包みの部分集合について、その合計重量をキー、部分集合のビット表現のリストを値とするマップを、
+「0個の取り合わせは0」から始めて、荷物をひとつずつ追加することで、全ての組み合わせの合計重量を求める。
+ただし、総重量の1/3を超えるものは不要なので作らないようにする。
+このマップの、総重量の1/3になる選択群から、条件を満たすものを選択する。</p>
+<pre><code class="language-haskell">import qualified Data.IntMap as IM
+import Data.List
+
+compute1 xs = ...
+  where
+    w3 = div (sum xs) 3
+    im = foldl' step (IM.singleton 0 [0]) $ zip xs [0..]
+    step im (x, i) = IM.unionWith (++) im $ IM.fromAscList $
+      [(w1, map (bit i .|.) bs) | (w,bs) &lt;- IM.assocs im, let w1 = w + x, w1 &lt;= w3]
+    bs = im IM.! w3 :: [Int]
+</code></pre>
+<p>見つかった組み合わせを、その要素数順、次に量子もつれの順で整列する。
+これを小さい方から試して、3つの組み合わせで、互いに重なりないようなものが、探したいものである。</p>
+<pre><code class="language-haskell">compute1 xs = ans
+  where
+    ...
+    cands = sort [(popCount b, qe, b) | b &lt;- bs, let qe = product [x | (i,x) &lt;- zip [0..pred num] xs, testBit b i]]
+    ans = head
+      [ qe
+      | (_,qe,b1):cands1 &lt;- tails cands
+      , (_,_ ,b2):cands2 &lt;- tails cands1, b1  .&amp;. b2 == 0, let b12 = b1 .|. b2
+      , (_,_ ,b3)        &lt;-       cands2, b12 .&amp;. b3 == 0
+      ]
+
+main = readFile &quot;input.txt&quot; &gt;&gt;= print . compute1 . map read . lines
+</code></pre>
+</div></details>
+<h1 id="パート2-23"><a class="header" href="#パート2-23">パート2</a></h1>
+<p>何か変です…そりはまだバランスが取れていません。</p>
+<p>「ホーホーホー」サンタは自分自身に夢中になります。「トランクを忘れた。」</p>
+<p>再びそりのバランスを取りますが、今回は、包みを3つではなく4つのグループに分けます。
+他の制約は依然として適用されます。</p>
+<p>上記の包みの例を考えたときの、いくつかの新しい一意な最初のグループ、
+それらの量子もつれ、そして残りの包みを分割する方法の一つを示します。</p>
+<pre><code>11 4    (QE=44); 10 5;   9 3 2 1; 8 7
+10 5    (QE=50); 11 4;   9 3 2 1; 8 7
+9 5 1   (QE=45); 11 4;   10 3 2;  8 7
+9 4 2   (QE=72); 11 3 1; 10 5;    8 7
+9 3 2 1 (QE=54); 11 4;   10 5;    8 7
+8 7     (QE=56); 11 4;   10 5;    9 3 2 1
+</code></pre>
+<p>このうち、そこに最初のグループに包みの最小の個数（2）を置く構成が3つあります。
+<code>11 4</code>, <code>10 5</code>, <code>8 7</code>です。
+これらの中で、<code>11 4</code>が量子もつれが最小なので、それが選択されます。</p>
+<p>さて、理想的な構成における包みの最初のグループの<strong>量子もつれ</strong>はいくつですか？</p>
+<details><summary>解説</summary><div>
+<p>分割が4になるだけで、やることは変わらない。</p>
+<pre><code class="language-haskell">compute2 xs = ans
+  where
+    w4 = div (sum xs) 4
+    im = ...
+    step im (x, i) = ...
+    bs = im IM.! w4 :: [Int]
+    cands = ...
+    ans = head
+      [ qe
+      | (_,qe,b1):cands1 &lt;- tails cands
+      , (_,_ ,b2):cands2 &lt;- tails cands1, b1   .&amp;. b2 == 0, let b12  = b1  .|. b2
+      , (_,_ ,b3):cands3 &lt;- tails cands2, b12  .&amp;. b3 == 0, let b123 = b12 .|. b3
+      , (_,_ ,b4)        &lt;-       cands3, b123 .&amp;. b4 == 0
+      ]
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="25日目雪よ降れ"><a class="header" href="#25日目雪よ降れ">25日目：雪よ降れ</a></h1>
+<p>メリークリスマス！
+サンタはお天気制御装置を起動しています。
+あなたは結局<a href="2015/./day1.html">ホワイトクリスマス</a>を得られそうです。</p>
+<p>お天気制御装置がビービーと鳴りました！
+装置のコンソールには、
+取扱説明書のコードを入力するように求めるコピー防止メッセージが出ています。
+どうやら、あなたがそのコードを与えない限り、それは実行を拒否するようです。
+別に問題はありません。あなたはマニュアルからコードを調べるでしょう…</p>
+<p>「ホー、ホー、ホー」サンタは大声で熟考します。
+「マニュアルを見つけ出せる気がしない。」</p>
+<p>製造元のサポート電話番号を調べて、電話をかけます。
+良いこともあります - その49番目のスターはそれ自体で稼ぐことはできませんでした。
+(???)</p>
+<p>「ああ、その機械はかなり古いです！」と彼らは言います。
+「そのモデルは6分前にサポートを終了しました。
+そして、私たちはすべてのマニュアルをシュレッダーにかけたばかりです。
+ただし、コード生成アルゴリズムを見つけることができると思います。」</p>
+<p>あなたを20分間保留にした
+（あなたの電話は彼らにとって非常に重要で、繰り返し思い出させてくれました）(???)
+後、
+彼らはついにコードシステムがどのように機能するかを覚えているエンジニアを見つけました。</p>
+<p>コードは、左上隅から始まる無限の紙に印刷されています。
+コードは対角線で埋められます。
+空の最初のマスを1つもつ最初の行から始まり、コードは斜めに上と右に向かって埋められます。
+このプロセスは、
+<a href="https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%B3%E3%83%88%E3%83%BC%E3%83%AB%E3%81%AE%E5%AF%BE%E8%A7%92%E7%B7%9A%E8%AB%96%E6%B3%95">無限の紙が覆われる</a>
+まで繰り返されます。
+よって、最初のいくつかのコードは次の順序で埋められます。</p>
+<pre><code>   | 1   2   3   4   5   6
+---+---+---+---+---+---+---+
+ 1 |  1   3   6  10  15  21
+ 2 |  2   5   9  14  20
+ 3 |  4   8  13  19
+ 4 |  7  12  18
+ 5 | 11  17
+ 6 | 16
+</code></pre>
+<p>たとえば、12番目のコードは4行2列に書き込まれます。
+15番目のコードは1行5列に書き込まれます。</p>
+<p>電話の向こうの声は、続けてコードが実際にどのように生成されるかを説明します。
+最初のコードは<code>20151125</code>です。
+その後、各コードは、前のコードに<code>252533</code>を乗算してから、
+その値を<code>33554393</code>で除算した余りとして生成されます。</p>
+<p>したがって、2番目のコード（2行1列にくる）を見つけるには、
+前の値<code>20151125</code>から始めます。
+それに<code>252533</code>を掛けて<code>5088824049625</code>を得ます。
+そしてそれを<code>33554393</code>で割ると余りが<code>31916031</code>となります。
+この余りが2番目のコードです。</p>
+<p>「ああ！」と声がします。
+「マニュアルにコードのページがあるのを見落としていたようです。読んでみましょう。」
+あなたは彼の読み上げる番号を書き留めます。</p>
+<pre><code>   |    1         2         3         4         5         6
+---+---------+---------+---------+---------+---------+---------+
+ 1 | 20151125  18749137  17289845  30943339  10071777  33511524
+ 2 | 31916031  21629792  16929656   7726640  15514188   4041754
+ 3 | 16080970   8057251   1601130   7981243  11661866  16474243
+ 4 | 24592653  32451966  21345942   9380097  10600672  31527494
+ 5 |    77061  17552253  28094349   6899651   9250759  31663883
+ 6 | 33071741   6796745  25397450  24659492   1534922  27995004
+</code></pre>
+<p>「さて、覚えておいて」声は続きます。
+「それは最初のいくつかの数字のすべてでさえありません。
+例えば、あなたは行6列2の前に来るはずの行7列1の内容がありません。
+でもこれだけ判っていれば充分で…
+ああ、昼食の時間だよ、さようなら」通話が切断されます。</p>
+<p>サンタはオロオロしています。
+あなたのパズル入力には、装置のコンソールにあるメッセージが含まれています。
+<strong>あなたは装置にどんなコードを与えますか？</strong></p>
+<details><summary>解説</summary><div>
+<p>行 <code>theRow</code> 列 <code>theCol</code> の値を聞かれている。
+まず、それが数列の何個目の値かを、ひとつめの表を見ながら考える。</p>
+<p>斜めの列の \(K\) 本めを考える。
+それぞれの長さは順に \(1,2,3,\dots\) なので、その末尾の数は \(1 + 2 + \dots + K = K (K + 1) / 2\) となる。
+またそれは行\(1\)列\(K\)の位置にある。</p>
+<p>行 \(r\) 列\(c\) のマスは、そこから右上マスに\(r-1\)回移動した先にある、行\(1\)列\(c+r-1\)と同じ斜め列に属する。つまり \(K = c + r - 1\) 行に属する。
+そのひとつ手前、\(K-1\)本めの斜め列の最後のマスの番号は \((K-1)K/2\) で、
+行\(r\)列\(c\)のマスはそれからさらに\(c\)マス先にあるので \((c+r-2)(c+r-1)/2 + c\) 番である。</p>
+<pre><code class="language-haskell">index r c = div ((c + r - 2) * (c + r - 1)) 2 + c
+</code></pre>
+<p>次に、数列の <code>index theRow theCol</code> 番めの値を求める。
+第1項は <code>20151125</code>, 直前の項から次の項を得る漸化式から列を作る。</p>
+<pre><code class="language-haskell">theSeed = 20151125
+theMag  = 252533
+modBase = 33554393
+
+step :: Int -&gt; Int
+step x = mod (x * theMag) modBase
+
+theSeq = 0 : iterate step theSeed
+
+part1 = theSeq (index theRow theCol)
+</code></pre>
+<p>しかし計算が終わらない。繰り返し回数が大きすぎる。</p>
+<p>ここで、数列の定義をもう一度見てみる。</p>
+<p>\(a_1 = 20151125\)<br />
+\(a_{i+1} = a_i \times 252533 \bmod 33554393\)</p>
+<p>剰余で考えればよいので、これはモジュロ演算で</p>
+<p>\(a_i \equiv 20151125 \times 252533^{i-1} \bmod 33554393\)</p>
+<p>と等しい。このべき乗は、2進数に基づいて高速に計算する定番の方法がある。</p>
+<pre><code class="language-haskell">-- @gotoki_no_joe
+powerish mul i a b = foldl' mul i [p | (True, p) &lt;- zip bs ps]
+  where
+    bs = map odd $ takeWhile (0 &lt;) $ iterate (flip div 2) b
+    ps = iterate (\x -&gt; mul x x) a
+
+part1a = powerish mul theSeed theMag $ pred $ index theRow theCol
+
+mul x y = mod (x * y) modBase
+</code></pre>
+</div></details>
+<h1 id="パート2-24"><a class="header" href="#パート2-24">パート2</a></h1>
+<p>装置は活気を取り戻し、その後また沈黙します。
+ビープ音がします。
+「燃料不足」とコンソールに表示されます。
+「先へ進むには<strong>50個のスター</strong>が必要です。<strong>スターがひとつ</strong>利用可能です。」</p>
+<p>…「スターがひとつ利用可能？」あなたは燃料タンクを点検します。
+確かに、唯一のスターがその友人を待って、一番下に座っています。
+49個は自分で用意する必要があるようです。</p>
+<p><strong>スターが足らない場合</strong><br />
+あなたは装置を起動するのに十分な星がありません。さらに(?)個必要です。</p>
+<p><strong>スターが49揃った場合</strong><br />
+あなたはお天気制御装置を起動するのに充分なスターを持っています。</p>
+<p>あなたはお天気制御装置に50個のスターを充填します。それは息を吹き返しました！</p>
+<p><strong>雪が降り始めます。</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="2016年"><a class="header" href="#2016年">2016年</a></h1>
+<p>サンタのそりは動作制御のために非常に高精度のクロックを使用しており、
+そのクロックの発振器はスターによって調律されています。
+不幸にも、スターはイースターバニーに盗まれてしまいました。
+クリスマスを救うには、
+サンタは12月25日までに50個のスターをすべて取り返す必要があります。</p>
+<p>パズルを解いてスターを集めよう。
+サンタがパズルを解くのを助けることでスターを集めよう。
+このアドベントカレンダーでは、毎日2つのパズルが利用可能になります。
+2番目のパズルは、1番目を完了するとロックが解除されます。
+各パズルで1つずつ星が貰えます。がんばろう！</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="1日目タクシーの時間がない"><a class="header" href="#1日目タクシーの時間がない">1日目：タクシーの時間がない</a></h1>
+<p>あなたはどこかの都市の<strong>イースターバニー司令部</strong>の近くへ空中投下されました。
+「近く」とは残念ながらできるだけ近くした結果でしかありません。
+サンタ付きの妖精たちが入手した
+イースターバニー募集要項の指示はこの地点から開始されており、
+それ以上にこれを分析する時間はありませんでした。</p>
+<p>要項は、
+あなたが与えられた座標（あなたが着地した場所）から、
+北に向いた状態で始めるよう指示しています。
+次に、90度左（L）または右（R）のいずれかの方向に向きを変えて、
+指定した数のブロックを進み、新しい交差点で終了します。</p>
+<p>このようなばかげた指示に徒歩で従う時間はありませんので、
+少し時間を割いて目的地を見つけましょう。
+<strong>碁盤の目</strong>のようになった都市の<strong>道だけを歩いて</strong>、
+目的地までの最短距離はどれだけですか？</p>
+<h2 id="例-4"><a class="header" href="#例-4">例</a></h2>
+<ul>
+<li><code>R2, L3</code> に従うと2ブロック東3ブロック北に到着し、
+それは出発位置から5ブロック離れています。</li>
+<li><code>R2, R2, R2</code> に従うと2ブロック南に到着し、
+それは2ブロック離れています。</li>
+<li><code>R5, L5, R5, R3</code> は12ブロック離れた場所に到着します。</li>
+</ul>
+<p>イースターバニー司令部は<strong>何ブロック先</strong>にありますか？</p>
+<details><summary>解説</summary><div>
+<p>まずは、入力を読み込んで、左右と進むブロック数のコマンド列に変換する。</p>
+<pre><code class="language-haskell">import Data.Char
+
+main1 = do
+  co &lt;- readFile &quot;input.txt&quot;
+  let is = parse co
+  print is
+
+parse :: String -&gt; [Either Int Int]
+parse = loop
+  where
+    loop ('L':xs) = sub Left  xs
+    loop ('R':xs) = sub Right xs
+    loop &quot;&quot; = []
+    sub f xs = f (read as) : loop (dropWhile (not.isUpper) bs)
+      where
+        (as,bs) = span isDigit xs
+</code></pre>
+<p>現在位置 \((x,y)\), 現在の向き \((d_x, d_y)\) を状態にして、コマンド列を消化する。</p>
+<pre><code class="language-haskell">step ((x,y), (dx,dy)) (Left  n) = ((x - n * dy, y + n * dx), (- dy, dx))
+step ((x,y), (dx,dy)) (Right n) = ((x + n * dy, y - n * dx), (dy, - dx))
+
+main1 = do
+  ...
+  let ((x,y),_) = foldl step ((0,0), (0,1)) is
+  print $ abs x + abs y
+</code></pre>
+</div></details>
+<h1 id="パート2-25"><a class="header" href="#パート2-25">パート2</a></h1>
+<p>その後、募集要項の裏面に指示が続いていることに気がつきました。
+本当のイースターバニー司令部はあなたが最初に2度訪れる場所にあります。</p>
+<p>たとえば、指示が R8, R4, R4, R8 である場合、
+最初に2回訪れた場所は東に4ブロック離れた所です。</p>
+<p>あなたが<strong>最初に2度訪れる場所</strong>は何ブロック離れていますか？</p>
+<details><summary>解説</summary><div>
+<p>細かくステップを分けて考える。
+コマンド列から、1マスずつの差分の列を生成し、
+原点上向きから出発して全ての座標の列に直し、
+先頭から消費し、既出の座標を発見したところで停止する。</p>
+<pre><code class="language-haskell">import Data.Set
+import qualified Data.Set as S
+import Data.List
+
+deltas :: [Either Int Int] -&gt; [(Int, Int)]
+deltas = concat . snd . mapAccumL step (0,1)
+  where
+    step (dx,dy) (Left  n) = sub n (- dy, dx)
+    step (dx,dy) (Right n) = sub n (dy, - dx)
+    sub n dxy = (dxy, replicate n dxy)
+
+positions is = scanl add (0,0)
+  where
+    add (x, y) (dx, dy) = (x + dx, y + dy)
+
+loop s (p:ps)
+  | S.member p s = p
+  | otherwise    = loop (S.insert p s) ps
+
+main1 = do
+  ...
+  let (z,w) = loop S.empty $ positions $ deltas1 is
+  print $ abs z + abs w
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="2日目トイレのセキュリティ"><a class="header" href="#2日目トイレのセキュリティ">2日目：トイレのセキュリティ</a></h1>
+<p>あなたは暗闇の中でイースター・バニー司令部に到着します。
+しかし、あなたはとても慌ただしかったためにトイレに行っておくことを忘れていました！
+このような素晴らしいオフィスビルは通常トイレに暗証番号によるロックが付いているので、
+番号がないかフロントデスクを探します。</p>
+<p>見つけた書類には次のように書いてありました。
+「セキュリティを向上させるために、暗証番号は書き留めなくなりました。
+代わりに、トイレに行くためには以下の手順を覚えておいて実行してください。」</p>
+<p>この書類によると、押すべき各ボタンは、ひとつ前のボタンから始めて、
+キーパッド上の隣接するボタンへ移動することで各ボタンを見つけることができると説明されています。
+<code>U</code>は上に移動、<code>D</code>は下に移動、<code>L</code>は左に移動、<code>R</code>は右に移動。
+命令の各行は1つのボタンに対応しており、
+ひとつ前のボタン（最初の行の場合は「5」ボタン）から始めます。
+各行の指示の最後に到達したボタンを押してください。
+移動によりボタンから外れる場合は無視してください。</p>
+<p>これをずっと覚えておくことはできませんので、トイレまで歩いていくうちにコードを把握することにします。
+あなたはこのようなキーパッドを心に描いています：</p>
+<pre><code>1 2 3
+4 5 6
+7 8 9
+</code></pre>
+<p>指示が以下の通りだとします。</p>
+<pre><code>ULL
+RRDDD
+LURDL
+UUUUD
+</code></pre>
+<ul>
+<li>&quot;5&quot;から始め、上がって（&quot;2&quot;）左に（&quot;1&quot;）、
+さらに左に（移動できないので&quot;1&quot;に留まります）、
+よって最初のボタンは1です。</li>
+<li>前のボタン（&quot;1&quot;）から始め、
+右に2回移動し（&quot;3&quot;）、
+次に3回下に（2回移動した後に&quot;9&quot;で停止し3回目を無視して）移動し
+9で終わります。</li>
+<li>&quot;9&quot;から続けて、左、上、右、下、左に移動し、8で終わります。</li>
+<li>最後に、あなたは4回上がり（&quot;2&quot;で止まる）、次に1回下に移動し、
+5で終わります。</li>
+</ul>
+<p>したがって、この例では、トイレの暗証番号は1985です。</p>
+<p>あなたのパズルの入力は、フロントデスクで見つけた文書にあった指示です。
+<strong>トイレの暗証番号</strong>は何ですか？</p>
+<details><summary>解説</summary><div>
+<p>キーパッドをグラフと考える。ノードはボタンで、文字で区別する。
+移動できる有向辺は方向を表す文字がラベル付けされている。
+キーパッドの図から、ネットワークを表す接続行列を表す写像を作る。</p>
+<pre><code class="language-haskell">import qualified Data.Map
+
+keypad1 = mkKeyPad [&quot;123&quot;, &quot;456&quot;, &quot;789&quot;]
+
+mkKeyPad :: [String] -&gt; M.Map (Char,Char) Char
+mkKeyPad xss = M.fromList $
+  [ t | xs &lt;- xss, (v,w) &lt;- zip xs (tail xs), v /= ' ', w /= ' '
+  , t &lt;- [((v,'R'),w),((w,'L'),v)]]
+  ++
+  [ t | (xs, ys) &lt;- zip xss (tail xss), (v,w) &lt;- zip xs ys, v /= ' ', w /= ' '
+  , t &lt;- [((v,'D'),w),((w,'U'),v)]]
+</code></pre>
+<p>開始の文字と、一連の指示を受け取り、グラフを辿って最終的に到達した文字を返す。
+辿れないときは無視する。</p>
+<pre><code class="language-haskell">exec kp c ds = foldl step c ds
+  where
+    step c d = M.findWithDefault c (c,d) kp
+</code></pre>
+<p>入力を読み取り、'5' から始めて、行の内容に従ってグラフを辿る。
+たどり着いた文字は結果でありかつ、次の行の開始位置になる。</p>
+<pre><code class="language-haskell">import Data.List
+
+main1 = do
+  co &lt;- readFile &quot;input.txt&quot;
+  putStrLn $ tail $ scanl (exec keypad ) '5' $ lines co
+</code></pre>
+</div></details>
+<h1 id="パート2-26"><a class="header" href="#パート2-26">パート2</a></h1>
+<p>ついにあなたはトイレにたどり着きました。
+（ロビーから数分歩いているので、
+この階には数多くの会議室やウォータークーラーがあることが見て取れます。）
+では暗証番号を打ち込みましょう。
+キーパッドが想像していたようなものと全く異なった驚きのほとんどが膀胱を狼狽させました。
+トイレの暗証番号ロックのキーパッドデザイン会議に数百万人時間を注いだ成果とあなたは対峙しています。</p>
+<pre><code>    1
+  2 3 4
+5 6 7 8 9
+  A B C
+    D
+</code></pre>
+<p>あなたはやはり &quot;5&quot; から始め、端にいるときに止まりますが、
+上と同じ指示が与えられたときの結果は非常に異なります。</p>
+<ul>
+<li>あなたは &quot;5&quot; から始め、まったく動かず（上と左はどちらも端）、5で終わります。</li>
+<li>&quot;5&quot;から続けて、右に2回下に3回移動し（&quot;6&quot;,&quot;7&quot;,&quot;B&quot;,&quot;D&quot;,&quot;D&quot;と通って）Dで終わります。</li>
+<li>次に、&quot;D&quot;からもう5回移動して（&quot;D&quot;,&quot;B&quot;,&quot;C&quot;,&quot;C&quot;,&quot;B&quot;を通って）Bで終わります。</li>
+<li>最後に、さらに5回移動した後、あなたは3で終わります。</li>
+</ul>
+<p>したがって、実際のキーパッドの配置に基づくと、暗証番号は<code>5DB3</code>になります。</p>
+<p>パズル入力ファイルにある同じ指示を使用して、<strong>トイレの正しい暗証番号</strong>は何ですか？</p>
+<details><summary>解説</summary><div>
+<p>キーパッドのグラフを差し替えればよい。</p>
+<pre><code class="language-haskell">keypad2 = mkKeyPad [&quot;  1  &quot;,&quot; 234 &quot;,&quot;56789&quot;,&quot; ABC &quot;,&quot;  D  &quot;]
+
+main2 = do
+  co &lt;- readFile &quot;input.txt&quot;
+  putStrLn $ tail $ scanl (exec keypad2) '5' $ lines co
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="3日目三角形広場"><a class="header" href="#3日目三角形広場">3日目：三角形広場</a></h1>
+<p>（原題の「広場」はsquareで、三角形と掛かっている。）</p>
+<p>あなたは頭がはっきりしてきたので、
+イースターバニー司令部のこの部分を構成する
+廊下とオフィス家具の迷路にもっと深く入っていきます。
+ここはグラフィックデザイン部門に違いありません。
+壁一面に三角形の仕様が貼り出されています。</p>
+<p>いや、どうだろう？</p>
+<p>設計文書は、それが定義する各三角形の辺の長さが記されています。
+しかし… 5 10 25？三角形にならないものが混じっています。
+あなたは三角形にならないものに印を付けずにはいられませんでした。</p>
+<p>正しい三角形では、任意の2つの辺の合計が残りの辺よりも大きい必要があります。
+例えば、上の「三角形」は、
+\(5 + 10\) は25より大きくはないので、三角形になりません。</p>
+<p>あなたのパズル入力では、
+記述されている三角形のうち<strong>正しいものはいくつありますか？</strong></p>
+<details><summary>解説</summary><div>
+<p>三角形をなす条件を判定する述語を定義する。</p>
+<pre><code class="language-haskell">property a b c = a + b &gt; c &amp;&amp; b + c &gt; a &amp;&amp; c + a &gt; b
+</code></pre>
+<p>条件を満たすものを数えればよい。</p>
+<pre><code class="language-haskell">main1 =
+  readFile &quot;input.txt&quot; &gt;&gt;=
+  pure . map (map read . words) . lines &gt;&gt;=
+  print . length . filter (\[a,b,c] -&gt; property a b c)
+</code></pre>
+</div></details>
+<h1 id="パート2-27"><a class="header" href="#パート2-27">パート2</a></h1>
+<p>あなたが設計文書に役立つ印を付け終わったところで、三角形が縦に3つの組で指定されていることに気付きました。
+列の3つの数字の各組は三角形を指定します。行は無関係です。</p>
+<p>たとえば、次の仕様があるとき、百の位が同じ数字は同じ三角形の一部になります。
+（訳注：「百の位が同じ数字」は同じ三角形の一部になるための条件ではなくて、
+数字列をどのような組み合わせで解釈するかの説明のためにそうしたということ）</p>
+<pre><code>101 301 501
+102 302 502
+103 303 503
+201 401 601
+202 402 602
+203 403 603
+</code></pre>
+<p>あなたのパズル入力において、行でなく列で読んで、
+記述されている三角形のうち<strong>正しいものはいくつありますか？</strong></p>
+<details><summary>解説</summary><div>
+<p>3行ずつに切り分け、それらを転置し、全体を連結してからパート1と同じことをすればよい。</p>
+<pre><code class="language-haskell">import Data.List
+import Data.List.Split
+
+main2 =
+  readFile &quot;input.txt&quot; &gt;&gt;=
+  pure . concat . map transpose . chunksOf 3 . map (map read . words) . lines &gt;&gt;=
+  print . length . filter (\[a,b,c] -&gt; property a b c)
+</code></pre>
+</div></details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="4日目不明瞭さによるセキュリティ"><a class="header" href="#4日目不明瞭さによるセキュリティ">4日目：不明瞭さによるセキュリティ</a></h1>
+<p>（原題はSecurity Through Obscurityと韻を踏んでいる）</p>
+<p>ついに、部屋のリストが表示された情報キオスクの場所に着きました。
+もちろん、リストは暗号化され、囮データでいっぱいですが、
+リストを解読するための説明はすぐそばにまるで隠すことなく置いてあります。
+まずは囮データを削除するのがよいでしょう。</p>
+<p>各部屋は、暗号化された名前（ダッシュで区切られた小文字）、
+ダッシュ、セクタID、角括弧で囲んだチェックサム、
+で構成されています。</p>
+<p>チェックサムが
+暗号化された名前の中で最も多く現れる5つの文字で、
+多い順に並んでいて、
+同順のものはアルファベット順であるならば、
+部屋は本物です。（囮ではありません。）
+例えば：</p>
+<ul>
+<li><code>aaaaa-bbb-z-y-x-123[abxyz]</code>は本物の部屋です。
+最もよく現れる文字は<code>a</code>(5回)、<code>b</code>(3回)、
+その後同順の<code>x</code>,<code>y</code>,<code>z</code>はアルファベット順に列挙されているからです。</li>
+<li><code>a-b-c-d-e-f-g-h-987[abcde]</code>は本物の部屋です。
+すべての文字は同順ですが（それぞれ1つ）、
+最初の5つがアルファベット順にリストされているためです。</li>
+<li><code>not-a-real-room-404[oarel]</code>は本物の部屋です。</li>
+<li><code>totally-real-room-200[decoy]</code> は本物ではありません。</li>
+</ul>
+<p>上のリストのうち本物の部屋のセクタIDの合計は1514です。</p>
+<p><strong>本物の部屋のセクタIDの合計はいくつですか？</strong></p>
+<h1 id="パート2-28"><a class="header" href="#パート2-28">パート2</a></h1>
+<p>囮データがすべて消えたので、このリストを解読して話を進める時間です。</p>
+<p>部屋の名前は最先端の<strong>シフト暗号</strong>で暗号化されています。
+これは適切なソフトウェアがなければほとんど解読できません。
+しかし、イースターバニー司令部の情報キオスクのデザイナーは、
+あなたのような暗号の達人を相手にすることを予想していませんでした。</p>
+<p>部屋の名前を復号化するには、
+部屋のセクターIDに等しい数だけ
+各文字を前方にアルファベットで回転させます。
+<code>A</code>は<code>B</code>になり、<code>B</code>は<code>C</code>になり、<code>Z</code>は<code>A</code>になり、等々。
+ダッシュはスペースになります。</p>
+<p>たとえば、
+<code>qzmt-zixmtkozy-ivhz-343</code>
+の実際の名前は
+<code>very encrypted name</code>
+です。</p>
+<p>North Pole objectが格納されている部屋の<em>セクタID</em>は何ですか？</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="2022年"><a class="header" href="#2022年">2022年</a></h1>
+<p>サンタのトナカイは通常、普通のトナカイフードを食べますが、
+クリスマスにプレゼントを届けるには魔法力がたくさん必要です。
+そのため、彼らのお気に入りのおやつは、ジャングルの奥深くでしか育たない特別な種類のスターフルーツです。
+サンタ付きの妖精は、そのスターフルーツが育つ果樹園への毎年恒例の遠征にあなたを連れてきました。</p>
+<p>十分な魔法力を供給するには、遠征隊は12月25日までに最低50個のスターを回収する必要があります。
+妖精は果樹園にたくさんの果物があることを保証しますが、
+あなたは途中で見つけたスターフルーツを全て収穫することにしました。念のためです。</p>
+<p>パズルを解いてスターを集めよう。
+アドベントカレンダーでは、毎日2つのパズルが利用可能になります。
+最初のパズルを完了すると、2番目のパズルのロックが解除されます。
+パズルごとに星が1つ付与されます。幸運を！</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="1日目--カロリー計算"><a class="header" href="#1日目--カロリー計算">1日目 : カロリー計算</a></h1>
+<p>ジャングルは生い茂りすぎて、車での移動や空からのアクセスは困難に違いありません。
+妖精の遠征は伝統的に徒歩で行われます。
+あなたのボートが陸地に近づくと、妖精たちは物資の在庫を調べ始めます。
+重要な考慮事項のひとつは食料です。
+特に、それぞれの妖精が運んでいるカロリーの量（パズル入力）です。</p>
+<p>妖精たちは、持ってきたさまざまな食料、おやつ、レーションなどに含まれるカロリーの量を順番に書き留めます。
+1行に1項目ずつ。
+妖精たちは、自分の目録を前の妖精の目録（存在する場合）と空行で区切ります。</p>
+<p>例えば、妖精たちが所持品のカロリーを書き終えて、次のリストになったとします。</p>
+<pre><code>1000
+2000
+3000
+
+4000
+
+5000
+6000
+
+7000
+8000
+9000
+
+10000
+</code></pre>
+<p>このリストは、5人の妖精が運ぶ食品のカロリーを表しています。</p>
+<ul>
+<li>最初の妖精はそれぞれ1000, 2000, 3000カロリーで合計6000カロリーの食料を運んでいます。</li>
+<li>2番目の妖精は4000カロリーの食品を1つ運んでいます。</li>
+<li>3番目の妖精は5000と6000カロリー、合計11000カロリーの食料を運んでいます。</li>
+<li>4番目の妖精は7000,8000,9000カロリー、合計24000カロリーの食料を運んでいます。</li>
+<li>5番目の妖精は10000カロリーある食品を1つ運んでいます。</li>
+</ul>
+<p>妖精のお腹が空いて追加のおやつが必要になった場合、どの妖精に求めればよいかを知る必要があります。
+彼らは、最も多くのカロリーを運んでいる妖精がどれだけのカロリーを運んでいるかを知りたがっています。
+上記の例では、これは（4番目の妖精が運ぶ）24000です。</p>
+<p>最も多くのカロリーを運んでいる妖精を見つけてください。
+<strong>その妖精が持っている総カロリーはいくつですか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+`Data.List.Split`には列を区切る方法がいくつか実装されている。
+これを用いて妖精ごとのリストに戻し、それぞれ和を取り、最大値を求めればよい。
+
+```haskell
+main1 =
+  readFile "input.txt" >>=
+  pure . map (map read) . wordsBy null . lines >>=
+  print . maximum . map sum
+```
+
+</div></details>
+-->
+<h1 id="パート2-29"><a class="header" href="#パート2-29">パート2</a></h1>
+<p>あなたが妖精の疑問に対する答えを計算する頃には、
+彼らは、最大のカロリーを運ぶ妖精の在庫が最後にはなくなってしまう可能性があることにすでに気づいています.</p>
+<p>この容認できない状況を回避するために、妖精は代わりに、
+最も多くのカロリーを運ぶ上位3人の妖精が運ぶ総カロリーを知りたいと考えています。
+そうすれば、妖精の1人がおやつを使い果たしたとしても、2人の控えが残っています。</p>
+<p>上の例では、上位3人の妖精は4番目の妖精（24000カロリーを持つ）、3番目の妖精（11000カロリー）、
+5番目の妖精（10000カロリー）です。
+この3人の妖精が持っているカロリーの合計は45000です。</p>
+<p>最も多くのカロリーを運ぶ上位3人の妖精を見つけてください。
+<strong>それらの妖精は合計で何カロリーを持っていますか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+最大値一つを `maximum` で得る代わりに、
+整列して端を取り出すことで、上位3つのカロリーを足し合わせればよい。
+
+```haskell
+main2 =
+  readFile "input.txt" >>=
+  pure . map (sum . map read) . wordsBy null . lines >>=
+  print . sum . take 3 . sortBy (flip compare)
+```
+
+</div></details>
+-->
+<div style="break-before: page; page-break-before: always;"></div><h1 id="2日目-じゃんけん"><a class="header" href="#2日目-じゃんけん">2日目: じゃんけん</a></h1>
+<p>妖精たちはビーチにキャンプを設置し始めています。
+おやつ貯蔵庫に最も近いテントに誰が入るかを決めるために、巨大な<a href="https://ja.wikipedia.org/wiki/%E3%81%98%E3%82%83%E3%82%93%E3%81%91%E3%82%93">じゃんけん</a>トーナメントがすでに進行中です。</p>
+<p>じゃんけんは2人のプレイヤー間のゲームです。各ゲームには多くのラウンドからなります。
+各ラウンドで、両プレイヤーは同時に手の形を使用して石、紙、鋏のいずれかを選択します。
+そしてそのラウンドの勝者が決まります。
+石が鋏に勝利し、鋏が紙に勝利し、紙が石に勝利します。
+両方のプレイヤーが同じ形を選択した場合、ラウンドは引き分けで終了します。</p>
+<p>昨日のあなたの助けに感謝して、一人の妖精が暗号化された戦略ガイド（パズルの入力）をあなたに渡します。
+「最初の列は対戦相手の出す手です。<code>A</code>は石、<code>B</code>は紙、<code>C</code>は鋏です。2番目の列は…」
+突然、その妖精は誰かのテントを手伝って欲しいと呼ばれて行ってしまいました。</p>
+<p>2番目の列について、あなたは推測します。
+これはおそらく、あなたが対応して出す手に違いありません。
+<code>X</code>は石、<code>Y</code>は紙、<code>Z</code>は鋏でしょう。
+毎回勝つのは怪しいので、手は慎重に選ばれたに違いありません。</p>
+<p>トーナメント全体の勝者は、最高得点のプレイヤーです。
+合計スコアは、各ラウンドのスコアの合計です。
+1ラウンドの得点は、選択した形の得点（石は1点、紙は2点、鋏は3点）にラウンドの結果の得点（負けた場合は0点、引き分けの場合は3点、勝った場合は6点）を加えたものです。</p>
+<p>妖精があなたを助けようとしているのか、それともハメようとしているのかわからないので、攻略ガイドに従った場合に得られるスコアを計算する必要があります。</p>
+<p>たとえば、次の戦略ガイドが与えられたとします。</p>
+<pre><code>A Y
+B X
+C Z
+</code></pre>
+<p>この戦略ガイドでは、次のことを予言し、勧めています。</p>
+<ul>
+<li>最初のラウンドでは、対戦相手は石(<code>A</code>)を選択し、自分は紙(<code>Y</code>)を選択する必要があります。
+これはあなたの勝ちになり、スコアは8点（紙を選んだので 2 + 勝ったので 6）になります。</li>
+<li>2ラウンドめは対戦相手が紙(<code>B</code>)を選び、自分は石('X')を選びます。
+これは負けになりスコアは1 (1 + 0) 点を得ます。</li>
+<li>第3ラウンドは両方のプレイヤーが鋏を選択して引き分けて、スコアは 3 + 3 = 6 になります。</li>
+</ul>
+<p>この例では、戦略ガイドに従う場合、あなたは合計スコア15(8 + 1 + 6) を得ます。</p>
+<p><strong>すべてが戦略ガイドどおりに進んだ場合、合計スコアはいくつになりますか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+入力の各行（の1文字めと3文字め）からラウンドの得点が計算でき、その合計を求める。
+
+```haskell
+main1 = readFile "input.txt" >>= print . sum . map score1 . lines
+```
+
+自分の出す手に応じて、形の点と、相手の手に応じて勝敗点を導く関数が選択できる。
+
+```haskell
+score1 (o:_:'X':_) = 1 + sub o (3,0,6) -- X=石 対 o=A/B/C での勝敗点
+score1 (o:_:'Y':_) = 2 + sub o (6,3,0) -- 紙
+score1 (o:_:'Z':_) = 3 + sub o (0,6,3) -- 鋏
+
+sub 'A' (a,_,_) = a
+sub 'B' (_,b,_) = b
+sub 'C' (_,_,c) = c
+```
+
+</div></details>
+-->
+<h1 id="パート2-30"><a class="header" href="#パート2-30">パート2</a></h1>
+<p>先ほどの妖精がテントの手伝いを終え、忍び足で戻ってきました。
+「とにかく、2番目の列には、ラウンドがどのように終了する必要があるかが示されています。
+つまり、<code>X</code>は負ける必要があることを意味し、
+<code>Y</code>はラウンドを引き分けで終了する必要があることを意味し、
+<code>Z</code>は勝つ必要があることを意味します。
+頑張って！」</p>
+<p>合計スコアは同じ方法で計算されますが、今、指示されているようにラウンドを追えるためには
+どの形を選べばよいかを導く必要があります。
+上記の例は次のようになります。</p>
+<ul>
+<li>最初のラウンドで相手は石(<code>A</code>)を選択し、引き分け(<code>Y</code>)でラウンドを終了する必要があるため、こちらも石を選択します。これにより、1 + 3 = 4のスコアを得ます。</li>
+<li>第2ラウンドでは、対戦相手は紙(<code>B</code>)を選択し、あなたは石を選択することで負け(<code>X</code>)て、スコアは 1 + 0 = 1 です。</li>
+<li>第3ラウンドでは、相手の鋏を石で倒して 1 + 6 = 7のスコアを得ます。</li>
+</ul>
+<p>これで、超極秘戦略ガイドを正しく解読でき、合計スコアは12となります。</p>
+<p>2番目の列のエルフの指示に従って、<strong>全てが戦略ガイドどおりに進んだ場合、合計スコアはいくつになるでしょうか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+ラウンドの結果に応じて、勝敗点と、相手の手に応じて自分の手の形の点を導く関数が選択できる。
+
+```haskell
+main2 = readFile "input.txt" >>= print . sum . map score2 . lines
+
+score2 (o:_:'X':_) = 0 + scoresub o (3,1,2) -- o=A/B/C に負けるための手の形点
+score2 (o:_:'Y':_) = 3 + scoresub o (1,2,3) -- 引き分ける
+score2 (o:_:'Z':_) = 6 + scoresub o (2,3,1) -- 勝つ
+```
+
+</div></details>
+-->
+<div style="break-before: page; page-break-before: always;"></div><h1 id="3-日目--リュックサックの再編成"><a class="header" href="#3-日目--リュックサックの再編成">3 日目 : リュックサックの再編成</a></h1>
+<p>ある妖精が、ジャングルへの旅の物資を全てのリュックサックに詰め込むという重要な仕事をしています。
+残念ながら、その妖精は梱包の指示をまるで無視したので、いくつかの荷物を再配置する必要があります.</p>
+<p>各リュックサックには2つの大きな区画があります。
+様々な種類の全ての荷物はそれぞれ、2つの区画のいずれかにだけ入れることになっています。
+荷造りをした妖精は、リュックサックごとに、同じ種類の荷物はひとつだけという規則に従いませんでした。</p>
+<p>妖精は現在各リュックサックに入っている全ての荷物のリストを作成しました（あなたのパズル入力）が、誤りを見つけるためにあなたの助けが必要です。
+全ての荷物の種類は、単一の小文字または大文字で識別されます。
+(つまり、<code>a</code>と<code>A</code>は異なる種類の荷物を指します。）</p>
+<p>各リュックサックの荷物のリストは、全て一行の文字列として示されます。
+リュックサックの2つの区画には常に同じ数の荷物が入っているため、文字列の前半は最初の区画の荷物を表し、文字列の後半は2番目の区画の荷物を表します。</p>
+<p>例えば、次のような、6つのリュックサックの内容のリストがあるとします。</p>
+<pre><code>vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw
+</code></pre>
+<ul>
+<li>最初のリュックサックには荷物  <code>vJrwpWtwJgWrhcsFMMfFFhFp</code> が入っています。
+つまり、最初の区画には荷物 <code>vJrwpWtwJgWr</code> があり、
+2番目の区画には荷物 <code>hcsFMMfFFhFp</code> が入っています。
+両方の区画に現れている唯一の荷物の種類は小文字 <code>p</code> です。</li>
+<li>2番目のリュックサックの区画には
+<code>jqHRNqRjqzjGDLGL</code> と <code>rsFMfFZSrLrFZsSL</code>
+が入っています。
+両方の区画に現れている唯一の荷物の種類は大文字 <code>L</code> です。</li>
+<li>3番目のリュックサックの区画には
+<code>PmmdzqPrV</code> と <code>vPwwTWBwg</code>
+があり、唯一の共通の種類は大文字 <code>P</code> です。</li>
+<li>4番目のリュックサックの区画は種類 <code>v</code> のみを共有しています。</li>
+<li>5番目のリュックサックの区画は種類 <code>t</code> のみを共有しています。</li>
+<li>6番目のリュックサックの区画は種類 <code>s</code> のみを共有しています。</li>
+</ul>
+<p>荷物の再配置に優先順位を付けるために、全ての荷物の種類を優先度に変換できます。</p>
+<ul>
+<li>小文字の荷物種類 <code>a</code>～<code>z</code> は、優先度 1 から 26 を持ちます。</li>
+<li>大文字の荷物種類 <code>A</code>～<code>Z</code> は、優先度 27 から 52 を持ちます。</li>
+</ul>
+<p>上記の例では、各リュックサックの両方の区画に現れる荷物種類の優先度は、16 (<code>p</code>), 38 (<code>L</code>), 42 (<code>P</code>), 22 (<code>v</code>), 20 (<code>t</code>), 19 (<code>s</code>) です。
+これらの合計は157です。</p>
+<p>各リュックサックの両方の区画に現れる荷物の種類を見つけます。<strong>これらの荷物種類の優先度の合計はいくつですか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+`Data.List.intersect`で、リストを集合とみなして共通部分を取り出すことができる。
+
+```haskell
+import Data.List
+
+main1 = body "input.txt" compute1
+
+body fn cp = readFile fn >>= print . cp . lines
+
+compute1 :: [String] -> Int
+compute1 = sum . map func1
+
+func1 :: String -> Int
+func1 xs = prio $ head $ intersect as bs
+  where
+    (as,bs) = splitAt (div (length xs) 2) xs
+
+-- 優先度
+prio c
+  | c <= 'Z'  = fromEnum c - fromEnum 'A' + 27
+  | otherwise = fromEnum c - fromEnum 'a' + 1
+```
+
+</div></details>
+-->
+<h1 id="パート2-31"><a class="header" href="#パート2-31">パート2</a></h1>
+<p>入れ間違えた荷物の特定が完了すると、妖精が別の問題を抱えてやってきます。</p>
+<p>安全のため、妖精は3人ずつグループに分けられます。
+全ての妖精はグループを識別するバッジを持っています。
+効率のために、3人の妖精の各グループ内で、バッジは<strong>その妖精3人ともが共通して持つ唯一の荷物の種類</strong>です。
+つまり、グループのバッジが種類<code>B</code>の場合、3人の妖精はみなリュックサックのどこかに種類<code>B</code>の荷物を持ち、
+そしてそれ以外の種類の荷物は多くて2人までしかそれを持っていません。
+（訳注：3人共通の種類はひとつに定まる、ということ。）</p>
+<p>問題は、誰かがバッジに今年更新された証紙シールを貼り付け忘れたことです。
+新しい証紙シールを貼り付けるために、全てのバッジをリュックサックから取り出す必要があります。</p>
+<p>さらに、各グループのバッジに対応する荷物の種類を誰も書き留めていませんでした。
+どの荷物種類が正解かを判断する唯一の方法は、各グループの3人の妖精全てに共通する1つの荷物種類を見つけることです。</p>
+<p>リスト内の3行ずつの各組は1つのグループに対応しますが、各グループは異なるバッジの荷物種類を持つことができます。
+したがって、上記の例では、最初のグループのリュックサックは最初の3行です。</p>
+<pre><code>vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+</code></pre>
+<p>2番目のグループのリュックサックはその次の3行です。</p>
+<pre><code>wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw
+</code></pre>
+<p>最初のグループでは、3つのリュックサックすべてに現れる唯一の荷物種類は小文字 <code>r</code> です。
+これが彼らのバッジに違いありません。
+2番目のグループでは、バッジの荷物種類は <code>Z</code> です。</p>
+<p>これらの荷物の優先順位は、証紙シール貼り付け作業を計画するために引き続き調べる必要があります。
+ここでは、最初のグループは 18 (<code>r</code>)、2番目のグループは 52 (<code>Z</code>) です。
+これらの合計は70です。</p>
+<p>妖精の3人グループそれぞれについて、バッジに対応する荷物種類を見つけます。
+<strong>これらの荷物種類の優先度の合計はいくつですか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+3人グループのリストに対して、`intersect`を2度使えば共通の要素が取り出せる。
+
+```haskell
+import Data.List.Split
+
+main2 = body "input.txt" compute2
+
+compute2 :: [String] -> Int
+compute2 = sum . map func2 . chunksOf 3
+
+func2 :: [String] -> Int
+func2 = prio . head . foldl1 intersect
+```
+
+</div></details>
+-->
+<div style="break-before: page; page-break-before: always;"></div><h1 id="4-日目--キャンプの後片付け"><a class="header" href="#4-日目--キャンプの後片付け">4 日目 : キャンプの後片付け</a></h1>
+<p>船から最後の物資を降ろす前に、場所を空ける必要があります。
+そのため、数人の妖精がキャンプの区画を片付ける仕事を割り当てられています。
+全ての区画には一意の<strong>ID番号</strong>があり、妖精にはそれぞれ区画IDの範囲がひとつずつ割り当てられています。</p>
+<p>ところが、ある妖精が区画の割り当てを互いに見比べたところ、
+割り当ての多くに<strong>重複がある</strong>ことに気付きました。
+重複をすばやく見つけて無駄な作業を減らすために、妖精たちは二人一組になり、
+<strong>それぞれの組の割り当て区画の大きなリスト</strong>（パズル入力）を作成します。</p>
+<p>例えば、次の区画割り当て対のリストを考えてみましょう：</p>
+<pre><code>2-4,6-8
+2-3,4-5
+5-7,7-9
+2-8,3-7
+6-6,4-6
+2-6,4-8
+</code></pre>
+<p>最初の数個の対について、このリストの意味を説明します：</p>
+<ul>
+<li>最初の妖精の組では、最初の妖精には区画2-4（区画2,3,4）が割り当てられ、
+2番目の妖精には区画6-8（区画6,7,8）が割り当てられました。</li>
+<li>2番目の妖精の組には、それぞれ2つの区画が割り当てられました。</li>
+<li>3番目の妖精の組には、それぞれ3つの区画が割り当てられました。
+一人は区画5,6,7で、もう一方は同じく7と、あと8,9です。</li>
+</ul>
+<p>このリストの例では、図示しやすいように1桁の区画IDを使用しています。
+実際のリストにはもっと大きな数が含まれている可能性があります。
+これらの区画割り当ての対は、視覚的には次のようになります。</p>
+<pre><code>.234.....  2-4
+.....678.  6-8
+
+.23......  2-3
+...45....  4-5
+
+....567..  5-7
+......789  7-9
+
+.2345678.  2-8
+..34567..  3-7
+
+.....6...  6-6
+...456...  4-6
+
+.23456...  2-6
+...45678.  4-8
+</code></pre>
+<p>一部の組は、彼らの割り当ての一方が他方を<strong>完全に含んでいる</strong>ことに気付きました。
+例えば、<code>2-8</code>は<code>3-7</code>を完全に含んでおり、<code>6-6</code>は<code>4-6</code>に完全に含まれています。</p>
+<p>一方の割り当てがもう一方の割り当てを完全に含む組では、組の妖精の一人は、
+相棒が既に清掃している区画だけを清掃するため、これらは最も再検討が必要と思われます。
+この例では、そのような組が2組あります。</p>
+<p><strong>一人の範囲がもう一人の範囲に完全に含まれる割り当ての組はいくつありますか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+一行にある4つの数を順に \\(a,b,c,d\\) と呼ぶことにする。
+データに矛盾がないこと、すなわち\\(a \leq b, c \leq d\\)は満たされていると仮定する。
+
+行を読み取るのには、数字の並びの部分だけを抽出する必要がある。
+次に出現する数字でない文字が固定なので、それを用いて取り出すのが簡易。
+
+```haskell
+import Data.List
+
+parse :: String -> (Int,Int,Int,Int)
+parse xs0 = (read as, read bs, read cs, read ds)
+  where
+    (as,_:xs1) = span ('-' /=) xs0
+    (bs,_:xs2) = span (',' /=) xs1
+    (cs,_:ds ) = span ('-' /=) xs2
+```
+
+完全に重なっているとは、\\(a \leq c \land d \leq b\\) または
+\\(c \leq a \land b \leq d\\) である。
+これを満たしている行の数を数える。
+
+```haskell
+prop1 (a,b,c,d) = a <= c && d <= b || c <= a && b <= d
+
+main1 = readFile "input.txt" >>= print . length . filter prop1 . map parse . lines
+```
+
+</div></details>
+-->
+<h1 id="パート2-32"><a class="header" href="#パート2-32">パート2</a></h1>
+<p>まだかなりの重複作業が予定されているようです。
+代わりに、妖精たちは重なりがある組のの数を知りたがっています。</p>
+<p>上記の例では、最初の2つの組（<code>2-4,6-8</code>と<code>2-3,4-5</code>）は重なりませんが、
+残りの4つ組（<code>5-7,7-9</code>, <code>2-8,3-7</code>, <code>6-6,4-6</code>, `2-6,4-8)）は重なります。</p>
+<ul>
+<li><code>5-7,7-9</code> は単一の区画<code>7</code>が重複しています。</li>
+<li><code>2-8,3-7</code> は<code>3</code>から<code>7</code>までの全ての区画で重なっています。</li>
+<li><code>6-6,4-6</code> 単一の区画<code>6</code>で重なっています。</li>
+<li><code>2-6,4-8</code> は区画<code>4</code>,<code>5</code>,<code>6</code>で重なっています。</li>
+</ul>
+<p>したがって、この例では、重なりのある割り当て組のの数は4です。</p>
+<p><strong>範囲が重複する割り当て組はいくつありますか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+逆に、重複が**ない**とは、\\(b < c\\) または \\(d < a\\) が満たされることである。
+これをそのまま書いてもいいし、ド・モルガンの法則を用いて
+\\(\neg (b < c \lor d < a) = b \geq c \land d \geq a\\)
+としてもよい。
+
+```haskell
+prop2 (a,b,c,d) = not (b < c || d < a)
+
+main2 = readFile "input.txt" >>= print . length . filter prop2 . map parse . lines
+```
+
+</div></details>
+-->
+<div style="break-before: page; page-break-before: always;"></div><h1 id="5-日目-物資の山"><a class="header" href="#5-日目-物資の山">5 日目: 物資の山</a></h1>
+<p>船から最後の物資が降ろされ次第、遠征隊は出発できます。
+物資はそれぞれ印付きの木箱に収められ、積み上げられてスタックをなしていますが、
+必要な物資は他の多くの木箱の下に埋もれているため、木箱を再配置する必要があります。</p>
+<p>船には、木箱をスタック間で移動できる巨大な貨物クレーンがあります。
+木箱がつぶれたり倒れたりしないように、クレーンのオペレーターは慎重に計画された一連の手順で木箱を再配置します。
+木箱を再配置すると、目的の木箱が各スタックの一番上になります。</p>
+<p>妖精たちは、この繊細な手順の間、クレーンオペレーターの邪魔をしたくありませんが、どの木箱がどこに到着するのかを尋ねるのを忘れていました。
+出発するために、再配置が完了したらできるだけ早く荷下ろしにかかれるように備えたいと思っています。</p>
+<p>しかし彼らは、木箱のスタックの初期状態の図と再配置手順（パズル入力）しか持っていません。
+例えば：</p>
+<pre><code>    [D]    
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 
+
+move 1 from 2 to 1
+move 3 from 1 to 3
+move 2 from 2 to 1
+move 1 from 1 to 2
+</code></pre>
+<p>この例では、木箱のスタックが3つあります。
+スタック1は2つの木箱からなります。木箱<code>Z</code>は下にあり、木箱<code>N</code>は上にあります。
+スタック2は3つの木箱からなります。下から上に、木箱 <code>M</code>, <code>C</code>, <code>D</code> です。
+最後に、スタック3は1つの箱<code>P</code>からなります。</p>
+<p>続きに、再配置手順が示されています。
+手順の各ステップで、ある量の木箱が1つのスタックから別のスタックに移動されます。
+上記の再配置手順の最初のステップでは、1つの木箱がスタック2からスタック1に移動され、
+その結果次の構成になります。</p>
+<pre><code>[D]        
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 
+</code></pre>
+<p>第2ステップでは、3つの木箱がスタック1からスタック3に移動します。
+木箱は<strong>一度にひとつ</strong>ずつ運ばれるので、
+結果として最初の木箱(<code>D</code>)は2つめ3つめの木箱の下に移されます。</p>
+<pre><code>        [Z]
+        [N]
+    [C] [D]
+    [M] [P]
+ 1   2   3
+</code></pre>
+<p>次に、両方の木箱がスタック2からスタック1に運ばれます。
+ここでも木箱は一度に1つずつ移動されるため、木箱<code>C</code>は木箱<code>M</code>の下になります。</p>
+<pre><code>        [Z]
+        [N]
+[M]     [D]
+[C]     [P]
+ 1   2   3
+</code></pre>
+<p>最後に、1つの木箱がスタック1からスタック2に移動されます。</p>
+<pre><code>        [Z]
+        [N]
+        [D]
+[C] [M] [P]
+ 1   2   3
+</code></pre>
+<p>妖精たちは、<strong>最後にどの木箱が各スタックの一番上になるか</strong>を知る必要があります。
+この例では、一番上の木箱はスタック1では<code>C</code>、スタック2は<code>M</code>、スタック3は<code>Z</code>になため、
+これらを組み合わせて、エルフに<code>CMZ</code>とメッセージを送る必要があります。</p>
+<p><strong>再配置手順が完了した後、各スタックの一番上にある木箱は何ですか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+ファイルを読み込んだら、前半と後半が空行で区切られているので、これで切り分け、空行は除く。
+
+```haskell
+(ls1, _:ls2) <- break null . lines <$> readFile "input.txt"
+```
+
+前半のスタックの絵は、スタックごとに、上を前にしたリストで取り出したい。
+これは `Data.List.transpose` で転置したあと、必要な行だけ抜き出すことでできる。
+（一番右のスタックが最大でない場合、行末を揃えるために空白を追加する必要がある。自分は不要だった。）
+なお、前半の最後はスタック位置を表すだけで不要なので捨てる。
+
+取り出したスタックの初期状態は、この後の手続き的な更新に備えて、
+スタック番号をキーにした `IntMap` に入れておく。
+
+```haskell
+let ls1t = transpose $ init ls1
+let m0 = IM.fromAscList $ zip [1..] $ map (dropWhile (' ' ==) . (ls1t !!)) [1,5..33]
+```
+
+ファイル後半の手順書は、3つの数を抜き出すだけでよい。
+
+```haskell
+parse :: String -> (Int,Int,Int)
+parse xs = (read w1, read w2, read w3)
+  where
+    (_:w1:_:w2:_:w3:_) = words xs
+```
+
+ひとつの指示(a,b,c)を実行するには、スタックbから要素をひとつずつ取り出してスタックcに乗せることをa回繰り返す。
+
+```haskell
+step1 :: IM.IntMap String -> (Int,Int,Int) -> IM.IntMap String
+step1 m1 (a,b,c) = IM.insert c imc $ IM.insert b imb m1
+  where
+    move 0 xs ys = (xs,ys)
+    move k (x:xs) ys = move (pred k) xs (x:ys)
+    (imb, imc) = move a (m1 IM.! b) (m1 IM.! c)
+```
+
+これを全ての行について実行した結果のスタックから、先頭要素を全て順に取り出したものが答えである。
+
+```haskell
+body step = do
+  (ls1, _:ls2) <- break null . lines <$> readFile "input.txt"
+  let ls1t = transpose $ init ls1
+  let m0 = IM.fromAscList $ zip [1..] $ map (dropWhile (' ' ==) . (ls1t !!)) [1,5..33]
+  let mZ = foldl step m0 $ map parse ls2
+  putStrLn $ map head $ IM.elems mZ
+
+main1 = body step1
+```
+
+</div></details>
+-->
+<h1 id="パート2-33"><a class="header" href="#パート2-33">パート2</a></h1>
+<p>クレーンのオペレーターが木枠を巧みに再配置するのを見ていると、
+手順があなたの予測とは違った進み方をしていることに気付きます。</p>
+<p>クレーンの側面の文字に泥がかぶっていたので、さっと拭き取ります。
+クレーンはCrateMover 9000ではありません。これは<strong>CrateMover 9001</strong>です。</p>
+<p>CrateMover 9001は、多くの新しくエキサイティングな機能で有名です：
+エアコン、革張りのシート、追加のカップホルダー、
+そして<strong>複数の木箱を一度に持ち上げて移動する機能</strong>。</p>
+<p>上記の例をもう一度考えます。木箱は同じ構成で始まります。</p>
+<pre><code>    [D]    
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 
+</code></pre>
+<p>単一の木箱をスタック2からスタック1に移動すると、以前と同じように動作します。</p>
+<pre><code>[D]        
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 
+</code></pre>
+<p>しかし、スタック1からスタック3に3つの木箱を移動させる動作は、
+これらの移動された3つの木箱<strong>順序が同じまま</strong>であることを意味し、次の新しい構成になります。</p>
+<pre><code>        [D]
+        [N]
+    [C] [Z]
+    [M] [P]
+ 1   2   3
+</code></pre>
+<p>次に、両方の木箱がスタック2からスタック1に移動され、<strong>順序も保持</strong>されます。</p>
+<pre><code>        [D]
+        [N]
+[C]     [Z]
+[M]     [P]
+ 1   2   3
+</code></pre>
+<p>最後に1つの木箱がスタック1からスタック2に移されます。今回移動されるのは木箱<code>C</code>です。</p>
+<pre><code>        [D]
+        [N]
+        [Z]
+[M] [C] [P]
+ 1   2   3
+</code></pre>
+<p>この例では、CrateMover 9001が木箱をまったく異なる順序 <code>MCD</code> に配置しています。</p>
+<p>再配置プロセスが完了する前に、シミュレーションを更新して、
+妖精が最後の物資を降ろす準備をして待つべき場所を把握できるようにします。
+<strong>再配置手順が完了した後、各スタックの一番上にある木箱は何ですか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+スタックの要素をひとつずつ移動させる代わりに、
+指定された個数分だけ一度に、同じ順で移す。
+
+```haskell
+step2 :: IM.IntMap String -> (Int,Int,Int) -> IM.IntMap String
+step2 m1 (a,b,c) = IM.insert c imc $ IM.insert b imb2 m1
+  where
+    (imb1, imb2) = splitAt a (m1 IM.! b)
+    imc = imb1 ++ m1 IM.! c
+
+main2 = body step2
+```
+
+</div></details>
+-->
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+
+    </body>
+</html>
