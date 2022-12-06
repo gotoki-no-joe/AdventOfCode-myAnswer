@@ -5,6 +5,9 @@ language = "ja"
 multilingual = false
 src = "src"
 
+[build]
+build-dir = "docs"
+
 [output.html]
 fold.enable = true
 mathjax-support = true
