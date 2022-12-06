@@ -12,7 +12,7 @@ line2triple cs = (l,w,h) where
     x2s 'x' = ' '
     x2s  c  =  c
     [l,w,h] = map read $ words $ map x2s cs
-  
+
 {-
 l,w,hのうち最大のものを除いた、最小と2番目のものの積、を計算するのは面倒なので、
 全て掛けてから最大値で割ってキャンセルする。
@@ -26,12 +26,11 @@ oneArea同様に、最大値を除外する代わりに全部足してから最�
 -}
 ribbon :: (Int,Int,Int) -> Int
 ribbon (l,w,h) = (l + w + h - (maximum [l,w,h]))*2 + l*w*h
-  
+
 {-
 *Main> main
 1598415
 3812909
-  
+
 パート1とパート2でやることにあまり変化がなかった。
 -}
-  

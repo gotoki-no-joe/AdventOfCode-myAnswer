@@ -1,0 +1,87 @@
+# 10日目：妖精は見る、妖精は話す
+
+今日、妖精たちは
+[読み上げ数列](https://ja.wikipedia.org/wiki/%E8%AA%AD%E3%81%BF%E4%B8%8A%E3%81%92%E6%95%B0%E5%88%97)（
+[look-and-say](https://en.wikipedia.org/wiki/Look-and-say_sequence)）
+というゲームをしています。
+彼らは順番に前の列を朗読し、その読みを次の列として使用して列を作ります。
+たとえば、`211`は「1つの2、2つの1」と読み、`1221`という列になります。
+
+前回の値を次のステップの入力として使用して、look-and-sayの列は反復して生成されます。
+各ステップについて、前回の値を取って、
+`111`のようなそれぞれの同じ数字の並びを個数に続けてその数字そのもので置き換えます。
+
+例えば：
+
+- `1`は`11`となります。（1つの数字の`1`）
+- `11`は`21`に（2つの数字の1）
+- `21`は`1211`に（1つの数字の2、1つの数字の1）
+- `1211`は`111221`に（1つの1、1つの2、2つの1）
+- `111221`は`312211`に（3つの1、2つの2、1つの1）
+
+パズル入力の数字から始めて、このプロセスを40回適用します。
+**結果の長さ**はどれだけですか？
+
+<details><summary>解説</summary><div>
+
+入力は文字列として受け取り、1桁の数のリストで扱うことにする。
+
+```haskell
+import Data.Char
+
+part1 cs = ...
+  where
+    ds = map digitToInt cs
+```
+
+`Data.List.group` で等しいものどうしに分割し、その長さを数える。
+長さは10以上になりうるので、数リストに直接戻せないことに注意。
+
+```haskell
+step :: [Int] -> [Int]
+step ds =
+  [ e
+  | ds1 <- group ds
+  , e <- (map digitToInt $ show $ length ds1) ++ [head ds1]
+  ]
+```
+
+40回繰り返した結果の長さを求める。
+
+```haskell
+part1 cs = length ds40
+  where
+    ds0 = map digitToInt cs
+    ds40 = iterate step ds0 !! 40
+```
+
+</div></details>
+
+# パート2
+
+すばらしい！わかった？
+あなたは[John Conwayのこの列に関する講演](https://www.youtube.com/watch?v=ea7lJkEhytA)
+も楽しめるでしょう。
+（**Conwayのライフゲーム**のConwayです。）
+
+さて、もう一度あなたのパズル入力の数字で始めて、
+このプロセスを**50回**適用してください。
+**新しい結果の長さ**はどのくらいですか？
+
+<details><summary>解説</summary><div>
+
+Wikipediaの解説を見ると、
+「1, 2, 3以外の数字は、シード番号にそのような数字または
+同じ数字の3つを超えるランが含まれていない限り、シーケンスに現れない。」
+とある。そんなことがあるのか。
+それはともかく、特に計算量を節約する何かがあるわけでもなさそうなので、
+ただ計算機をブン回す。
+
+```haskell
+part2 cs = length ds50
+  where
+    ds0 = map digitToInt cs
+    ds50 = iterate step ds0 !! 50
+```
+
+</div></details>

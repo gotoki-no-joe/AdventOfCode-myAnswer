@@ -44,7 +44,7 @@ part1できた
 -}
 
 data JSON = JSONnum Int | JSONstr String | JSONarr [JSON] | JSONobj [(String,JSON)]
-  deriving Show
+  deriving (Eq, Show)
 
 parse :: String -> (JSON,String)
 parse ('-':cs) = (JSONnum $ negate $ read ns, cs1) where

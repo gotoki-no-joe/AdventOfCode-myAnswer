@@ -1,0 +1,10 @@
+[book]
+title = "Advent of Code"
+authors = ["Gotoki no Joe (Translation)"]
+language = "ja"
+multilingual = false
+src = "src"
+
+[output.html]
+fold.enable = true
+mathjax-support = true
