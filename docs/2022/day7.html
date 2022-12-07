@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Day  7 - Advent of Code</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> はじめに</a></li><li class="chapter-item "><a href="../2015/index.html"><strong aria-hidden="true">2.</strong> 2015</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2015/day1.html"><strong aria-hidden="true">2.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2015/day2.html"><strong aria-hidden="true">2.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2015/day3.html"><strong aria-hidden="true">2.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2015/day4.html"><strong aria-hidden="true">2.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2015/day5.html"><strong aria-hidden="true">2.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2015/day6.html"><strong aria-hidden="true">2.6.</strong> Day  6</a></li><li class="chapter-item "><a href="../2015/day7.html"><strong aria-hidden="true">2.7.</strong> Day  7</a></li><li class="chapter-item "><a href="../2015/day8.html"><strong aria-hidden="true">2.8.</strong> Day  8</a></li><li class="chapter-item "><a href="../2015/day9.html"><strong aria-hidden="true">2.9.</strong> Day  9</a></li><li class="chapter-item "><a href="../2015/day10.html"><strong aria-hidden="true">2.10.</strong> Day 10</a></li><li class="chapter-item "><a href="../2015/day11.html"><strong aria-hidden="true">2.11.</strong> Day 11</a></li><li class="chapter-item "><a href="../2015/day12.html"><strong aria-hidden="true">2.12.</strong> Day 12</a></li><li class="chapter-item "><a href="../2015/day13.html"><strong aria-hidden="true">2.13.</strong> Day 13</a></li><li class="chapter-item "><a href="../2015/day14.html"><strong aria-hidden="true">2.14.</strong> Day 14</a></li><li class="chapter-item "><a href="../2015/day15.html"><strong aria-hidden="true">2.15.</strong> Day 15</a></li><li class="chapter-item "><a href="../2015/day16.html"><strong aria-hidden="true">2.16.</strong> Day 16</a></li><li class="chapter-item "><a href="../2015/day17.html"><strong aria-hidden="true">2.17.</strong> Day 17</a></li><li class="chapter-item "><a href="../2015/day18.html"><strong aria-hidden="true">2.18.</strong> Day 18</a></li><li class="chapter-item "><a href="../2015/day19.html"><strong aria-hidden="true">2.19.</strong> Day 19</a></li><li class="chapter-item "><a href="../2015/day20.html"><strong aria-hidden="true">2.20.</strong> Day 20</a></li><li class="chapter-item "><a href="../2015/day21.html"><strong aria-hidden="true">2.21.</strong> Day 21</a></li><li class="chapter-item "><a href="../2015/day22.html"><strong aria-hidden="true">2.22.</strong> Day 22(未)</a></li><li class="chapter-item "><a href="../2015/day23.html"><strong aria-hidden="true">2.23.</strong> Day 23</a></li><li class="chapter-item "><a href="../2015/day24.html"><strong aria-hidden="true">2.24.</strong> Day 24</a></li><li class="chapter-item "><a href="../2015/day25.html"><strong aria-hidden="true">2.25.</strong> Day 25</a></li></ol></li><li class="chapter-item "><a href="../2016/index.html"><strong aria-hidden="true">3.</strong> 2016</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2016/day1.html"><strong aria-hidden="true">3.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2016/day2.html"><strong aria-hidden="true">3.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2016/day3.html"><strong aria-hidden="true">3.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2016/day4.html"><strong aria-hidden="true">3.4.</strong> Day  4</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> 2017</div></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> 2018</div></li><li class="chapter-item "><div><strong aria-hidden="true">6.</strong> 2019</div></li><li class="chapter-item "><div><strong aria-hidden="true">7.</strong> 2020</div></li><li class="chapter-item "><div><strong aria-hidden="true">8.</strong> 2021</div></li><li class="chapter-item expanded "><a href="../2022/index.html"><strong aria-hidden="true">9.</strong> 2022</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2022/day1.html"><strong aria-hidden="true">9.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2022/day2.html"><strong aria-hidden="true">9.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2022/day3.html"><strong aria-hidden="true">9.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2022/day4.html"><strong aria-hidden="true">9.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2022/day5.html"><strong aria-hidden="true">9.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2022/day6.html"><strong aria-hidden="true">9.6.</strong> Day  6</a></li><li class="chapter-item expanded "><a href="../2022/day7.html" class="active"><strong aria-hidden="true">9.7.</strong> Day  7</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Advent of Code</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>コードの出現[約]【イベント】[店][設定][ログアウト]ごとときのじょうえ14*
+サブy{2022年}[カレンダー]【AoC++】【協賛】【リーダーボード】【統計】
+私たちのスポンサーは、アドベント オブ コードの実現を支援しています。
+Ximedes - クラウドの Kotlin からターミナルの NodeJS まで、当社のソフトウェアは世界中の支払いと公共交通機関の発券を可能にします。
+--- 7 日目: デバイスに空き容量がありません ---
+遠征が進むにつれて、鳥のさえずりや雨滴が葉に当たる音が聞こえます。時折、遠くでもっと大きな音が聞こえることさえあります。とにかく、動物はどれくらいの大きさでここに出ますか？</p>
+<p>エルフがあなたにくれたデバイスには、通信システム以外にも問題があります。システム アップデートを実行しようとすると、次のようになります。</p>
+<p>$ system-update --please --pretty-please-with-sugar-on-top
+Error: No space left on device
+おそらく、いくつかのファイルを削除して、更新用のスペースを作ることができますか?</p>
+<p>ファイルシステムを参照して状況を評価し、結果の端末出力 (パズルの入力) を保存します。例えば：</p>
+<p>$ cd /
+$ ls
+dir a
+14848514 b.txt
+8504156 c.dat
+dir d
+$ cd a
+$ ls
+dir e
+29116 f
+2557 g
+62596 h.lst
+$ cd e
+$ ls
+584 i
+$ cd ..
+$ cd ..
+$ cd d
+$ ls
+4060174 j
+8033020 d.log
+5626152 d.ext
+7214296 k
+ファイルシステムは、ファイル (プレーンデータ) とディレクトリ (他のディレクトリまたはファイルを含むことができる) のツリーで構成されます。一番外側のディレクトリは と呼ばれ/ます。ファイルシステムをナビゲートし、ディレクトリに出入りして、現在いるディレクトリの内容を一覧表示できます。</p>
+<p>端末出力内で、 で始まる行$は実行したコマンドであり、一部の最新のコンピューターと非常によく似ています。</p>
+<p>cdはディレクトリの変更を意味します。これにより、現在のディレクトリが変更されますが、具体的な結果は引数によって異なります。
+cd x1 つのレベルで移動しxます。現在のディレクトリで指定されたディレクトリを探し、それを現在のディレクトリにします。
+cd ..1 レベル移動します。現在のディレクトリを含むディレクトリを見つけ、そのディレクトリを現在のディレクトリにします。
+cd /現在のディレクトリを最も外側のディレクトリ に切り替えます/。
+lsリストを意味します。現在のディレクトリに直接含まれるすべてのファイルとディレクトリを出力します。
+123 abcは、現在のディレクトリにabcsizeという名前のファイルが含まれていることを意味します123。
+dir xyzは、現在のディレクトリに という名前のディレクトリが含まれていることを意味しxyzます。
+上記の例のコマンドと出力から、ファイルシステムが視覚的に次のようになっていることがわかります。</p>
+<ul>
+<li>/ (dir)
+<ul>
+<li>a (dir)
+<ul>
+<li>e (dir)
+<ul>
+<li>i (file, size=584)</li>
+</ul>
+</li>
+<li>f (file, size=29116)</li>
+<li>g (file, size=2557)</li>
+<li>h.lst (file, size=62596)</li>
+</ul>
+</li>
+<li>b.txt (file, size=14848514)</li>
+<li>c.dat (file, size=8504156)</li>
+<li>d (dir)
+<ul>
+<li>j (file, size=4060174)</li>
+<li>d.log (file, size=8033020)</li>
+<li>d.ext (file, size=5626152)</li>
+<li>k (file, size=7214296)
+ここでは、/(最外部のディレクトリ)aとd( にある/)とe(にある) の 4 つのディレクトリがありaます。これらのディレクトリには、さまざまなサイズのファイルも含まれています。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>ディスクがいっぱいなので、おそらく最初のステップは、削除するのに適したディレクトリを見つけることです。これを行うには、各ディレクトリの合計サイズを決定する必要があります。ディレクトリの合計サイズは、直接的または間接的に含まれるファイルのサイズの合計です。(ディレクトリ自体は、固有のサイズを持っているとは見なされません。)</p>
+<p>上記のディレクトリの合計サイズは次のようになります。</p>
+<p>ディレクトリの合計サイズeは584です。これは、サイズが 584 のファイルiが 1 つ含まれており、他のディレクトリがないためです。
+ディレクトリには、ファイル(サイズ 29116)、(サイズ 2557)、および(サイズ 62596)が含まれているため、a合計サイズは94853です。fgh.lstiaei
+ディレクトリdの合計サイズは24933642です。
+最も外側のディレクトリとして、/すべてのファイルが含まれます。その合計サイズは48381165で、すべてのファイルのサイズの合計です。
+まず、合計サイズが最大 100000のディレクトリをすべて見つけてから、それらの合計サイズの合計を計算します。上記の例では、これらのディレクトリはaとeです。それらの合計サイズの合計は95437(94853 + 584) です。(この例のように、このプロセスはファイルを複数回カウントできます!)</p>
+<p>合計サイズが最大 100000 のすべてのディレクトリを検索します。これらのディレクトリの合計サイズの合計は?</p>
+<p>あなたのパズルの答えは でした1367870。</p>
+<ul>
+<li>
+<ul>
+<li>パート2 - -
+これで、削除するディレクトリを選択する準備が整いました。</li>
+</ul>
+</li>
+</ul>
+<p>ファイルシステムで利用できる合計ディスク容量は です70000000。更新を実行するには、少なくとも の未使用容量が必要です30000000。更新を実行するのに十分なスペースを解放する、削除できるディレクトリを見つける必要があります。</p>
+<p>上記の例では、最も外側のディレクトリの合計サイズ (したがって、使用済み領域の合計量) は48381165です。これは、未使用スペースのサイズが現在 である必要があることを意味しますが、これは更新で必要とされる21618835ものではありません。30000000したがって、更新を実行するには、少なくとも合計サイズが のディレクトリを8381165削除する必要があります。</p>
+<p>これを実現するには、次のオプションがあります。</p>
+<p>ディレクトリを削除eすると、未使用領域が だけ増え584ます。
+ディレクトリを削除aすると、未使用領域が だけ増え94853ます。
+ディレクトリを削除dすると、未使用領域が だけ増え24933642ます。
+ディレクトリを削除/すると、未使用領域が だけ増え48381165ます。
+ディレクトリeとディレクトリaはどちらも小さすぎます。それらを削除しても、十分なスペースが解放されません。ただし、ディレクトリdとディレクトリ/はどちらも十分に大きいです。これらの中から、最小の:を選択し、d未使用スペースを だけ増やし24933642ます。</p>
+<p>削除した場合にファイルシステム上で更新を実行するのに十分なスペースを解放する最小のディレクトリを見つけます。そのディレクトリの合計サイズは?</p>
+<p>あなたのパズルの答えは でした549173。</p>
+<p>このパズルの両方の部分が完成しました! それらは 2 つの金の星を提供します: **</p>
+<p>この時点で、アドベント カレンダーに戻り、別のパズルに挑戦してください。</p>
+<p>それでも見たい場合は、パズルの入力を取得できます。</p>
+<p>[共有することもできます】このパズル。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../2022/day6.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../2022/day6.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

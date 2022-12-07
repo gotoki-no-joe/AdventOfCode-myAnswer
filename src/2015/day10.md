@@ -1,6 +1,6 @@
-# 10日目：妖精は見る、妖精は話す
+# 10日目：小人は見る、小人は話す
 
-今日、妖精たちは
+今日、小人たちは
 [読み上げ数列](https://ja.wikipedia.org/wiki/%E8%AA%AD%E3%81%BF%E4%B8%8A%E3%81%92%E6%95%B0%E5%88%97)（
 [look-and-say](https://en.wikipedia.org/wiki/Look-and-say_sequence)）
 というゲームをしています。

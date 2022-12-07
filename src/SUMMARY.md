@@ -43,3 +43,5 @@
   - [Day  3](./2022/day3.md)
   - [Day  4](./2022/day4.md)
   - [Day  5](./2022/day5.md)
+  - [Day  6](./2022/day6.md)
+  - [Day  7](./2022/day7.md)
