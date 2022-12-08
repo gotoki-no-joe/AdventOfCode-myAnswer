@@ -1,0 +1,368 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Day  8 - Advent of Code</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> はじめに</a></li><li class="chapter-item "><a href="../2015/index.html"><strong aria-hidden="true">2.</strong> 2015</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2015/day1.html"><strong aria-hidden="true">2.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2015/day2.html"><strong aria-hidden="true">2.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2015/day3.html"><strong aria-hidden="true">2.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2015/day4.html"><strong aria-hidden="true">2.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2015/day5.html"><strong aria-hidden="true">2.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2015/day6.html"><strong aria-hidden="true">2.6.</strong> Day  6</a></li><li class="chapter-item "><a href="../2015/day7.html"><strong aria-hidden="true">2.7.</strong> Day  7</a></li><li class="chapter-item "><a href="../2015/day8.html"><strong aria-hidden="true">2.8.</strong> Day  8</a></li><li class="chapter-item "><a href="../2015/day9.html"><strong aria-hidden="true">2.9.</strong> Day  9</a></li><li class="chapter-item "><a href="../2015/day10.html"><strong aria-hidden="true">2.10.</strong> Day 10</a></li><li class="chapter-item "><a href="../2015/day11.html"><strong aria-hidden="true">2.11.</strong> Day 11</a></li><li class="chapter-item "><a href="../2015/day12.html"><strong aria-hidden="true">2.12.</strong> Day 12</a></li><li class="chapter-item "><a href="../2015/day13.html"><strong aria-hidden="true">2.13.</strong> Day 13</a></li><li class="chapter-item "><a href="../2015/day14.html"><strong aria-hidden="true">2.14.</strong> Day 14</a></li><li class="chapter-item "><a href="../2015/day15.html"><strong aria-hidden="true">2.15.</strong> Day 15</a></li><li class="chapter-item "><a href="../2015/day16.html"><strong aria-hidden="true">2.16.</strong> Day 16</a></li><li class="chapter-item "><a href="../2015/day17.html"><strong aria-hidden="true">2.17.</strong> Day 17</a></li><li class="chapter-item "><a href="../2015/day18.html"><strong aria-hidden="true">2.18.</strong> Day 18</a></li><li class="chapter-item "><a href="../2015/day19.html"><strong aria-hidden="true">2.19.</strong> Day 19</a></li><li class="chapter-item "><a href="../2015/day20.html"><strong aria-hidden="true">2.20.</strong> Day 20</a></li><li class="chapter-item "><a href="../2015/day21.html"><strong aria-hidden="true">2.21.</strong> Day 21</a></li><li class="chapter-item "><a href="../2015/day22.html"><strong aria-hidden="true">2.22.</strong> Day 22(未)</a></li><li class="chapter-item "><a href="../2015/day23.html"><strong aria-hidden="true">2.23.</strong> Day 23</a></li><li class="chapter-item "><a href="../2015/day24.html"><strong aria-hidden="true">2.24.</strong> Day 24</a></li><li class="chapter-item "><a href="../2015/day25.html"><strong aria-hidden="true">2.25.</strong> Day 25</a></li></ol></li><li class="chapter-item "><a href="../2016/index.html"><strong aria-hidden="true">3.</strong> 2016</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2016/day1.html"><strong aria-hidden="true">3.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2016/day2.html"><strong aria-hidden="true">3.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2016/day3.html"><strong aria-hidden="true">3.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2016/day4.html"><strong aria-hidden="true">3.4.</strong> Day  4</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> 2017</div></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> 2018</div></li><li class="chapter-item "><div><strong aria-hidden="true">6.</strong> 2019</div></li><li class="chapter-item "><div><strong aria-hidden="true">7.</strong> 2020</div></li><li class="chapter-item "><div><strong aria-hidden="true">8.</strong> 2021</div></li><li class="chapter-item expanded "><a href="../2022/index.html"><strong aria-hidden="true">9.</strong> 2022</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2022/day1.html"><strong aria-hidden="true">9.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2022/day2.html"><strong aria-hidden="true">9.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2022/day3.html"><strong aria-hidden="true">9.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2022/day4.html"><strong aria-hidden="true">9.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2022/day5.html"><strong aria-hidden="true">9.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2022/day6.html"><strong aria-hidden="true">9.6.</strong> Day  6</a></li><li class="chapter-item "><a href="../2022/day7.html"><strong aria-hidden="true">9.7.</strong> Day  7</a></li><li class="chapter-item expanded "><a href="../2022/day8.html" class="active"><strong aria-hidden="true">9.8.</strong> Day  8</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Advent of Code</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="8日目-樹上の木の家"><a class="header" href="#8日目-樹上の木の家">8日目: 樹上の木の家</a></h1>
+<p>遠征隊は、格子状に注意深く植えられた背の高い木の独特の区画に出くわします。
+小人たちは、以前の遠征で、森林再生の取り組みとしてこれらの木を植えたと説明しています。
+今、彼らはこれがツリーハウスに適した場所であるかどうかに興味を持っています.</p>
+<p>まず、ツリーハウスを<strong>隠す</strong>のに十分な樹木がここにあるかどうかを判断します。
+これを行うには、行または列に沿ってまっすぐ見たときに、<strong>グリッドの外側から見える</strong>木の数を数える必要があります。</p>
+<p>小人は既に<a href="https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AF%E3%83%83%E3%83%89%E3%83%AD%E3%83%BC%E3%82%BF%E3%83%BC">ドローン</a>を発進させ、
+それぞれの木の高さの地図を生成しています（パズル入力）。例えば：</p>
+<pre><code>30373
+25512
+65332
+33549
+35390
+</code></pre>
+<p>それぞれの木は数字1文字で表されます。その値が木の高さです。
+ここで<code>0</code>は最も短く、<code>9</code>が最も高いです。</p>
+<p>ひとつの木に関して、その木とグリッドの外周までの間にある他の全ての木がその木<strong>よりも低い</strong>とき、
+その木は<strong>外から見える</strong>状態です。
+同じ行または列にある木のみを考慮します。
+つまり、その木から上、下、左、右だけを見てください。</p>
+<p>グリッドの端にある全ての木は<strong>見えます</strong>。
+これらはすでに端にあるため、視界を遮る木はありません。
+この例では、これにより考慮すべき木として<strong>内部の9本</strong>のみが残ります。</p>
+<ul>
+<li>左上の<code>5</code>は左と上から<strong>見えます</strong>。
+（右や下からは見えません、途中に高さ<code>5</code>の他の木があるからです。）</li>
+<li>上中央の<code>5</code>は上と右から見えます。</li>
+<li>右上の<code>1</code>はどの方向からも見えません。
+それが見えるようにするには、それと外周までの間は高さ0の木だけでないといけません。</li>
+<li>左中央の<code>5</code>は<strong>見えます</strong>が、右からのみです。</li>
+<li>中心の<code>3</code>はどの方向からも見えません。
+それが見えるようにするには、それと外周までの間は高さ2以下の木だけでないといけません。</li>
+<li>右中央の3は右から<strong>見えます</strong>。</li>
+<li>一番下の行では、中央の5は<strong>見えます</strong>が、3と4は見えません。</li>
+</ul>
+<p>端にある16本の木が見え、その他に内部にある木の5本が見えるので、
+この配置では合計で21本の木が見えます。</p>
+<p>あなたの地図について考えてください。
+<strong>グリッドの外から見える木は何本ありますか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+地図データを読み込んだら、行ごとに分け、地図の高さと幅も数えておく。
+
+```haskell
+dss <- lines <$> readFile "input.txt"
+let h = length dss
+let w = length $ head dss
+```
+
+ひとつの方向から見たときの木の高さの列があるとき、
+前から順にそれらが見えるかどうかを判定するには、
+手前までの最大値よりも自分が高いかどうかを比較すればよい。
+ただし先頭については、それより手前の最大値が求められない点に注意する。
+
+```haskell
+check :: Ord a => [a] -> [Bool]
+check xs = True : zipWith (<>) (scanl1 max xs) (tail xs)
+```
+
+`dss`に対して、
+それぞれに`check`をそのまま適用すると左から、`reverse`してから適用すると右から、
+`transpose`した結果へそれぞれに適用すると上から、さらに`reverse`すると下から、
+見えるかどうかの判定結果が得られる。
+
+木のそれぞれがいずれかの方向から見えるかどうかは、
+この4方向からの結果のいずれかで見えればよいので、
+`accumArray`でこれを足し合わせて数える。
+
+```haskell
+tdss = transpose dss
+arr = accumArray (||) False ((1,1),(h,w)) $
+  [((i,j), True) | (i,ds) <- zip [1..] dss , (j,True) <- zip [1..] (check ds)] ++
+  [((i,j), True) | (i,ds) <- zip [1..] dss , (j,True) <- zip [w, pred w..] (check $ reverse ds)] ++
+  [((i,j), True) | (j,ds) <- zip [1..] tdss, (i,True) <- zip [1..] (check ds)] ++
+  [((i,j), True) | (j,ds) <- zip [1..] tdss, (i,True) <- zip [h, pred h..] (check $ reverse ds)]
+```
+
+この配列の中の `True` の個数が答えである。
+
+```haskell
+length . filter id . elems $ arr
+```
+
+</div></details>
+-->
+<h1 id="パート2"><a class="header" href="#パート2">パート2</a></h1>
+<p>視界を覆う木の量に満足している小人たちは、ツリーハウスを建てるのに最適な場所だけが知りたいです。
+彼らはたくさんの<strong>木</strong>を見たいと思っています。</p>
+<p>ひとつの木に対して、そこからの見通しを測定するには、その木から上、下、左、右を見ます。
+外周に到達した場合、または対象の木と同じ高さまたはそれよりも高い最初の木に到達した場合に停止します。
+（木が端にある場合、少なくとも1つの見通しは零になります。）</p>
+<p>小人たちは、上記の規則で見つかったものよりも背の高い遠くの木を気にしません。
+提案されたツリーハウスには、乾燥を保つために大きな「ひさし」が付いているため、
+いずれにせよツリーハウスより高いところを見ることはできません。</p>
+<p>上の例で、2 行目中央の<code>5</code>を考えてみましょう：</p>
+<pre><code>30 3 73
+25[5]12
+65 3 32
+33 5 49
+35 3 90
+</code></pre>
+<ul>
+<li>見上げると、その視界は遮られていません。それは（高さ3の）1本の木を見ることができます。</li>
+<li>左を見ると、その視界はすぐに遮られます。木は1本（高さ5、すぐ隣）のみを見ることができます。</li>
+<li>右を見ると、その視界は遮られていません。木が2本見えます。</li>
+<li>見下ろすと、その視界は最終的に遮られます。
+2本の木を見ることができます（高さ3が1本、次に視界を遮る高さ5の木）。</li>
+</ul>
+<p>木の<strong>景観スコア</strong>は、4つの方向のそれぞれの見通しを<strong>掛け合わせる</strong>ことによって求められます。
+この木の場合、その値は4（\(1 \times 1 \times 2 \times 2\)の掛け算により求められます）です。</p>
+<p>しかし、もっとうまくやることができます：
+4行目の真ん中にある高さ5の木を考えてみましょう：</p>
+<pre><code>30 3 73
+25 5 12
+65 3 32
+33[5]49
+35 3 90
+</code></pre>
+<ul>
+<li>見上げると、その視界は2本めの木で遮られています（高さ5の別の木によって）。</li>
+<li>左を見ると、その視界は遮られていません。2本の木が見えます。</li>
+<li>見下ろしても、視界も遮られません。1本の木が見えます。</li>
+<li>右を見ると、その視界は2本めの木で遮られています (高さ9の巨木によって）。</li>
+</ul>
+<p>この木の景観スコアは8 \((2 \times 2 \times 1 \times 2)\) です。
+ここがツリーハウスの理想の場所です。</p>
+<p>マップ上のそれぞれの木を調べてください。
+<strong>いずれかの木で達成される最大の景観スコアはいくつですか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+ある木から外周までの高さの列があるとき、その方向の見通しは、
+その高さ以上になるまでの木の本数であるが、視界を遮ったその木も数える。
+しかし、外周まで遮られずに視界が達したとき、数える木がないので、この二つを区別する必要がある。
+
+```haskell
+viewscore (x:xs) =
+  case span (x >) xs of
+    (as,[ ]) -> length as
+    (as,_:_) -> succ $ length as
+```
+
+`reverse`を高速化するテクニックで、要素をひとつずつ移動させる内部関数を立てた。
+
+```haskell
+reverse xs = rev [] xs
+  where
+    rev ys [] = ys
+    rev ys (x:xs) = rev (x:ys) xs
+```
+
+これと同様にして、一列の木の並びに対して、全ての木のそこから右とそこから左の見通しを同時に計算できる。
+
+```haskell
+part2sub ys [] = []
+part2sub ys (x:xs) = viewscore ys * viewscore xs : part2sub (x:ys) xs
+  where
+    count zs = case span (x >) zs of
+      (as,[]) -> length as
+      (as,_ ) -> succ $ length as
+```
+
+あとは、全ての行と、パート1同様に`transpose`を用いて全ての列についてこれを行い、
+結果を掛け合わせて最大値を見つける。
+
+```haskell
+part2 h w dss = maximumBy (compare `on` snd) . assocs $ arr
+  where
+    tdss = transpose dss
+    arr = accumArray (*) 1 ((1,1),(h,w)) $
+      [((i,j), s) | (i,ds) <- zip [1..] dss , (j,s) <- zip [1..] $ part2sub [] ds] ++
+      [((i,j), s) | (j,ds) <- zip [1..] tdss, (i,s) <- zip [1..] $ part2sub [] ds]
+```
+
+</div></details>
+-->
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../2022/day7.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../2022/day7.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
