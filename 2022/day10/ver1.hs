@@ -19,7 +19,7 @@ test1 = loop 1 ["noop","addx 3", "addx -5"]
 body1 fn = do
   ls <- lines <$> readFile fn
   let xs = 0 : loop 1 ls
-  print $ sum $ map (\i -> i * xs !! pred i) [20,60..length xs]
+  print $ sum $ map (\i -> i * xs !! pred i) [20,60..220]
 
 test2 = body1 "test.txt"
 
