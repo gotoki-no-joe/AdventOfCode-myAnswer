@@ -4918,26 +4918,35 @@ noop
 <p>これらの信号強度の合計は<strong>13140</strong>です。</p>
 <p>20回目、60回目、100回目、140回目、180回目、220回目のサイクルの信号強度を求めます。
 <strong>これらの6つの信号強度の合計はいくつですか？</strong></p>
+<!--
 <details><summary>解説</summary><div>
-<p>命令列を行ごとに区切って与える。
+
+命令列を行ごとに区切って与える。
 命令列によって、時間が流れてXの値が変化していく。
-次のクロックの開始時のXの値を生成するループを作る。</p>
-<pre><code class="language-haskell">loop :: Int -&gt; [String] -&gt; [Int]
+次のクロックの開始時のXの値を生成するループを作る。
+
+```haskell
+loop :: Int -> [String] -> [Int]
 loop x (cs:css) =
   case words cs of
-    [&quot;noop&quot;] -&gt; x : loop x css
-    [&quot;addx&quot;,arg] -&gt; let x1 = x + read arg in x : x1 : loop x1 css
+    ["noop"] -> x : loop x css
+    ["addx",arg] -> let x1 = x + read arg in x : x1 : loop x1 css
 loop x [] = [x]
-</code></pre>
-<p>必要な時刻のレジスタ値を抜き出して答えを計算する。</p>
-<pre><code class="language-haskell">body1 fn = do
-  ls &lt;- lines &lt;$&gt; readFile fn
-  let xs = 0 : loop 1 ls
-  print $ sum $ map (\i -&gt; i * xs !! pred i) [20,60..220]
+```
 
-main1 = body1 &quot;input.txt&quot;
-</code></pre>
+必要な時刻のレジスタ値を抜き出して答えを計算する。
+
+```haskell
+body1 fn = do
+  ls <- lines <$> readFile fn
+  let xs = 0 : loop 1 ls
+  print $ sum $ map (\i -> i * xs !! pred i) [20,60..220]
+
+main1 = body1 "input.txt"
+```
+
 </div></details>
+-->
 <h1 id="パート2-38"><a class="header" href="#パート2-38">パート2</a></h1>
 <p><code>X</code>レジスタが<a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%82%A4%E3%83%88_(%E6%98%A0%E5%83%8F%E6%8A%80%E8%A1%93)">スプライト</a>の水平位置を制御しているようです。
 具体的には、スプライトの幅は3ピクセルで、レジスタ<code>X</code>はそのスプライトの<strong>中央</strong>の水平位置を設定します。
@@ -5071,27 +5080,33 @@ Sprite position: ...................###..................
 </code></pre>
 <p>あなたのプログラムによって与えられた画像をレンダリングします。
 <strong>CRTに表示される8つの大文字は何ですか？</strong></p>
+<!--
 <details><summary>解説</summary><div>
-<p>時刻 \(t\) のスキャン位置が光るかどうかは、時刻 \(t-1\) のレジスタの値で定まる。
-スキャン位置 \((t - 1) \bmod 40\) と
-レジスタの値の差が \(\pm 1\) に収まっているとき、ピクセルは光る。</p>
-<pre><code class="language-haskell">import Data.List.Split
+
+時刻 \\(t\\) のスキャン位置が光るかどうかは、時刻 \\(t-1\\) のレジスタの値で定まる。
+スキャン位置 \\((t - 1) \bmod 40\\) と
+レジスタの値の差が \\(\pm 1\\) に収まっているとき、ピクセルは光る。
+
+```haskell
+import Data.List.Split
 
 body2 fn = do
-  ls &lt;- lines &lt;$&gt; readFile fn
+  ls <- lines <$> readFile fn
   let xs = 1 : loop 1 ls
   let ps = zipWith sprite [0..] xs
   mapM_ putStrLn $ chunksOf 40 ps
 
 sprite t x
-  | pred x &lt;= tm &amp;&amp; tm &lt;= succ x = '#'
+  | pred x <= tm && tm <= succ x = '#'
   | otherwise = ' '
   where
     tm = mod t 40
 
-main2 = body2 &quot;input.txt&quot;
-</code></pre>
+main2 = body2 "input.txt"
+```
+
 </div></details>
+-->
 <div style="break-before: page; page-break-before: always;"></div><h1 id="11日目-サルインザミドル中間猿攻撃"><a class="header" href="#11日目-サルインザミドル中間猿攻撃">11日目: サル・イン・ザ・ミドル（中間猿攻撃）</a></h1>
 <p>ようやく川を遡り始めると、リュックが思ったよりもずっと軽いことに気づきます。
 ちょうどその時、リュックの荷物のひとつが頭上を飛んでいきます。
