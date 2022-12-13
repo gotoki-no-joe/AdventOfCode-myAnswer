@@ -7,7 +7,7 @@ import Text.Parsec
 import Text.Parsec.String
 
 import Data.List
-import Data.List.Split
+import Data.List.Split (chunksOf)
 import Data.Either
 
 data Packet = PInt Int | PList [Packet] deriving Eq
@@ -16,7 +16,7 @@ parsePacket :: Parser Packet
 parsePacket =
   PInt . read <$> many1 digit
   <|>
-  PList <$> between (char '[') (char ']') (Text.Parsec.sepBy parsePacket (char ','))
+  PList <$> between (char '[') (char ']') (sepBy parsePacket (char ','))
 
 pPacket = parsePacket
 
