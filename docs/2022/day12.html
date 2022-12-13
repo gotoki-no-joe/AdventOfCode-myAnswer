@@ -1,0 +1,398 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Day 12 - Advent of Code</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> はじめに</a></li><li class="chapter-item "><a href="../2015/index.html"><strong aria-hidden="true">2.</strong> 2015</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2015/day1.html"><strong aria-hidden="true">2.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2015/day2.html"><strong aria-hidden="true">2.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2015/day3.html"><strong aria-hidden="true">2.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2015/day4.html"><strong aria-hidden="true">2.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2015/day5.html"><strong aria-hidden="true">2.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2015/day6.html"><strong aria-hidden="true">2.6.</strong> Day  6</a></li><li class="chapter-item "><a href="../2015/day7.html"><strong aria-hidden="true">2.7.</strong> Day  7</a></li><li class="chapter-item "><a href="../2015/day8.html"><strong aria-hidden="true">2.8.</strong> Day  8</a></li><li class="chapter-item "><a href="../2015/day9.html"><strong aria-hidden="true">2.9.</strong> Day  9</a></li><li class="chapter-item "><a href="../2015/day10.html"><strong aria-hidden="true">2.10.</strong> Day 10</a></li><li class="chapter-item "><a href="../2015/day11.html"><strong aria-hidden="true">2.11.</strong> Day 11</a></li><li class="chapter-item "><a href="../2015/day12.html"><strong aria-hidden="true">2.12.</strong> Day 12</a></li><li class="chapter-item "><a href="../2015/day13.html"><strong aria-hidden="true">2.13.</strong> Day 13</a></li><li class="chapter-item "><a href="../2015/day14.html"><strong aria-hidden="true">2.14.</strong> Day 14</a></li><li class="chapter-item "><a href="../2015/day15.html"><strong aria-hidden="true">2.15.</strong> Day 15</a></li><li class="chapter-item "><a href="../2015/day16.html"><strong aria-hidden="true">2.16.</strong> Day 16</a></li><li class="chapter-item "><a href="../2015/day17.html"><strong aria-hidden="true">2.17.</strong> Day 17</a></li><li class="chapter-item "><a href="../2015/day18.html"><strong aria-hidden="true">2.18.</strong> Day 18</a></li><li class="chapter-item "><a href="../2015/day19.html"><strong aria-hidden="true">2.19.</strong> Day 19</a></li><li class="chapter-item "><a href="../2015/day20.html"><strong aria-hidden="true">2.20.</strong> Day 20</a></li><li class="chapter-item "><a href="../2015/day21.html"><strong aria-hidden="true">2.21.</strong> Day 21</a></li><li class="chapter-item "><a href="../2015/day22.html"><strong aria-hidden="true">2.22.</strong> Day 22(未)</a></li><li class="chapter-item "><a href="../2015/day23.html"><strong aria-hidden="true">2.23.</strong> Day 23</a></li><li class="chapter-item "><a href="../2015/day24.html"><strong aria-hidden="true">2.24.</strong> Day 24</a></li><li class="chapter-item "><a href="../2015/day25.html"><strong aria-hidden="true">2.25.</strong> Day 25</a></li></ol></li><li class="chapter-item "><a href="../2016/index.html"><strong aria-hidden="true">3.</strong> 2016</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2016/day1.html"><strong aria-hidden="true">3.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2016/day2.html"><strong aria-hidden="true">3.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2016/day3.html"><strong aria-hidden="true">3.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2016/day4.html"><strong aria-hidden="true">3.4.</strong> Day  4</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> 2017</div></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> 2018</div></li><li class="chapter-item "><div><strong aria-hidden="true">6.</strong> 2019</div></li><li class="chapter-item "><div><strong aria-hidden="true">7.</strong> 2020</div></li><li class="chapter-item "><div><strong aria-hidden="true">8.</strong> 2021</div></li><li class="chapter-item expanded "><a href="../2022/index.html"><strong aria-hidden="true">9.</strong> 2022</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2022/day1.html"><strong aria-hidden="true">9.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2022/day2.html"><strong aria-hidden="true">9.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2022/day3.html"><strong aria-hidden="true">9.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2022/day4.html"><strong aria-hidden="true">9.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2022/day5.html"><strong aria-hidden="true">9.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2022/day6.html"><strong aria-hidden="true">9.6.</strong> Day  6</a></li><li class="chapter-item "><a href="../2022/day7.html"><strong aria-hidden="true">9.7.</strong> Day  7</a></li><li class="chapter-item "><a href="../2022/day8.html"><strong aria-hidden="true">9.8.</strong> Day  8</a></li><li class="chapter-item "><a href="../2022/day9.html"><strong aria-hidden="true">9.9.</strong> Day  9</a></li><li class="chapter-item "><a href="../2022/day10.html"><strong aria-hidden="true">9.10.</strong> Day 10</a></li><li class="chapter-item "><a href="../2022/day11.html"><strong aria-hidden="true">9.11.</strong> Day 11</a></li><li class="chapter-item expanded "><a href="../2022/day12.html" class="active"><strong aria-hidden="true">9.12.</strong> Day 12</a></li><li class="chapter-item "><a href="../2022/day13.html"><strong aria-hidden="true">9.13.</strong> Day 13</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Advent of Code</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- 五時之丞 いいなそれ。 如之丈 なんだが。-->
+<h1 id="12-日目-山登りアルゴリズム"><a class="header" href="#12-日目-山登りアルゴリズム">12 日目: 山登りアルゴリズム</a></h1>
+<p>あなたは携帯機器を使用して小人と連絡を取ろうとしましたが、
+あなたが辿っている川は位置が低すぎて適切な信号を受信できませんでした。</p>
+<p>機器に周辺領域の高さ地図を要求します（パズル入力）。
+高さ地図は、グリッドに分割された上空から見た周辺地域を示しています。
+グリッドの各正方形の標高は、1 つの小文字で示されます。
+ここで <code>a</code> は最低の標高、<code>b</code> は次に低い標高、というように最高の標高 <code>z</code> まで続きます。</p>
+<p>高さ地図には他に、現在の位置 (<code>S</code>) と最良の信号を受信できる位置 (<code>E</code>) の印も含まれています。
+現在の位置 (<code>S</code>) は標高 <code>a</code> を持ち、
+最高の信号を受信できるはずの場所 (<code>E</code>) は標高 <code>z</code> を持ちます。</p>
+<p>あなたは <code>E</code> に到達したいのですが、エネルギーを節約するために、
+できるだけ<strong>少ないステップ数で</strong>到達する必要があります。
+各ステップでは、ちょうど1マス上下左右に移動できます。
+登山用具を取り出さなくても済むように、目的地のマスの標高は、
+現在のマスの標高より<strong>たかだか1だけ高くなる</strong>ならば許されます。
+つまり、現在の標高が <code>m</code> の場合、標高 <code>n</code> に進むことはできますが、標高 <code>o</code> に進むことはできません。
+（これは、目的のマスの標高が現在のマスの標高よりもずっと低くなる方は構わないことも意味しています。）</p>
+<p>例えば：</p>
+<pre><code>Sabqponm
+abcryxxl
+accszExk
+acctuvwj
+abdefghi
+</code></pre>
+<p>ここでは、左上隅から始めます。あなたの目的地は真ん中近くです。
+下または右に移動することから始めることもできますが、
+最終的には一番下の <code>e</code> に向かう必要があります。
+そこから、螺旋状に進むことで目的地へ行くことができます。</p>
+<pre><code>v..v&lt;&lt;&lt;&lt;
+&gt;v.vv&lt;&lt;^
+.&gt;vv&gt;E^^
+..v&gt;&gt;&gt;^^
+..&gt;&gt;&gt;&gt;&gt;^
+</code></pre>
+<p>上の図における記号は、上 (<code>^</code>)、下 (<code>v</code>)、左 (<code>&lt;</code>)、右 (<code>&gt;</code>)に移動してそのマスから出る経路であることを示します。
+最良の信号を受信できるはずの場所はここでも <code>E</code> で示され、<code>.</code> は訪問されないマスの印です。</p>
+<p>この経路は、31ステップで目的地に到達します。これは可能な限り少ない数です。</p>
+<p><strong>現在の位置から最適な信号を受信できる場所に移動するのに必要な最小のステップ数はいくつですか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+幅優先探索で、出発地点から到達できたマスに到達済みの印を書き込んでいく。
+目的地のマスが書き込まれたところで繰り返しを終了する。
+これをするためには、到達済みフラグの、書き換え可能な二次元配列が必要。
+さらに、標高地図もランダムアクセスしたいので二次元配列に保存する。
+
+地図は行ごとの文字列のリストとして読み込む。
+
+```haskell
+phase1 fn = do
+  ls <- lines <$> readFile fn
+  ...
+```
+
+ここから、`S`の位置と`E`の位置を見つけておく。
+
+```haskell
+phase1 fn = do
+  ...
+  let [spos] = locate 'S' ls
+  let [epos] = locate 'E' ls
+  ...
+
+locate v xss = [(i,j) | (i,xs) <- zip [1..] xss, (j,x) <- zip [1..] xs, v == x]
+```
+
+標高地図の二次元配列を作る際は、`S`と`E`はその標高に置き換える。
+
+```haskell
+import Data.Array.Unboxed
+
+phase1 fn = do
+  ...
+  let w = length (head ls)
+  let h = length ls
+  let a2z = listArray ((1,1),(h,w)) $ map se2az $ concat ls :: UArray (Int,Int) Char
+  ...
+
+se2az 'S' = 'a'
+se2az 'E' = 'z'
+se2az  c  =  c
+```
+
+フラグの二次元配列の初期値は到達済みを `True` とする。
+
+```haskell
+import Data.Array.IO
+
+phase1 fn = do
+  ...
+  da <- newArray ((1,1),(h,w)) False :: IO (IOUArray (Int,Int) Bool)
+  ...
+```
+
+これらを利用して、幅優先探索を行う。
+未処理の地点のリストをひとつずつ消費し、そこが到達済みなら捨てる。
+未到達なら、到達済みとチェックし、その周辺4地点の標高が+1までに収まっていれば、
+次に調査するべき地点のリストに加える。
+処理する地点のリストが尽きたら、
+距離を1増やして、次に調査するべき地点のリストを処理する地点のリストに持ち替えて繰り返す。
+目的地の距離が判明した時点で終了する。
+
+```haskell
+import Data.Ix
+
+phase1 fn = do
+  ...
+  loopWrap a2z da epos spos >>= print
+
+loopWrap :: UArray (Int, Int) Char -> IOUArray (Int,Int) Bool -> (Int,Int) -> (Int,Int) -> IO Int
+loopWrap a2z da epos spos = loop 0 [spos] []
+  where
+    bnds = bounds a2z
+    loop :: Int -> [(Int,Int)] -> [(Int,Int)] -> IO Int
+    loop _ [] [] = error "cannot reach to E"
+    loop cnt [] qs = loop (succ cnt) qs []
+    loop cnt (p:ps) qs =
+      do
+        b <- readArray da p
+        if b then loop cnt ps qs else do
+          writeArray da p True
+          if p == epos then return cnt else do
+            let h1 = succ $ a2z ! p
+            qs1 <- foldM (\qs d -> do
+              let q = add p d
+              if not (inRange bnds q) || h1 < a2z ! q then return qs else do
+                d <- readArray da q
+                return $ if d then qs else q:qs
+              ) qs deltas
+            loop cnt ps qs1
+```
+
+</div></details>
+-->
+<h1 id="パート2"><a class="header" href="#パート2">パート2</a></h1>
+<p>丘を上っていくとき、小人がここをハイキングコースにしようとしているのではないかとあなたは訝しみました。
+ただし、この出発地点はあまり風光明媚ではありません。
+おそらく、より良い出発点を見つけることができるでしょう。</p>
+<p>ハイキング中の運動を最大限にするために、コースはできるだけ低い標高、つまり <code>a</code> から始める必要があります。
+目的地はやはり<code>E</code> と印されたマスです。
+ただし、コースはやはり最も近道である必要があります。
+つまり、目的地に到達するためのステップ数は最小で済ませてください。
+したがって、標高 <code>a</code> である任意のマスから、<code>E</code> と印されたマスまでの最短経路を見つける必要があります。</p>
+<p>上記の例をもう一度考えてみましょう。</p>
+<pre><code>Sabqponm
+abcryxxl
+accszExk
+acctuvwj
+abdefghi
+</code></pre>
+<p>ここで、開始位置には6つの選択肢があります。
+（<code>a</code> と印された5つと、高度 <code>a</code> にあると見なされる <code>S</code> と印されたマス）
+左下のマスから始めると、最も早くゴールに到達できます。</p>
+<pre><code>...v&lt;&lt;&lt;&lt;
+...vv&lt;&lt;^
+...v&gt;E^^
+.&gt;v&gt;&gt;&gt;^^
+&gt;^&gt;&gt;&gt;&gt;&gt;^
+</code></pre>
+<p>この経路は、可能な限り少ない手順である<strong>29</strong>ステップで目的地に到達します。</p>
+<p><strong>標高 <code>a</code> の任意のマスから出発して、最良の信号を受信できる場所に移動するのに必要な最小ステップ数はいくつですか？</strong></p>
+<!--
+<details><summary>解説</summary><div>
+
+幅優先探索の動作を少し修正する。
+
+- `E`の地点から出発する。
+- 移動できる地点の標高の判断が逆になる。
+- 新たに到達した地点の標高が初めて `a` であったとき、その距離が答えである。
+
+```haskell
+phase2 fn = do
+  ...
+  loop2Wrap a2z da epos >>= print
+
+loop2Wrap :: UArray (Int, Int) Char -> IOUArray (Int,Int) Bool -> (Int,Int) -> IO Int
+loop2Wrap a2z da epos = loop 0 [epos] []
+  where
+    bnds = bounds a2z
+    loop :: Int -> [(Int,Int)] -> [(Int,Int)] -> IO Int
+    loop _ [] [] = error "cannot reach to height 'a'"
+    loop cnt [] qs = loop (succ cnt) qs []
+    loop cnt (p:ps) qs =
+      do
+        b <- readArray da p
+        if b then loop cnt ps qs else do
+          writeArray da p True
+          if a2z ! p == 'a' then return cnt else do
+            let h1 = pred $ a2z ! p
+            qs1 <- foldM (\qs d -> do
+              let q = add p d
+              if not (inRange bnds q) || h1 > a2z ! q then return qs else do
+                d <- readArray da q
+                return $ if d then qs else q:qs
+              ) qs deltas
+            loop cnt ps qs1
+```
+
+</div></details>
+-->
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../2022/day11.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../2022/day13.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../2022/day11.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../2022/day13.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
