@@ -257,10 +257,29 @@ import Data.List
 phase2 fn =
   do
     packets <-map (fromRight undefined . parse pPacket "") . filter (not . null) . lines <$> readFile fn
-    let ps =  sort $ div1 : div2 : packets
+    let ps = sort $ div1 : div2 : packets
     let Just l1 = elemIndex div1 ps
     let Just l2 = elemIndex div2 ps
     print $ succ l1 * succ l2
+
+Right div1 = parse parsePacket "" "[[2]]"
+Right div2 = parse parsePacket "" "[[6]]"
+```
+
+よく考えてみると、\\(O(\log N)\\) かけてソートをする必要すらなくて、
+分割パケットよりも小さいパケットの個数を2度数えるだけで、
+\\(O(N)\\)で答えは算出できる。
+
+```haskell
+import Data.List
+
+phase2 fn =
+  do
+    packets <-map (fromRight undefined . parse pPacket "") . filter (not . null) . lines <$> readFile fn
+    let ps = div1 : div2 : packets
+    let l1 = length $ filter (div1 >=) ps
+    let l2 = length $ filter (div2 >=) ps
+    print $ l1 * l2
 
 Right div1 = parse parsePacket "" "[[2]]"
 Right div2 = parse parsePacket "" "[[6]]"
