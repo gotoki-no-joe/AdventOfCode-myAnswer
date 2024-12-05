@@ -1,0 +1,5 @@
+- ignore: {name: Use infix}
+- ignore: {name: Use section}
+- ignore: {name: Use otherwise}
+- ignore: {name: Eta reduce}
+- ignore: {name: Use lambda-case}
