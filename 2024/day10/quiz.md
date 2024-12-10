@@ -4,8 +4,6 @@
 他の人たちが巨大な工業複合施設を探し始めると、あなたは小さな鼻が足にぶつかるのを感じ、
 下を見るとヘルメットをかぶったトナカイを見つけました。
 
-The topographic map indicates the height at each position using a scale from 0 (lowest) to 9 (highest). For example:
-
 トナカイは「溶岩島ハイキングガイド」という題の本を持っています。
 しかし、本を開くと、そのほとんどが溶岩によって焦げていることに気づきます！
 あなたがどのように手助けできるか尋ねようとしたとき、
@@ -91,10 +89,8 @@ The topographic map indicates the height at each position using a scale from 0 (
 10456732
 ```
 
-The reindeer gleefully carries over a protractor and adds it to the pile. What is the sum of the scores of all trailheads on your topographic map?
-
 この大きな例には9つの登山口があります。
-トレイルヘッドを読み取り順に考えて、それぞれのスコアは 5, 6, 5, 3, 1, 3, 5, 3, 5 です。
+登山口を読み取り順に考えて、それぞれのスコアは 5, 6, 5, 3, 1, 3, 5, 3, 5 です。
 これらのスコアを合計すると、全ての登山口のスコアの合計は36になります。
 
 トナカイは大はしゃぎで分度器を持ってきて、それを文具の山に加えます。
@@ -102,7 +98,7 @@ The reindeer gleefully carries over a protractor and adds it to the pile. What i
 
 # パート2
 
-トナカイは、ハイキングトレイルの地図を数分間見直した後、何かに気づき、
+トナカイは、ハイキングコースの地図を数分間見直した後、何かに気づき、
 数分間姿を消し、最後にもう一枚の少し焦げた紙を持って戻ってきます。
 
 その紙には、登山口を評価する第二の方法として**評価**が記載されています。
