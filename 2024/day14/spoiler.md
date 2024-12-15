@@ -57,7 +57,7 @@ part1 wide tall nss = product $ map (cnt !) [(LT,LT),(LT,GT),(GT,LT),(GT,GT)]
 
 ロボットはワープして動き回っているので、全員が同時に出発点に戻る周期があるはず。
 
-幅$W$として、ロボットのX座標について、時刻 $k$ で元に戻るとすると  
+幅 $W$ として、ロボットのX座標について、時刻 $k$ で元に戻るとすると  
  $(x + k \cdot vx) \bmod W = x$  
 $x + k \cdot vx = x \mod W$  
 $k \cdot vx = 0 \mod W$  
