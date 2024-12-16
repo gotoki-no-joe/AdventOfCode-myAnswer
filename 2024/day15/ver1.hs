@@ -20,7 +20,7 @@ runner i f = do
   print $ f arr (concat ls2)
 
 test0 = runner "samp0.txt" part1
-test1 = runner "sample.txt" part1
+test1 = runner "samp1.txt" part1
 main1 = runner "input.txt" part1
 
 part1 :: UArray (Int,Int) Char -> String -> Int
@@ -103,11 +103,12 @@ runner2 i f = do
 --  mapM_ putStrLn $ chunksOf (w+w) $ elems arr
   print $ f arr (concat ls2)
 
+doubler :: Char -> String
 doubler '@' = "@."
 doubler 'O' = "[]"
 doubler c = [c,c]
 
-test2 = runner2 "sample.txt" part2
+test2 = runner2 "samp1.txt" part2
 main2 = runner2 "input.txt" part2
 
 part2 :: UArray (Int,Int) Char -> String -> Int
@@ -174,6 +175,7 @@ part2 arr cmds = runST $
                     )
                 return b
 
+udfunc :: (Char, Int) -> [Int]
 udfunc ('@',j) = [j]
 udfunc ('[',j) = [j, succ j]
 udfunc (']',j) = [pred j, j]
