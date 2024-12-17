@@ -1,4 +1,4 @@
-import Data.Array.Unboxed
+import Data.Array
 
 import Control.Monad
 import Control.Monad.ST
@@ -19,8 +19,8 @@ main1 = runner "input.txt" part12
 
 --part1 :: UArray (Int,Int) Char -> Int
 --part1 fld = part1ans
-part12 :: UArray (Int,Int) Char -> (Int,Int)
-part12 fld = (part1ans, part2ans)
+part12 :: Array (Int,Int) Char -> (Int,Int,Int)
+part12 fld = (part1ans, part2ans, part2ans1)
   where
 -- 頂点番号の範囲
     (ll,hw) = bounds fld
@@ -37,8 +37,8 @@ part12 fld = (part1ans, part2ans)
         (ij, d) = xedni ! i
 -- 開始点
     start  = head [ij | (ij,'S') <- assocs fld]
-    dist :: UArray Int Int
-    dist = runSTUArray $ dijkstra nodesbnds edge (index bnds (start,dE))
+    dist :: Array Int Int
+    dist = runSTArray $ dijkstra nodesbnds edge (index bnds (start,dE))
 -- パート1答え
     part1ans = minimum [dist ! index bnds (goal, d) | d <- [0 .. 3]]
 
@@ -53,6 +53,15 @@ part12 fld = (part1ans, part2ans)
     part2ans = length
       [ ()
       | ij <- range (ll,hw), or [bestpathnodes ! index bnds (ij, d) | d <- [0 .. 3]]]
+
+    part2ans1 = length
+      [ ()
+      | ij <- range (ll,hw), or [bestpathnodes2 ! index bnds (ij, d) | d <- [0 .. 3]]]
+    bestpathnodes2 = dp dist gather neighbors
+    gather i jds
+      | elem i realgoals = True
+      | otherwise = any snd jds
+    neighbors i = [j | let di = dist ! i, (j, w) <- edge i, di + w == dist ! j]
 
 -- 4方向
 [dN, dE, dW, dS] = [0 .. 3] :: [Int]
@@ -77,7 +86,7 @@ turn 3 = [1,2]
 dijkstra :: (Int, Int)           -- 頂点番号の範囲
          -> (Int -> [(Int,Int)]) -- 隣接頂点とその辺の重み、グラフの情報
          -> Int                  -- 開始点
-         -> ST s (STUArray s Int Int)
+         -> ST s (STArray s Int Int)
 dijkstra bnds edges start =
   do
     dist <- newArray bnds maxBound
@@ -96,3 +105,15 @@ dijkstra bnds edges start =
             ) queue1 (edges u)
           loop queue2
     loop $ H.singleton (H.Entry 0 start)
+
+-- P.S.
+
+-- 配列arrの位置iのマスに対して、n i で与えられる周囲のマス j について
+-- jとDP結果のタプルのリストjdsから f i jds でDP結果を求める
+dp :: Ix i => Array i e -> (i -> [(i, b)] -> b) -> (i -> [i]) -> Array i b
+dp arr f n = dpArr
+  where
+    bnds = bounds arr
+    dpArr = listArray bnds
+            [ f i [(j, dpArr ! j) | j <- n i]
+            | i <- indices arr]

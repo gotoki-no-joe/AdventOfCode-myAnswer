@@ -192,3 +192,17 @@ part12 fld = (part1ans, part2ans)
       [ ()
       | ij <- range (ll,hw), or [bestpathnodes ! index bnds (ij, d) | d <- [0 .. 3]]]
 ```
+
+## 追記
+
+10日めのspoilerで関数 `dp` を定義したので、これを使って書き直してみよう。
+
+```haskell
+    bestpathnodes = dp dist gather neighbors
+    gather i jds
+      | elem i realgoals = True
+      | otherwise        = any snd jds
+    neighbors i = [j | let di = dist ! i, (j, w) <- edge i, di + w == dist ! j]
+```
+
+できたが、`UArray` と `Array` の混在で型エラーになるのを直せなくて、全て `Array` にして誤魔化した。
