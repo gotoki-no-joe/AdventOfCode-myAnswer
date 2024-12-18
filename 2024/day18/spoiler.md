@@ -100,3 +100,12 @@ part2 ub xys = xys !! pred out
     prop k = part1 ub (take k xys) < maxBound
     (out, safe) = binarySearch prop (length xys) 0
 ```
+
+## コンピュータの進化
+
+昨日の17日目の問題だと探索範囲が広すぎて無茶だったけど、今日の3450とおりという桁数だと、
+Ryzen Threadripper PRO 96コア192スレッドで手分けして探索したら、
+パート1の計算時間の18倍程度で答えが出てしまう計算になる。
+
+そんな時代に備えて、ヘイヘイHaskellを読み直す必要があるのかも。
+ていうか、既にそういう解き方をしている人も居そうだな。
