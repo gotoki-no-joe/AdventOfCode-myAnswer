@@ -63,7 +63,7 @@ mazeDistance bnds maze start =
     return dist
 ```
 
-これを使って、スタートからの各マスの距離 `sDist` を数える。
+これを使って、スタートからの各マスの距離 `dist` を数える。
 
 ```haskell
 -- Sから各マスまでの距離
