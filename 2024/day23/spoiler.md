@@ -181,10 +181,9 @@ dfs k arg best = dfs k' arg1 $ dfs k' arg2 best
           | otherwise =
             dfs (fromJust $ IS.lookupLT k con) ent con $ -- kを入れずに再帰
             dfs (IS.findMax con1) ent1 con1 $            -- kを入れて再帰
-            if sz == bestsz then ent1 else best          -- sz==bestszならsz1>bestszなので更新する
+            if sz == bestsz then ent1 else best          -- sz==bestszならsucc sz>bestszなので更新する
           where
-            sz1  = succ sz
             mem1 = IS.insert k mem
             con1 = IS.intersection con $ g ! k
-            ent1 = (sz1, mem1)
+            ent1 = (succ sz, mem1)
 ```
