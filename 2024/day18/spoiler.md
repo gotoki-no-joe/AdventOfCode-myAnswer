@@ -109,3 +109,71 @@ Ryzen Threadripper PRO 96コア192スレッドで手分けして探索したら�
 
 そんな時代に備えて、ヘイヘイHaskellを読み直す必要があるのかも。
 ていうか、既にそういう解き方をしている人も居そうだな。
+
+## 追記
+
+そもそも、コンパイルして実行すれば、パート1を順に実行する力業でも大して待たずに答えが出ていた。
+
+```haskell
+import Data.Maybe
+
+part2a ub xys = head $ dropWhile (isNothing . snd) list
+  where
+    prop k = part1 ub (take k xys) < maxBound
+    list = [(k, if prop k then Nothing else Just (xys !! pred k)) | k <- [1 .. length xys]]
+```
+
+これにさらに、`Control.Parallel.Strategies` による並列計算を仕込んで試してみる。
+
+```haskell
+import Control.Parallel.Strategies
+import System.CPUTime
+
+part2a ub xys = head $ dropWhile (isNothing . snd) list
+  where
+    prop k = part1 ub (take k xys) < maxBound
+    list = runEval $ parList rpar -- ココ
+           [(k, if prop k then Nothing else Just (xys !! pred k)) | k <- [1 .. length xys]]
+
+main = do
+  t0 <- getCPUTime
+  runner "input.txt" $ part2a 70
+  t1 <- getCPUTime
+  print $ t1 - t0
+```
+
+コンパイルと実行におまじないが必要。
+
+```
+> ghc -O2 ver3 -threaded -rtsopts
+> ./ver3 +RTS -N1
+(2906,Just (34,40))
+2890625000000
+> ./ver3 +RTS -N4
+(2906,Just (34,40))
+546875000000
+> ./ver3 +RTS -N8
+(2906,Just (34,40))
+328125000000
+```
+コンパイル時に `-threaded` でマルチスレッドが使えるようになり、`-rtsopts` で `-N` オプションを渡せるようになる。
+実行時に `+RTS` に続けて `-Nx` で与えた数だけコアを同時に使うようになる。
+`-N1` はコア一つで実行する、いつもの状態。
+このコンピュータは4コア8スレッドのi7なので、4と8を試してみた。
+
+|コア指定|実行時間(sec)|
+|:--:|---:|
+| 1 | 2.89 |
+| 4 | 0.55 |
+| 8 | 0.33 |
+
+ある程度計算量があり、独立性が高い部分問題が並んでいる状態だと、こんなに簡単に並列性を享受できるんだ。
+（ヘイヘイHaskellでも数独ソルバの例が出ていたけれど、似たようなシチュエーションだ。）
+
+なお、実行ファイルを起動してから、ランタイムが色々準備して実行が開始されるまでに結構時間がかかるので、
+exeを起動してから0.3秒で答えが出てくる訳ではないことに注意。
+もっと大きな問題にならないと体感できる程の差にはならない。
+
+<!--
+コンパイルなしでGHCiからもこれが使えたらもっと楽しいのになぁ。
+-->
