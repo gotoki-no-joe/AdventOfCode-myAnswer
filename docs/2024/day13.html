@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Day 13 - Advent of Code</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> はじめに</a></li><li class="chapter-item affix "><li class="part-title">問題編</li><li class="chapter-item "><a href="../2015/index.html"><strong aria-hidden="true">2.</strong> 2015</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2015/day1.html"><strong aria-hidden="true">2.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2015/day2.html"><strong aria-hidden="true">2.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2015/day3.html"><strong aria-hidden="true">2.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2015/day4.html"><strong aria-hidden="true">2.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2015/day5.html"><strong aria-hidden="true">2.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2015/day6.html"><strong aria-hidden="true">2.6.</strong> Day  6</a></li><li class="chapter-item "><a href="../2015/day7.html"><strong aria-hidden="true">2.7.</strong> Day  7</a></li><li class="chapter-item "><a href="../2015/day8.html"><strong aria-hidden="true">2.8.</strong> Day  8</a></li><li class="chapter-item "><a href="../2015/day9.html"><strong aria-hidden="true">2.9.</strong> Day  9</a></li><li class="chapter-item "><a href="../2015/day10.html"><strong aria-hidden="true">2.10.</strong> Day 10</a></li><li class="chapter-item "><a href="../2015/day11.html"><strong aria-hidden="true">2.11.</strong> Day 11</a></li><li class="chapter-item "><a href="../2015/day12.html"><strong aria-hidden="true">2.12.</strong> Day 12</a></li><li class="chapter-item "><a href="../2015/day13.html"><strong aria-hidden="true">2.13.</strong> Day 13</a></li><li class="chapter-item "><a href="../2015/day14.html"><strong aria-hidden="true">2.14.</strong> Day 14</a></li><li class="chapter-item "><a href="../2015/day15.html"><strong aria-hidden="true">2.15.</strong> Day 15</a></li><li class="chapter-item "><a href="../2015/day16.html"><strong aria-hidden="true">2.16.</strong> Day 16</a></li><li class="chapter-item "><a href="../2015/day17.html"><strong aria-hidden="true">2.17.</strong> Day 17</a></li><li class="chapter-item "><a href="../2015/day18.html"><strong aria-hidden="true">2.18.</strong> Day 18</a></li><li class="chapter-item "><a href="../2015/day19.html"><strong aria-hidden="true">2.19.</strong> Day 19</a></li><li class="chapter-item "><a href="../2015/day20.html"><strong aria-hidden="true">2.20.</strong> Day 20</a></li><li class="chapter-item "><a href="../2015/day21.html"><strong aria-hidden="true">2.21.</strong> Day 21</a></li><li class="chapter-item "><a href="../2015/day22.html"><strong aria-hidden="true">2.22.</strong> Day 22</a></li><li class="chapter-item "><a href="../2015/day23.html"><strong aria-hidden="true">2.23.</strong> Day 23</a></li><li class="chapter-item "><a href="../2015/day24.html"><strong aria-hidden="true">2.24.</strong> Day 24</a></li><li class="chapter-item "><a href="../2015/day25.html"><strong aria-hidden="true">2.25.</strong> Day 25</a></li></ol></li><li class="chapter-item "><a href="../2016/index.html"><strong aria-hidden="true">3.</strong> 2016</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2016/day1.html"><strong aria-hidden="true">3.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2016/day2.html"><strong aria-hidden="true">3.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2016/day3.html"><strong aria-hidden="true">3.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2016/day4.html"><strong aria-hidden="true">3.4.</strong> Day  4</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">4.</strong> 2017</div></li><li class="chapter-item "><div><strong aria-hidden="true">5.</strong> 2018</div></li><li class="chapter-item "><div><strong aria-hidden="true">6.</strong> 2019</div></li><li class="chapter-item "><div><strong aria-hidden="true">7.</strong> 2020</div></li><li class="chapter-item "><div><strong aria-hidden="true">8.</strong> 2021</div></li><li class="chapter-item "><a href="../2022/index.html"><strong aria-hidden="true">9.</strong> 2022</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2022/day1.html"><strong aria-hidden="true">9.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2022/day2.html"><strong aria-hidden="true">9.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2022/day3.html"><strong aria-hidden="true">9.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2022/day4.html"><strong aria-hidden="true">9.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2022/day5.html"><strong aria-hidden="true">9.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2022/day6.html"><strong aria-hidden="true">9.6.</strong> Day  6</a></li><li class="chapter-item "><a href="../2022/day7.html"><strong aria-hidden="true">9.7.</strong> Day  7</a></li><li class="chapter-item "><a href="../2022/day8.html"><strong aria-hidden="true">9.8.</strong> Day  8</a></li><li class="chapter-item "><a href="../2022/day9.html"><strong aria-hidden="true">9.9.</strong> Day  9</a></li><li class="chapter-item "><a href="../2022/day10.html"><strong aria-hidden="true">9.10.</strong> Day 10</a></li><li class="chapter-item "><a href="../2022/day11.html"><strong aria-hidden="true">9.11.</strong> Day 11</a></li><li class="chapter-item "><a href="../2022/day12.html"><strong aria-hidden="true">9.12.</strong> Day 12</a></li><li class="chapter-item "><a href="../2022/day13.html"><strong aria-hidden="true">9.13.</strong> Day 13</a></li><li class="chapter-item "><a href="../2022/day14.html"><strong aria-hidden="true">9.14.</strong> Day 14 (未)</a></li><li class="chapter-item "><a href="../2022/day15.html"><strong aria-hidden="true">9.15.</strong> Day 15 (未)</a></li><li class="chapter-item "><a href="../2022/day16.html"><strong aria-hidden="true">9.16.</strong> Day 16xx</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.17.</strong> Day 17x</div></li><li class="chapter-item "><a href="../2022/day18.html"><strong aria-hidden="true">9.18.</strong> Day 18</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.19.</strong> Day 19xx</div></li><li class="chapter-item "><div><strong aria-hidden="true">9.20.</strong> Day 20</div></li><li class="chapter-item "><a href="../2022/day21.html"><strong aria-hidden="true">9.21.</strong> Day 21</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.22.</strong> Day 22</div></li><li class="chapter-item "><div><strong aria-hidden="true">9.23.</strong> Day 23</div></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">10.</strong> 2023</div></li><li class="chapter-item expanded "><a href="../2024/index.html"><strong aria-hidden="true">11.</strong> 2024</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2024/day1.html"><strong aria-hidden="true">11.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2024/day2.html"><strong aria-hidden="true">11.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2024/day3.html"><strong aria-hidden="true">11.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2024/day4.html"><strong aria-hidden="true">11.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2024/day5.html"><strong aria-hidden="true">11.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2024/day6.html"><strong aria-hidden="true">11.6.</strong> Day  6</a></li><li class="chapter-item "><a href="../2024/day7.html"><strong aria-hidden="true">11.7.</strong> Day  7</a></li><li class="chapter-item "><a href="../2024/day8.html"><strong aria-hidden="true">11.8.</strong> Day  8</a></li><li class="chapter-item "><a href="../2024/day9.html"><strong aria-hidden="true">11.9.</strong> Day  9</a></li><li class="chapter-item "><a href="../2024/day10.html"><strong aria-hidden="true">11.10.</strong> Day 10</a></li><li class="chapter-item "><a href="../2024/day11.html"><strong aria-hidden="true">11.11.</strong> Day 11</a></li><li class="chapter-item "><a href="../2024/day12.html"><strong aria-hidden="true">11.12.</strong> Day 12</a></li><li class="chapter-item expanded "><a href="../2024/day13.html" class="active"><strong aria-hidden="true">11.13.</strong> Day 13</a></li><li class="chapter-item "><a href="../2024/day14.html"><strong aria-hidden="true">11.14.</strong> Day 14</a></li><li class="chapter-item "><a href="../2024/day15.html"><strong aria-hidden="true">11.15.</strong> Day 15</a></li><li class="chapter-item "><a href="../2024/day16.html"><strong aria-hidden="true">11.16.</strong> Day 16</a></li><li class="chapter-item "><a href="../2024/day17.html"><strong aria-hidden="true">11.17.</strong> Day 17</a></li><li class="chapter-item "><a href="../2024/day18.html"><strong aria-hidden="true">11.18.</strong> Day 18</a></li><li class="chapter-item "><a href="../2024/day19.html"><strong aria-hidden="true">11.19.</strong> Day 19</a></li><li class="chapter-item "><a href="../2024/day20.html"><strong aria-hidden="true">11.20.</strong> Day 20</a></li><li class="chapter-item "><a href="../2024/day21.html"><strong aria-hidden="true">11.21.</strong> Day 21</a></li><li class="chapter-item "><a href="../2024/day22.html"><strong aria-hidden="true">11.22.</strong> Day 22</a></li><li class="chapter-item "><a href="../2024/day23.html"><strong aria-hidden="true">11.23.</strong> Day 23</a></li><li class="chapter-item "><a href="../2024/day24.html"><strong aria-hidden="true">11.24.</strong> Day 24</a></li><li class="chapter-item "><a href="../2024/day25.html"><strong aria-hidden="true">11.25.</strong> Day 25</a></li></ol></li><li class="chapter-item "><li class="part-title">解答編</li><li class="chapter-item "><div><strong aria-hidden="true">12.</strong> 2015</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2015/spoiler1.html"><strong aria-hidden="true">12.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2015/spoiler2.html"><strong aria-hidden="true">12.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2015/spoiler3.html"><strong aria-hidden="true">12.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2015/spoiler4.html"><strong aria-hidden="true">12.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2015/spoiler5.html"><strong aria-hidden="true">12.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2015/spoiler6.html"><strong aria-hidden="true">12.6.</strong> Day  6</a></li><li class="chapter-item "><a href="../2015/spoiler7.html"><strong aria-hidden="true">12.7.</strong> Day  7</a></li><li class="chapter-item "><a href="../2015/spoiler8.html"><strong aria-hidden="true">12.8.</strong> Day  8</a></li><li class="chapter-item "><a href="../2015/spoiler9.html"><strong aria-hidden="true">12.9.</strong> Day  9</a></li><li class="chapter-item "><a href="../2015/spoiler10.html"><strong aria-hidden="true">12.10.</strong> Day 10</a></li><li class="chapter-item "><a href="../2015/spoiler11.html"><strong aria-hidden="true">12.11.</strong> Day 11</a></li><li class="chapter-item "><a href="../2015/spoiler12.html"><strong aria-hidden="true">12.12.</strong> Day 12</a></li><li class="chapter-item "><a href="../2015/spoiler13.html"><strong aria-hidden="true">12.13.</strong> Day 13</a></li><li class="chapter-item "><a href="../2015/spoiler14.html"><strong aria-hidden="true">12.14.</strong> Day 14</a></li><li class="chapter-item "><a href="../2015/spoiler15.html"><strong aria-hidden="true">12.15.</strong> Day 15</a></li><li class="chapter-item "><a href="../2015/spoiler16.html"><strong aria-hidden="true">12.16.</strong> Day 16</a></li><li class="chapter-item "><a href="../2015/spoiler17.html"><strong aria-hidden="true">12.17.</strong> Day 17</a></li><li class="chapter-item "><a href="../2015/spoiler18.html"><strong aria-hidden="true">12.18.</strong> Day 18</a></li><li class="chapter-item "><a href="../2015/spoiler19.html"><strong aria-hidden="true">12.19.</strong> Day 19</a></li><li class="chapter-item "><a href="../2015/spoiler20.html"><strong aria-hidden="true">12.20.</strong> Day 20</a></li><li class="chapter-item "><a href="../2015/spoiler21.html"><strong aria-hidden="true">12.21.</strong> Day 21</a></li><li class="chapter-item "><a href="../2015/spoiler22.html"><strong aria-hidden="true">12.22.</strong> Day 22</a></li><li class="chapter-item "><a href="../2015/spoiler23.html"><strong aria-hidden="true">12.23.</strong> Day 23</a></li><li class="chapter-item "><a href="../2015/spoiler24.html"><strong aria-hidden="true">12.24.</strong> Day 24</a></li><li class="chapter-item "><a href="../2015/spoiler25.html"><strong aria-hidden="true">12.25.</strong> Day 25</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">13.</strong> 2016</div></li><li class="chapter-item "><div><strong aria-hidden="true">14.</strong> 2017</div></li><li class="chapter-item "><div><strong aria-hidden="true">15.</strong> 2018</div></li><li class="chapter-item "><div><strong aria-hidden="true">16.</strong> 2019</div></li><li class="chapter-item "><div><strong aria-hidden="true">17.</strong> 2020</div></li><li class="chapter-item "><div><strong aria-hidden="true">18.</strong> 2021</div></li><li class="chapter-item "><div><strong aria-hidden="true">19.</strong> 2022</div></li><li class="chapter-item "><div><strong aria-hidden="true">20.</strong> 2023</div></li><li class="chapter-item "><div><strong aria-hidden="true">21.</strong> 2024</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../2024/spoiler1.html"><strong aria-hidden="true">21.1.</strong> Day  1</a></li><li class="chapter-item "><a href="../2024/spoiler2.html"><strong aria-hidden="true">21.2.</strong> Day  2</a></li><li class="chapter-item "><a href="../2024/spoiler3.html"><strong aria-hidden="true">21.3.</strong> Day  3</a></li><li class="chapter-item "><a href="../2024/spoiler4.html"><strong aria-hidden="true">21.4.</strong> Day  4</a></li><li class="chapter-item "><a href="../2024/spoiler5.html"><strong aria-hidden="true">21.5.</strong> Day  5</a></li><li class="chapter-item "><a href="../2024/spoiler6.html"><strong aria-hidden="true">21.6.</strong> Day  6</a></li><li class="chapter-item "><a href="../2024/spoiler7.html"><strong aria-hidden="true">21.7.</strong> Day  7</a></li><li class="chapter-item "><a href="../2024/spoiler8.html"><strong aria-hidden="true">21.8.</strong> Day  8</a></li><li class="chapter-item "><a href="../2024/spoiler9.html"><strong aria-hidden="true">21.9.</strong> Day  9</a></li><li class="chapter-item "><a href="../2024/spoiler10.html"><strong aria-hidden="true">21.10.</strong> Day 10</a></li><li class="chapter-item "><a href="../2024/spoiler11.html"><strong aria-hidden="true">21.11.</strong> Day 11</a></li><li class="chapter-item "><a href="../2024/spoiler12.html"><strong aria-hidden="true">21.12.</strong> Day 12</a></li><li class="chapter-item "><a href="../2024/spoiler13.html"><strong aria-hidden="true">21.13.</strong> Day 13</a></li><li class="chapter-item "><a href="../2024/spoiler14.html"><strong aria-hidden="true">21.14.</strong> Day 14</a></li><li class="chapter-item "><a href="../2024/spoiler15.html"><strong aria-hidden="true">21.15.</strong> Day 15</a></li><li class="chapter-item "><a href="../2024/spoiler16.html"><strong aria-hidden="true">21.16.</strong> Day 16</a></li><li class="chapter-item "><a href="../2024/spoiler17.html"><strong aria-hidden="true">21.17.</strong> Day 17</a></li><li class="chapter-item "><a href="../2024/spoiler18.html"><strong aria-hidden="true">21.18.</strong> Day 18</a></li><li class="chapter-item "><a href="../2024/spoiler19.html"><strong aria-hidden="true">21.19.</strong> Day 19</a></li><li class="chapter-item "><a href="../2024/spoiler20.html"><strong aria-hidden="true">21.20.</strong> Day 20</a></li><li class="chapter-item "><a href="../2024/spoiler21.html"><strong aria-hidden="true">21.21.</strong> Day 21</a></li><li class="chapter-item "><a href="../2024/spoiler22.html"><strong aria-hidden="true">21.22.</strong> Day 22</a></li><li class="chapter-item "><a href="../2024/spoiler23.html"><strong aria-hidden="true">21.23.</strong> Day 23</a></li><li class="chapter-item "><a href="../2024/spoiler24.html"><strong aria-hidden="true">21.24.</strong> Day 24</a></li><li class="chapter-item "><a href="../2024/spoiler25.html"><strong aria-hidden="true">21.25.</strong> Day 25</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Advent of Code</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="13日目-かぎ爪のある奇妙な機械"><a class="header" href="#13日目-かぎ爪のある奇妙な機械">13日目: かぎ爪のある奇妙な機械</a></h1>
+<p>次は、熱帯の島にあるリゾートの<a href="../2020/day24.html">ロビー</a>です。
+歴史学者たちは、すぐには散り散りにならず、足を止めて六角形の床タイルを賞賛しています。</p>
+<p>幸運なことに、リゾートには新しいアーケードがあるようです！
+クレーンゲームからいくつか景品を獲得できるかもしれませんね？</p>
+<p>ここにあるクレーンゲームは少し変わっています。
+クレーンを操作するためのジョイスティックや方向ボタンの代わりに、AとBとラベル付けされた2つのボタンがあります。
+さらに悪いことに、遊ぶのにメダル1枚では足りません。
+Aボタンを押すのに<strong>メダル3枚</strong>、Bボタンを押すのに<strong>メダル1枚</strong>かかります。</p>
+<p>少しの実験で、各機械のボタンが押されるたびに、
+クレーンが特定の量だけ<strong>右</strong>（X軸に沿って）および
+特定の量だけ<strong>前方</strong>（Y軸に沿って）に移動するように設定されていることがわかります。</p>
+<p>機械にはそれぞれ1つだけ<strong>賞品</strong>が入っています。
+景品を獲得するには、クレーンをX軸とY軸の両方で景品の真上に<strong>ちょうど</strong>配置する必要があります。</p>
+<p>あなたは考えます：
+獲得できる景品を全て獲得するために必要な、最小限のメダル枚数はどれくらいになるか？
+あなたはそれぞれの機械のボタンの動作と景品の位置のリストを作成します（あなたのパズルの入力）。
+例えば：</p>
+<pre><code>Button A: X+94, Y+34
+Button B: X+22, Y+67
+Prize: X=8400, Y=5400
+
+Button A: X+26, Y+66
+Button B: X+67, Y+21
+Prize: X=12748, Y=12176
+
+Button A: X+17, Y+86
+Button B: X+84, Y+37
+Prize: X=7870, Y=6450
+
+Button A: X+69, Y+23
+Button B: X+27, Y+71
+Prize: X=18641, Y=10279
+</code></pre>
+<p>このリストは、4つの異なるクレーンゲームのボタン構成と景品の位置を説明しています。</p>
+<p>今のところ、リストの最初のクレーンゲームだけを考えてください：</p>
+<ul>
+<li>機械のAボタンを押すと、クレーンはX軸に沿って94ミリ、Y軸に沿って34ミリ移動します。</li>
+<li>Bボタンを押すと、クレーンはX軸に沿って22ミリ、Y軸に沿って67ミリ移動します。</li>
+<li>景品はX=8400, Y=5400に位置しています。
+これは、クレーンの初期位置から、景品と完全に位置合わせするためにX軸に沿って正確に8400ミリ、
+Y軸に沿って正確に5400ミリ移動する必要があることを意味します。</li>
+</ul>
+<p>景品を獲得する最も安い方法は、Aボタンを80回押し、Bボタンを40回押すことです。
+これにより、クレーンがX軸に沿って整列します $(80 \times 94 + 40 \times 22 = 8400)$ し、
+Y軸に沿っても整列します $(80 \times 34 + 40 \times 67 = 5400)$ 。
+これを行うには、Aボタンの押下にメダル $80 \times 3$ 枚、
+Bボタンの押下にメダル $40 \times 1$ 枚が必要で、合計280枚になります。</p>
+<p>2台目と4台目のクレーンゲームでは、AとBのボタンを押す組み合わせで景品を獲得することは決してできません。</p>
+<p>3台目のクレーンゲームで景品を獲得する最も安い方法は、Aボタンを38回押し、Bボタンを86回押すことです。
+これを行うと、メダルが合計200枚必要になります。</p>
+<p>したがって、獲得できる景品は最大で2つです。
+全ての景品（2つ）を獲得するために必要な最小のメダルは480枚です。</p>
+<p>各ボタンは景品を獲得するために<strong>100回以上押される必要はない</strong>とあなたは推測しました。
+そうでなければ、これを遊びたい人が誰かいるでしょうか？</p>
+<p>できるだけ多くの景品を獲得する方法を考えてください。
+全ての可能な景品を獲得するために必要なメダルの最小枚数はいくつですか？</p>
+<h1 id="パート2"><a class="header" href="#パート2">パート2</a></h1>
+<p>最初の景品を獲得しようとすると、クレーンが予想していた場所には全く近くないことに気づきます。
+測定の単位変換エラーのため、全ての景品の位置は実際にはX軸とY軸の両方で10000000000000大きな値です！</p>
+<p>全ての景品のXおよびY位置に10000000000000を加えてください。
+この変更を行った後、上記の例は次のようになります：</p>
+<pre><code>Button A: X+94, Y+34
+Button B: X+22, Y+67
+Prize: X=10000000008400, Y=10000000005400
+
+Button A: X+26, Y+66
+Button B: X+67, Y+21
+Prize: X=10000000012748, Y=10000000012176
+
+Button A: X+17, Y+86
+Button B: X+84, Y+37
+Prize: X=10000000007870, Y=10000000006450
+
+Button A: X+69, Y+23
+Button B: X+27, Y+71
+Prize: X=10000000018641, Y=10000000010279
+</code></pre>
+<p>現在、景品を獲得できるのは2台目と4台目のクレーンゲームのみです。
+残念ながら、ボタンは<strong>100回以上押す</strong>必要があります。</p>
+<p>修正された景品の座標を使用して、できるだけ多くの景品を獲得する方法を考えてください。
+全ての可能な景品を獲得するために必要なメダルの最小枚数はいくつですか？</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../2024/day12.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../2024/day14.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../2024/day12.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../2024/day14.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

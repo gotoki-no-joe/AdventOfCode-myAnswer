@@ -1,5 +1,3 @@
-{-# LANGUAGE DeriveGeneric, DeriveAnyClass #-}
-
 import Data.List
 import Data.Either
 import Control.Monad
@@ -44,8 +42,8 @@ countdown stat = stat
   { shield = max 0 (shield stat - 1)
   , poison = max 0 (poison stat - 1)
   , recharge = max 0 (recharge stat - 1)
-  , bhp = bhp stat - if (poison stat > 0) then 3 else 0
-  , mana = mana stat + if (recharge stat > 0) then 101 else 0
+  , bhp = bhp stat - if poison stat > 0 then 3 else 0
+  , mana = mana stat + if recharge stat > 0 then 101 else 0
   }
 
 bossAttack stat

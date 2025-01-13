@@ -39,47 +39,6 @@
 文字列データのメモリ中の総文字数 \\(0 + 3 + 7 + 1 = 11\\) を引くと
 \\(23 - 11 = 12\\) となります。
 
-<details><summary>解説</summary><div>
-
-行に対して、見た目の長さは `length` で数えられる。
-表現される文字列を作るには、両端のダブルクオートを取り除いた後、
-エスケープシーケンスを忠実に解釈すればできる。
-（`\x`の後に16進数でない文字が来るような場合は考えない。）
-
-```haskell
-import Data.Char
-
-decode :: String -> String
-decode = loop . init . tail
-  where
-    loop ('\':'x':a:b:xs) = chr (digitToInt a * 16 + digitToInt b) : loop xs
-    loop ('\':'\':xs) = '\' : loop xs
-    loop ('\':'"':xs) = '"' : loop xs
-    loop (x:xs) = x : loop xs
-    loop [] = []
-
-part1 :: [String] -> Int
-part1 ls = sum [length l - length (decode l) | l <- ls]
-```
-
-生成後の文字列の長さだけ、直接計測することもできる。
-
-```haskell
-decodeLen :: String -> Int
-decodeLen = loop (-2)
-  where
-    loop n ('\':'x':_:_:xs) = loop (succ n) xs
-    loop n ('\':'\':xs) = loop (succ n) xs
-    loop n ('\':'"':xs) = loop (succ n) xs
-    loop n (x:xs) = loop (succ n) xs
-    loop n [] = n
-
-part1 :: [String] -> Int
-part1 ls = sum [length l - decodeLen l | l <- ls]
-```
-
-</div></details>
-
 # パート2 #
 
 では今度は逆をしましょう。
@@ -94,27 +53,9 @@ part1 ls = sum [length l - decodeLen l | l <- ls]
 - `"aaa\"aaa"` は `"\"aaa\\\"aaa\""` とエンコードされ、10文字から16文字に増加します。
 - `"\x27"` は `"\"\\x27\""` とエンコードされ、6文字から11文字に増加します。
 
-あなたの仕事は、**新しくエンコードされた文字列を表すためち必要な文字の総数**から、
+あなたの仕事は、**新しくエンコードされた文字列を表すために必要な文字の総数**から、
 **それぞれの元の文字列リテラルのコード表現での文字数**を引いたものを見つけることです。
 たとえば、上記の文字列の場合、
 コード化された長さ (\\(6 + 9 + 16 + 11 = 42\\)) から
 元のコード表現の文字の長さ (このパズルの前半と同じ23) を差し引いた結果は
 \\(42 - 23 = 19\\) です。
-
-<details><summary>解説</summary><div>
-
-生成する必要はなかった。
-
-```haskell
-encodeLen :: String -> Int
-encodeLen = sum . map f
-  where
-    f '#' = 2
-    f '\' = 2
-    f  _  = 1
-
-part2 :: [String] -> Int
-part2 ls = sum $ [encodeLen l - length l | l <- ls]
-```
-
-</div></details>

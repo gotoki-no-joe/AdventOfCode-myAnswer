@@ -21,42 +21,6 @@
 
 パズル入力の数字から始めて、このプロセスを40回適用します。
 **結果の長さ**はどれだけですか？
-
-<details><summary>解説</summary><div>
-
-入力は文字列として受け取り、1桁の数のリストで扱うことにする。
-
-```haskell
-import Data.Char
-
-part1 cs = ...
-  where
-    ds = map digitToInt cs
-```
-
-`Data.List.group` で等しいものどうしに分割し、その長さを数える。
-長さは10以上になりうるので、数リストに直接戻せないことに注意。
-
-```haskell
-step :: [Int] -> [Int]
-step ds =
-  [ e
-  | ds1 <- group ds
-  , e <- (map digitToInt $ show $ length ds1) ++ [head ds1]
-  ]
-```
-
-40回繰り返した結果の長さを求める。
-
-```haskell
-part1 cs = length ds40
-  where
-    ds0 = map digitToInt cs
-    ds40 = iterate step ds0 !! 40
-```
-
-</div></details>
-
 # パート2
 
 すばらしい！わかった？
@@ -67,21 +31,3 @@ part1 cs = length ds40
 さて、もう一度あなたのパズル入力の数字で始めて、
 このプロセスを**50回**適用してください。
 **新しい結果の長さ**はどのくらいですか？
-
-<details><summary>解説</summary><div>
-
-Wikipediaの解説を見ると、
-「1, 2, 3以外の数字は、シード番号にそのような数字または
-同じ数字の3つを超えるランが含まれていない限り、シーケンスに現れない。」
-とある。そんなことがあるのか。
-それはともかく、特に計算量を節約する何かがあるわけでもなさそうなので、
-ただ計算機をブン回す。
-
-```haskell
-part2 cs = length ds50
-  where
-    ds0 = map digitToInt cs
-    ds50 = iterate step ds0 !! 50
-```
-
-</div></details>

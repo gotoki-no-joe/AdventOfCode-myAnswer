@@ -1,7 +1,7 @@
 -- 2022-11-16
 
 import Text.Parsec
-import Text.Parsec.Char
+--import Text.Parsec.Char
 
 data JSON = JSONNum Int | JSONStr String | JSONList [JSON] | JSONObj [(String, JSON)] deriving (Show, Eq)
 

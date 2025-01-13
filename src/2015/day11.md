@@ -36,74 +36,13 @@
 - `abbceffg` 第3の要件を満たしています。（`bb`と`ff`を繰り返しています。）
 しかし第1の要件を満たしていません。
 - `abbcegjk` 第3の要件に失敗します。なぜなら、二重文字がひとつ(`bb`)しかないからです。
-- `abcdefgh`のパスワードは`abcdffaa`です。
-- `ghijklmn`のパスワードは`ghjaabcc`です。
+- `abcdefgh`の次のパスワードは`abcdffaa`です。
+- `ghijklmn`の次のパスワードは`ghjaabcc`です。
 これは`i`が許されないために`ghi...`で始まるすべてのパスワードを結局スキップするためです。
 
 サンタの現在のパスワード（あなたのパズル入力）が与えられたとき、
-彼の**次のパスワード**は何ですかか？
-
-あなたのパズル入力は`hxbxwxba`です。
-
-<details><summary>解説</summary><div>
-
-繰り上がりありで列をインクリメントするには、逆順になっているとHaskell的には都合がよい。
-
-```haskell
-incr ('z':cs) = 'a' : incr cs  -- 繰り上がり
-incr ( c :cs) = succ c : cs
-  | elem c "iol" = succ (succ c) : cs -- 禁止文字は飛ばす
-  | otherwise    = succ       c  : cs
-incr "" = ""
-```
-
-インクリメント列は、後ろからはデクリメント列に見える。
-
-```haskell
-cond1 (c1:c2:c3:_) | succ c3 == c2 && succ c2 == c1 = True
-cond1 (_:cs) = cond1 cs
-cond1 [] = False
-```
-
-禁止文字はインクリメントでは出現しないが、
-初期文字の全ての禁止文字がインクリメントで消えるまで捨て続けるのも無駄になる。
-禁止文字が全て消えた最初の文字列とは、元の順序で最も前にある禁止文字を次の文字にし、
-それ以降を全て `a` にしたものである。これを構築することで条件2の判定に代える。
-
-```haskell
-clearCond2 "" = ""
-clearCond2 (c:cs)
-  | elem c "iol" = succ c : map (const 'a') cs
-  | otherwise    = c : clearCond2 cs
-```
-
-最後の例が `ghjaabaa` とならず `ghjaabcc` であることから、条件3の「別個」が厳しい意味であるとわかる？
-そうでなくて、"abc"という続きが必要だ、という条件の方らしい。厳しくないのなら `nub` を消せばよい。
-
-```haskell
-cond3 cs =
-  case nub [c | (c,d) <- zip cs $ tail cs, c == d] of
-    (_:_:_) -> True
-    _       -> False
-```
-
-全体をまとめる。
-
-```haskell
-part1 :: String -> String
-part1 = reverse . until cond13 incr . reverse . clearCond2
-
-cond13 xs = cond1 xs && cond3 xs
-```
-
-</div></details>
+彼の**次のパスワード**は何ですか？
 
 # パート2
 
 サンタのパスワードが再び期限切れになりました。次は何ですか？
-
-<details><summary>解説</summary><div>
-
-パート1の結果を `part1` にかけるだけで、コードの追加はない。
-
-</div></details>

@@ -49,40 +49,6 @@ O => HH
 薬品分子に1つの置換を行うことができるすべてのさまざまな方法の後に、
 **何種類の異なる分子を作成することができますか？**
 
-<details><summary>解説</summary><div>
-
-原子記号は大文字1文字または大文字1文字+小文字1文字でひとつなので、原子記号一つをひとつの整数で扱うように読み込む。
-
-```haskell
-import Data.Char
-
-encode :: String -> [Int]
-encode (c1:c2:cs) | isLower c2 = ord c1 * 256 + ord c2 : encode cs
-encode (c:cs) = ord c1 : encode cs
-encode "" = []
-
-parse :: String -> (Int,[Int])
-parse xs = (head $ parse w1, parse w3)
-  where
-    [w1,_,w3] = words xs
-```
-
-初期列に対して可能な置き換えを行った全ての結果を作る。
-規則の左辺は重複があるので注意。
-
-```haskell
-part1 rules molec0 = S.size s
-  where
-    rs = IM.fromListWith (++) [(l,[r]) | (l,r) <- rules]
-    (_, s) = foldr step ([], S.empty) molec0
-
-    step elem (elems, s) = (elem:elems, S.union s1 $ S.map (elem :) s)
-      where
-        s1 = S.fromList [es ++ elems | es <- IM.findWithDefault [] elem rs]
-```
-
-</div></details>
-
 # パート2
 
 これで装置は校正されたので、分子製造を始める準備が整いました。
@@ -113,58 +79,3 @@ O => HH
 あなたのパズル入力にある
 利用可能な**置換**と**薬の分子**を考えるとき、
 `e`から薬の分子に行くための**最小のステップ数**はいくつですか？
-
-<details><summary>解説</summary><div>
-
-前向きな計算はどう考えても発散するので、目標から還元して電子1つに戻す。
-また、規則は優しく作られていて、端から貪欲に書き換えを行えばよいと仮定して試す。
-（もしこれがうまくいかないと、書き換えできる位置を見逃す形で深さ優先探索するコードが必要になる。）
-
-規則の右辺の先頭文字をキーにして規則を分類しておく。
-
-```haskell
-rulesM = IM.fromListWith (++) [(head r, [lr]) | lr@(_,r) <- rules]
-```
-
-右畳み込みで、新たに繋がる文字をキーにして規則表を調べ、その中で実際に適合する規則を逆向きに適用した結果の一覧を作る。
-変換を一度行ったら、それ以降は規則を調べず、残りの文字の連結につとめる。
-
-```haskell
--- m は新たな文字、msはその続きのこれまでの文字列
-ms1 = m : ms
-reps =
-  [ l : drop (length r) ms1
-  | (l,r) <- IM.findWithDefault [] m rulesM
-  , isPrefixOf r ms1
-  ]
-```
-
-`reps`が要素1ならその書き換えを実行、空リストなら書き換えずに次の文字へ、要素が複数あるなら失敗で落とす。
-また、一度書き換えを行ったら、それを覚えるフラグによって、以降は書き換えをしないで抜ける。
-
-```haskell
--- molec が書き換え対象の列全体
-(molec1, acted) = foldr step ([], False) molec
-step m (ms, True) = (m:ms, True)
-step m (ms, False)
-  | null reps      = (m:ms, False)
-  | singleton reps = (head reps, True)
-  | otherwise      = error (show reps)
-  where
-    ms1 = ...
-    reps = ...
-```
-
-書き換えが起きたなら繰り返し、さもなくば終了する。
-
-```haskell
-loop cnt molec
-  | acted = print (length molec1) >> loop (succ cnt) molec1
-  | otherwise  = print ("end", molec, cnt) >> return ()
-  where
-    ...
-```
-
-幸い、これで電子までさかのぼることができた。
-
-</div></details>

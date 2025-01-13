@@ -297,7 +297,7 @@ part12 h w fld = (distG ! 2, maximum dists3)
 
 ```
 > ghc -O2 ver5 -threaded
-> ./ver5 +RTS -N1
+> ./ver5 +RTS -N
 (1,1,14748)
 (2,6748,1)
 (7,6710,20567)

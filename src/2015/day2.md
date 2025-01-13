@@ -23,22 +23,6 @@
 小人のリストに載っている数字はすべてフィートです。
 注文するべき**包装紙の総面積**は何平方フィートですか？
 
-<details><summary>解説</summary><div>
-
-要求どおりに計算するだけ。
-
-```haskell
-part1 :: [(Int,Int,Int)]  -- l,w,h
-      -> Int              -- 答え
-part1 = sum . map fun1
-
-fun1 (l,w,h) = minimum as + 2 * sum as
-  where
-    as = [l * w, w * h, h * l]
-```
-
-</div></details>
-
 # パート2 #
 
 小人はリボンも使い切りそうです。
@@ -65,19 +49,3 @@ fun1 (l,w,h) = minimum as + 2 * sum as
 合わせて14フィート必要です。
 
 彼らが注文するべき**リボンの総長**はどれだけですか？
-
-<details><summary>解説</summary><div>
-
-やはり要求どおりに計算するだけ。
-
-```haskell
-part2 :: [(Int,Int,Int)]  -- l,w,h
-      -> Int              -- 答え
-part2 = sum . map fun2
-
-fun2 (l,w,h) = 2 * minimum rs + l * w * h
-  where
-    rs = [l + w, w + h, h + l]
-```
-
-</div></details>

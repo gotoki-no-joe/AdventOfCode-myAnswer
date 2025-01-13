@@ -21,26 +21,6 @@
 - `^v^v^v^v^v` は2軒の家だけにいる
 非常に幸運な子どもたちにたくさんのプレゼントを届けます。
 
-<details><summary>解説</summary><div>
-
-座標がどちらに広がるのか事前に予測できないので、配列で扱うのは難しい。
-座標の集合で扱うと制約なく扱いやすい。
-
-```haskell
-import qualified Data.Set as S
-
-part1 :: String  -- 指示
-      -> Int     -- 答え
-part1 = S.size . S.fromList . scanl step (0,0)
-
-step (x,y) '^' = (pred x, y)
-step (x,y) 'v' = (succ x, y)
-step (x,y) '<' = (x, pred y)
-step (x,y) '>' = (x, succ y)
-```
-
-</div></details>
-
 # パート2
 
 翌年、処理を高速化するために、
@@ -61,21 +41,3 @@ step (x,y) '>' = (x, succ y)
 サンタとメカサンタは彼らが始めた地点に戻ってきます。
 - `^v^v^v^v^v` は今回11軒の家にプレゼントを届けます。
 サンタは一方向に、メカサンタはそれと反対向きに向かって行きます。
-
-<details><summary>解説</summary><div>
-
-入力を、サンタ用とメカサンタ用に分離した後はパート1と同じやり方で座標を得て、
-合わせてから数えればよい。
-
-```haskell
-part2 :: String  -- 指示
-      -> Int     -- 答え
-part2 cs = S.size . S.fromList $ go cs1 ++ go cs2
-  where
-    cbs = zip cs $ cycle [True, False]
-    cs1 = [c | (c, True ) <- cbs]
-    cs2 = [c | (c, False) <- cbs]
-    go = scanl step (0,0)
-```
-
-</div></details>

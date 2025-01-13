@@ -19,7 +19,7 @@ part1 = head $ filter ((theInput10 <=) . snd) $ assocs arr
 part1a = loop 1 100
   where
     loop lb ub
-      | null ans = loop (succ ub) (min theInput (ub * 2))
+      | null ans = loop (succ ub) (min theInput10 (ub * 2))
       | otherwise = head ans
       where
         arr :: UArray Int Int
@@ -57,7 +57,8 @@ part2 = loop 1 IM.empty
       | otherwise     = loop (succ k) im1
       where
         ((k1, n), im1) =
-          IM.deleteFindMin $ IM.unionWith (+) im $
+          IM.deleteFindMin $
+          IM.unionWith (+) im $
           IM.fromDistinctAscList $
           [(i, 11 * k) | i <- map (k *) [1 .. 50]]
 
@@ -88,3 +89,19 @@ part2a = loop 1 IM.empty
 
 変にfoldlでやる方が、時間も空間も無駄になっている。
 -}
+
+part2b = loop 1 IM.empty
+  where
+    loop k im
+      | n >= theInput = (k, n)
+      | otherwise     = loop (succ k) im1
+      where
+        im1 =
+          IM.unionWith (+) im $
+          IM.fromDistinctAscList $
+          [(i, 11 * k) | i <- map (k *) [1 .. 50]]
+        (_k,n) = IM.findMin im1
+
+-- 小さい値を消さない方がメモリ操作回数を減らせるかとも思ったが、
+-- 古い値が消えずに溜まっていくと、毎回の操作も重くなるので善し悪しだ。
+-- というかCtrl-Cも受け付けないレベルで固まってしまった。明らかに失敗ってことだ。

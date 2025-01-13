@@ -69,7 +69,7 @@ part2a rules molec0 = loop molec0
         (molec1, cnt) = foldr step ([], 0) molec
         step m (ms, cnt)
           | null reps = (m:ms, cnt)
-          | singleton reps = (head reps, succ cnt)
+          | isSingleton reps = (head reps, succ cnt)
           | otherwise = error (show reps)
           where
             ms1 = m : ms
@@ -79,8 +79,8 @@ part2a rules molec0 = loop molec0
               , isPrefixOf r ms1
               ]
 
-singleton [_] = True
-singleton _ = False
+isSingleton [_] = True
+isSngleton _ = False
 
 -- 右辺の先頭文字でグループ分けして、残りでprefix確認して、適用して、そのまま続ける。
 -- 複数適合する場合は落ちるようにするか。
@@ -110,7 +110,7 @@ part2b rules molec0 = loop 0 molec0
         step m (ms, True) = (m:ms, True)
         step m (ms, False)
           | null reps = (m:ms, False)
-          | singleton reps = (head reps, True)
+          | isSingleton reps = (head reps, True)
           | otherwise = error (show reps)
           where
             ms1 = m : ms

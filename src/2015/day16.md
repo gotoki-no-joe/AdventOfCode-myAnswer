@@ -56,38 +56,6 @@ perfumes: 1
 
 あなたに贈り物をしたスーおばさんの**番号**はいくつですか？
 
-<details><summary>解説</summary><div>
-
-物の名前と、整数が対になっている。
-思い出したメモの内容で、MFCSAMの情報と矛盾がないものを選択する。
-おばさんの情報は `Data.Map.Map String Int` の形式で扱う。
-
-```haskell
-import qualified Data.Map as M
-import Data.Maybe
-
-mfcsam =
-  [("children:",3),("cats:",7),("samoyeds:",2),("pomeranians:",3),("akitas:",0)
-  ,("vizslas:",0),("goldfish:",5),("trees:",3),("cars:",2),("perfumes:",1)]
-
-part1 aunts = [id | (id, aunt) <- zip [1..] aunts, all (check aunt) mfcsam]
-
-check aunt (k,v) = maybe True (v ==) $ M.lookup k aunt
-
-parse xs = M.fromList $ loop ws
-  where
-    ws = drop 2 $ words xs
-    loop [k,v] = [(k, read v)] -- 最後だけコンマがないため
-    loop (k:v:ws) = (k, read $ init v) : loop ws
-
-main1 = do
-  co <- readFile "input.txt"
-  let aunts = map parse $ lines co
-  print $ part1 aunts
-```
-
-</div></details>
-
 # パート2
 
 あなたがお礼状を送ろうとしたそのとき、
@@ -107,28 +75,3 @@ MFCSAMの説明書の中の何かがあなたの目を引きます。
 (modial?)
 
 本物のスーおばさんの**番号**は何でしょう？
-
-<details><summary>解説</summary><div>
-
-比較関数を妥当なものに交換しつつ検査する形に変更する。
-
-```haskell
-part2 =
-  [ id
-  | (id, aunt) <- zip [1..] aunts
-  , all (check   aunt) mfcsamEQ
-  , all (checkLT aunt) mfcsamLT
-  , all (checkGT aunt) mfcsamGT]
-
-checkLT aunt (k,v) = maybe True (v >) $ M.lookup k aunt
-checkGT aunt (k,v) = maybe True (v <) $ M.lookup k aunt
-
-mfcsamEQ = [("children:",3),("samoyeds:",2),("akitas:",0)
-           ,("vizslas:",0),("cars:",2),("perfumes:",1)]
-mfcsamLT = [("pomeranians:",3),("goldfish:",5)]
-mfcsamGT = [("cats:",7),("trees:",3)]
-
-main2 = readFile "input.txt" >>= print . part2 . map parse . lines
-```
-
-</div></details>

@@ -18,57 +18,8 @@ AdventCoinsをマイニングするために、
 - あなたの秘密鍵が`pqrstuv`のとき、連結して5つの零で始まるMD5ハッシュを作る最小の数は`1048970`です。
 つまり、`pqrstuv1048970`のMD5ハッシュは`000006136ef...`となります。
 
-あなたのパズル入力は`iwrupvqb`です。
-
-<details><summary>解説</summary><div>
-
-これを解くためだけにMD5ハッシュの計算を実装するのはつらいので、ライブラリの力を借りる。
-[Wikipedia](https://ja.wikipedia.org/wiki/MD5)を見ると、512ビット=64バイトが処理の単位なので、
-この問題の入力はまるまる収まるだろう。
-
-- [cryptohash-md5](https://hackage.haskell.org/package/cryptohash-md5)
-- [pureMD5](https://hackage.haskell.org/package/pureMD5)
-
-あたりを使えばよいだろう。
-
-```haskell
-import qualified Data.ByteString.Char8 as BS
-import qualified Crypto.Hash.MD5 as MD5
-
-part1 :: String  -- 秘密鍵
-      -> Int     -- 答え
-part1 sk = head
-  [ i
-  | i <- [1..]
-  , let digest = MD5.hash $ BS.pack $ sk ++ show i
-  , fromEnum (BS.index digest 0) ==  0
-  , fromEnum (BS.index digest 1) ==  0
-  , fromEnum (BS.index digest 2) <  16
-  ]
-```
-
-</div></details>
-
+あなたのパズル入力は (実際の内容) です。
 
 # パート2
 
 今度は6つの0で始まるようなものを見つけてください。
-
-<details><summary>解説</summary><div>
-
-パート1と変わらない。
-
-```haskell
-part2 :: String  -- 秘密鍵
-      -> Int     -- 答え
-part2 sk = head
-  [ i
-  | i <- [1..]
-  , let digest = MD5.hash $ BS.pack $ sk ++ show i
-  , fromEnum (BS.index digest 0) == 0
-  , fromEnum (BS.index digest 1) == 0
-  , fromEnum (BS.index digest 2) == 0
-  ]
-```
-
-</div></details>

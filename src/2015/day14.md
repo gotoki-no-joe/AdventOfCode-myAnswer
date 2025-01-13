@@ -31,33 +31,6 @@ Cometが**1120km**で先行しています。
 （あなたのパズル入力として）各トナカイの説明が与えられています。
 ちょうど2503秒後に、**優勝したトナカイはどれだけの距離を移動しましたか？**
 
-<details><summary>解説</summary><div>
-
-また読み込みから。
-
-```haskell
-parse :: String -> (Int,Int,Int)
-parse xs = (read $ ws !! 3, read $ ws !! 6, read $ ws !! 13)
-  where
-    ws = words xs
-```
-
-(速度 \\(s\\)、飛行時間 \\(t\\)、休憩時間 \\(u\\)) というトナカイが \\(D\\) 秒飛ぶとき、
-全体のサイクルを回せる回数 \\(q\\) と、最後のサイクルをさらにする秒数 \\(r\\) は
-\\((q,r) = \textrm{divMod}(D, t+u)\\) である。
-このとき飛行した時間の総計は \\(q \\, t + \min(t, r)\\)となる。
-
-```haskell
-main1 = do
-  co <- readFile "input.txt"
-  print $ part1 2503 $ lines co
-
-part1 time ls = maximum
-  [ s * (q * t + min t r) | (s,t,u) <- map parse ls, let (q,r) = divMod time (t + u)]
-```
-
-</div></details>
-
 # パート2
 
 トナカイが爆発的に動くのを見て、
@@ -82,28 +55,3 @@ part1 time ls = maximum
 
 今回も（あなたのパズル入力の中の）各トナカイの説明が与えられたとき、
 ちょうど2503秒後に、**優勝したトナカイはどれだけの点を獲得しましたか？**
-
-<details><summary>解説</summary><div>
-
-それぞれのトナカイについて、次の1秒で進む距離（または0）のリストを作り、
-これを累積することで各時刻の位置を作り、一位を選んで点数を付与する、を繰り返す。
-
-```haskell
-import Data.List
-
-main2 = do
-  co <- readFile "input.txt"
-  print $ part2 2503 $ lines co
-
-part2 time ls =
-  maximum $ foldl1 (zipWith (+)) $
-  map score2max $ take time $ transpose $
-  [ scanl1 (+) $ cycle $ replicate t s ++ replicate u 0
-  | (s,t,u) <- map parse ls ]
-
-score2max xs = [if m == x then 1 else 0 | x <- xs]
-  where
-    m = maximum xs
-```
-
-</div></details>
