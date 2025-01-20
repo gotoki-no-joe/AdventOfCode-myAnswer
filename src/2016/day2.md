@@ -50,48 +50,6 @@ UUUUD
 あなたのパズルの入力は、フロントデスクで見つけた文書にあった指示です。
 **トイレの暗証番号**は何ですか？
 
-<details><summary>解説</summary><div>
-
-キーパッドをグラフと考える。ノードはボタンで、文字で区別する。
-移動できる有向辺は方向を表す文字がラベル付けされている。
-キーパッドの図から、ネットワークを表す接続行列を表す写像を作る。
-
-```haskell
-import qualified Data.Map
-
-keypad1 = mkKeyPad ["123", "456", "789"]
-
-mkKeyPad :: [String] -> M.Map (Char,Char) Char
-mkKeyPad xss = M.fromList $
-  [ t | xs <- xss, (v,w) <- zip xs (tail xs), v /= ' ', w /= ' '
-  , t <- [((v,'R'),w),((w,'L'),v)]]
-  ++
-  [ t | (xs, ys) <- zip xss (tail xss), (v,w) <- zip xs ys, v /= ' ', w /= ' '
-  , t <- [((v,'D'),w),((w,'U'),v)]]
-```
-
-開始の文字と、一連の指示を受け取り、グラフを辿って最終的に到達した文字を返す。
-辿れないときは無視する。
-
-```haskell
-exec kp c ds = foldl step c ds
-  where
-    step c d = M.findWithDefault c (c,d) kp
-```
-
-入力を読み取り、'5' から始めて、行の内容に従ってグラフを辿る。
-たどり着いた文字は結果でありかつ、次の行の開始位置になる。
-
-```haskell
-import Data.List
-
-main1 = do
-  co <- readFile "input.txt"
-  putStrLn $ tail $ scanl (exec keypad ) '5' $ lines co
-```
-
-</div></details>
-
 # パート2
 
 ついにあなたはトイレにたどり着きました。
@@ -120,17 +78,3 @@ main1 = do
 したがって、実際のキーパッドの配置に基づくと、暗証番号は`5DB3`になります。
 
 パズル入力ファイルにある同じ指示を使用して、**トイレの正しい暗証番号**は何ですか？
-
-<details><summary>解説</summary><div>
-
-キーパッドのグラフを差し替えればよい。
-
-```haskell
-keypad2 = mkKeyPad ["  1  "," 234 ","56789"," ABC ","  D  "]
-
-main2 = do
-  co <- readFile "input.txt"
-  putStrLn $ tail $ scanl (exec keypad2) '5' $ lines co
-```
-
-</div></details>

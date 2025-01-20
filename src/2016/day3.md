@@ -21,25 +21,6 @@
 あなたのパズル入力では、
 記述されている三角形のうち**正しいものはいくつありますか？**
 
-<details><summary>解説</summary><div>
-
-三角形をなす条件を判定する述語を定義する。
-
-```haskell
-property a b c = a + b > c && b + c > a && c + a > b
-```
-
-条件を満たすものを数えればよい。
-
-```haskell
-main1 =
-  readFile "input.txt" >>=
-  pure . map (map read . words) . lines >>=
-  print . length . filter (\[a,b,c] -> property a b c)
-```
-
-</div></details>
-
 # パート2
 
 あなたが設計文書に役立つ印を付け終わったところで、三角形が縦に3つの組で指定されていることに気付きました。
@@ -60,19 +41,3 @@ main1 =
 
 あなたのパズル入力において、行でなく列で読んで、
 記述されている三角形のうち**正しいものはいくつありますか？**
-
-<details><summary>解説</summary><div>
-
-3行ずつに切り分け、それらを転置し、全体を連結してからパート1と同じことをすればよい。
-
-```haskell
-import Data.List
-import Data.List.Split
-
-main2 =
-  readFile "input.txt" >>=
-  pure . concat . map transpose . chunksOf 3 . map (map read . words) . lines >>=
-  print . length . filter (\[a,b,c] -> property a b c)
-```
-
-</div></details>

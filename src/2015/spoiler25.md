@@ -1,6 +1,3 @@
-
-<details><summary>解説</summary><div>
-
 行 `theRow` 列 `theCol` の値を聞かれている。
 まず、それが数列の何個目の値かを、ひとつめの表を見ながら考える。
 
